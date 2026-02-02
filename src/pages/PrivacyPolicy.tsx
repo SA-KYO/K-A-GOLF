@@ -8,18 +8,17 @@ export function PrivacyPolicy() {
 
   return (
     <div className="min-h-screen bg-yellow-300">
-      <div className="max-w-4xl mx-auto px-4 py-12">
+      <div className="site-shell pt-24 pb-16">
         <button
           onClick={goBack}
-          className="mb-8 flex items-center gap-2 bg-yellow-400 px-6 py-3 border-4 border-black font-black uppercase hover:translate-x-1 hover:translate-y-1 transition-transform"
-          style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}
+          className="mb-8 inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] font-semibold text-black border-b border-black/30 pb-2 hover:text-black/70 transition-colors"
         >
           <ArrowLeft className="w-5 h-5" />
           戻る
         </button>
 
-        <div className="bg-white border-4 border-black p-8 md:p-12" style={{ boxShadow: '8px 8px 0 0 var(--shadow-color)' }}>
-          <h1 className="text-3xl md:text-4xl font-black text-center mb-8 uppercase" style={{ color: 'var(--accent)' }}>
+        <div className="card-surface p-8 md:p-12">
+          <h1 className="text-3xl md:text-4xl font-semibold text-left mb-8 uppercase tracking-[0.2em]" style={{ color: 'var(--accent)' }}>
             プライバシーポリシー
           </h1>
 

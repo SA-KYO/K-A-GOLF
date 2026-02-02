@@ -136,8 +136,8 @@ export function MediaGallerySection() {
   };
 
   return (
-    <section id="media-gallery" className="py-20 px-4 bg-yellow-400">
-      <div className="max-w-6xl mx-auto">
+    <section id="media-gallery" className="section-wrap bg-yellow-400">
+      <div className="site-shell">
         <div className="section-header">
           <span className="section-eyebrow">GALLERY</span>
           <h2 className="section-title text-black">ギャラリー</h2>

@@ -51,6 +51,10 @@
   section:not(#top) {
     border-top: 1px solid rgba(27, 58, 42, 0.12);
   }
+
+  section {
+    scroll-margin-top: 96px;
+  }
 }
 
 @layer utilities {
@@ -123,6 +127,34 @@
     max-width: 1100px;
     margin: 0 auto;
     padding: 0 1.5rem;
+  }
+
+  .section-wrap {
+    padding: 5rem 0;
+  }
+
+  .section-wrap--tight {
+    padding: 3.5rem 0;
+  }
+
+  .section-grid {
+    display: grid;
+    gap: 2rem;
+  }
+
+  .section-grid--2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .section-grid--3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  @media (max-width: 960px) {
+    .section-grid--2,
+    .section-grid--3 {
+      grid-template-columns: 1fr;
+    }
   }
 
   .section-header {

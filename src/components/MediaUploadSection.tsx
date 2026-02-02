@@ -281,8 +281,8 @@ export function MediaUploadSection() {
   };
 
   return (
-    <section id="media-upload" className="py-20 px-4 bg-yellow-300 scroll-mt-24">
-      <div className="max-w-5xl mx-auto">
+    <section id="media-upload" className="section-wrap bg-yellow-300">
+      <div className="site-shell">
         <div className="section-header">
           <span className="section-eyebrow">MEDIA UPLOAD</span>
           <h2 className="section-title text-black">写真・動画アップロード</h2>

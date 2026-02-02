@@ -353,16 +353,16 @@ export function LandingPage() {
         </div>
       </section>
 
-      <section id="event-details" className="py-20 px-4 bg-yellow-400 scroll-mt-24">
-        <div className="max-w-5xl mx-auto">
+      <section id="event-details" className="section-wrap bg-yellow-400">
+        <div className="site-shell">
           <div className="section-header">
             <span className="section-eyebrow">DETAILS</span>
             <h2 className="section-title text-black">イベント詳細</h2>
             <div className="section-line" />
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
-            <div className="bg-yellow-400 border-4 border-black p-10" style={{ boxShadow: '8px 8px 0 0 var(--shadow-color)' }}>
+          <div className="section-grid section-grid--2 mb-12">
+            <div className="card-surface p-10">
               <div className="flex items-center justify-center gap-3 mb-8">
                 <Calendar className="w-10 h-10" style={{ color: 'var(--accent)' }} />
                 <h3 className="text-3xl font-black uppercase" style={{ color: 'var(--accent)' }}>開催日時</h3>
@@ -393,7 +393,7 @@ export function LandingPage() {
               </div>
             </div>
 
-            <div className="bg-yellow-400 border-4 border-black p-10" style={{ boxShadow: '8px 8px 0 0 var(--shadow-color)' }}>
+            <div className="card-surface p-10">
               <div className="flex items-center justify-center gap-3 mb-8">
                 <MapPin className="w-10 h-10" style={{ color: 'var(--accent)' }} />
                 <h3 className="text-3xl font-black uppercase" style={{ color: 'var(--accent)' }}>ゴルフ会場</h3>
@@ -424,7 +424,7 @@ export function LandingPage() {
             </div>
           </div>
 
-          <div className="bg-yellow-400 border-4 border-black p-8 md:p-12 mb-8" style={{ boxShadow: '8px 8px 0 0 var(--shadow-color)' }}>
+          <div className="card-soft p-8 md:p-12 mb-8">
             <div className="flex items-center justify-center gap-3 mb-6">
               <DollarSign className="w-10 h-10" style={{ color: 'var(--accent)' }} />
               <h3 className="text-3xl font-black uppercase" style={{ color: 'var(--accent)' }}>参加費用</h3>
@@ -447,7 +447,7 @@ export function LandingPage() {
             </div>
           </div>
 
-          <div className="bg-yellow-400 border-4 border-black p-8 md:p-12" style={{ boxShadow: '8px 8px 0 0 var(--shadow-color)' }}>
+          <div className="card-soft p-8 md:p-12">
             <div className="flex items-center justify-center gap-3 mb-6">
               <Utensils className="w-8 h-8" style={{ color: 'var(--accent)' }} />
               <Trophy className="w-8 h-8" style={{ color: 'var(--accent)' }} />
@@ -473,51 +473,50 @@ export function LandingPage() {
             </div>
           </div>
 
-          <div id="groupings" className="bg-yellow-400 border-4 border-black p-8 md:p-12 mt-8 scroll-mt-24" style={{ boxShadow: '8px 8px 0 0 var(--shadow-color)' }}>
+          <div id="groupings" className="card-surface p-8 md:p-12 mt-10">
             <div className="flex items-center justify-center gap-3 mb-6">
               <Users className="w-9 h-9" style={{ color: 'var(--accent)' }} />
               <h3 className="text-3xl md:text-4xl font-black uppercase" style={{ color: 'var(--accent)' }}>組み分け</h3>
             </div>
 
             <div className="flex justify-center mb-8">
-              <div className="inline-flex items-center gap-2 bg-white border-4 border-black px-6 py-3 text-xl md:text-2xl font-black text-black" style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}>
+              <div className="inline-flex items-center gap-2 bg-white border border-black/20 px-6 py-3 text-lg md:text-xl font-semibold text-black rounded-full">
                 08:12〜 嘉納スタート
               </div>
             </div>
 
-            <div className="grid gap-6 md:grid-cols-2 max-w-5xl mx-auto">
+            <div className="section-grid section-grid--2">
               {groupings.map((group) => (
-                <div key={group.label} className="bg-white border-4 border-black p-6" style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}>
+                <div key={group.label} className="card-surface p-6">
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-3">
                       <div
-                        className="w-12 h-12 rounded-full border-4 border-black flex items-center justify-center text-xl font-black text-black"
+                        className="w-12 h-12 rounded-full border border-black/30 flex items-center justify-center text-lg font-semibold text-black"
                         style={{ backgroundColor: group.color }}
                       >
                         {group.label}
                       </div>
-                      <div className="text-2xl font-black text-black">{group.title}</div>
+                      <div className="text-xl font-semibold text-black">{group.title}</div>
                     </div>
-                    <div className="bg-gray-100 border-4 border-black rounded-full px-4 py-1 text-lg font-black text-black">
+                    <div className="bg-gray-50 border border-black/20 rounded-full px-4 py-1 text-base font-semibold text-black">
                       {group.count}人
                     </div>
                   </div>
 
-                  <div className="border-4 border-dashed border-black/30 rounded-3xl p-4">
+                  <div className="border border-dashed border-black/20 rounded-3xl p-4">
                     <ul className="grid gap-3 sm:grid-cols-2">
                       {group.members.map((member) => (
                         <li
                           key={member.name}
-                          className="bg-white border-2 border-black rounded-full px-4 py-2 text-center font-black"
-                          style={{ boxShadow: '3px 3px 0 0 var(--shadow-color)' }}
+                          className="bg-white border border-black/20 rounded-full px-4 py-2 text-center font-semibold"
                         >
                           <span className="inline-flex items-center gap-2">
-                            <span className="w-4 h-4 rounded-full border-2 border-black border-dotted bg-gray-200" />
-                        <span
-                          className="text-black"
-                          style={member.highlight ? { color: 'var(--accent)' } : undefined}
-                        >
-                          {member.name}
+                            <span className="w-4 h-4 rounded-full border border-black/30 border-dotted bg-gray-200" />
+                            <span
+                              className="text-black"
+                              style={member.highlight ? { color: 'var(--accent)' } : undefined}
+                            >
+                              {member.name}
                         </span>
                           </span>
                         </li>
@@ -529,40 +528,36 @@ export function LandingPage() {
             </div>
           </div>
 
-          <div id="special-awards" className="bg-yellow-400 border-4 border-black p-8 md:p-12 mt-8 scroll-mt-24" style={{ boxShadow: '8px 8px 0 0 var(--shadow-color)' }}>
+          <div id="special-awards" className="card-surface p-8 md:p-12 mt-10">
             <div className="flex items-center justify-center gap-3 mb-8">
               <Medal className="w-10 h-10" style={{ color: 'var(--accent)' }} />
               <h3 className="text-3xl md:text-4xl font-black uppercase" style={{ color: 'var(--accent)' }}>特別賞</h3>
             </div>
 
-            <div className="grid gap-6 md:grid-cols-2 max-w-5xl mx-auto">
+            <div className="section-grid section-grid--2">
               {specialAwards.map((award) => {
                 const Icon = award.icon;
                 return (
-                  <div
-                    key={award.title}
-                    className="bg-white border-4 border-black p-6 text-center"
-                    style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}
-                  >
+                  <div key={award.title} className="card-surface p-6 text-center">
                     <div
-                      className="mx-auto mb-4 w-16 h-16 rounded-full border-4 border-black flex items-center justify-center"
+                      className="mx-auto mb-4 w-16 h-16 rounded-full border border-black/20 flex items-center justify-center"
                       style={{ backgroundColor: award.accent }}
                     >
                       <Icon className="w-8 h-8 text-white" />
                     </div>
-                    <div className="text-2xl md:text-3xl font-black text-black">{award.title}</div>
-                    <div className="w-12 h-1 bg-black mx-auto my-4" />
-                    <p className="text-base md:text-lg font-bold text-black">{award.description}</p>
+                    <div className="text-2xl md:text-3xl font-semibold text-black">{award.title}</div>
+                    <div className="w-10 h-[2px] bg-black/20 mx-auto my-4" />
+                    <p className="text-base md:text-lg font-semibold text-black/70">{award.description}</p>
                     {award.badge && (
                       <div
-                        className="inline-flex items-center justify-center border-4 border-black px-4 py-2 text-sm md:text-base font-black mt-5"
+                        className="inline-flex items-center justify-center border border-black/20 px-4 py-2 text-sm md:text-base font-semibold mt-5"
                         style={{ backgroundColor: award.accent }}
                       >
                         {award.badge}
                       </div>
                     )}
                     {award.note && (
-                      <p className="mt-3 text-sm md:text-base font-bold text-black">{award.note}</p>
+                      <p className="mt-3 text-sm md:text-base font-semibold text-black/60">{award.note}</p>
                     )}
                   </div>
                 );
@@ -570,49 +565,48 @@ export function LandingPage() {
             </div>
           </div>
 
-          <div id="local-rules" className="bg-yellow-400 border-4 border-black p-8 md:p-12 mt-8 scroll-mt-24" style={{ boxShadow: '8px 8px 0 0 var(--shadow-color)' }}>
+          <div id="local-rules" className="card-surface p-8 md:p-12 mt-10">
             <div className="flex items-center justify-center gap-3 mb-8">
               <AlertCircle className="w-10 h-10" style={{ color: 'var(--accent)' }} />
               <h3 className="text-3xl md:text-4xl font-black uppercase" style={{ color: 'var(--accent)' }}>希楽夢杯ローカルルール</h3>
             </div>
 
-            <div className="grid gap-5 md:grid-cols-2 max-w-5xl mx-auto">
+            <div className="section-grid section-grid--2">
               {localRules.map((rule, index) => (
                 <div
                   key={rule.title}
-                  className="bg-white border-4 border-black p-5 md:p-6"
-                  style={{ boxShadow: '6px 6px 0 0 var(--shadow-color)' }}
+                  className="card-surface p-5 md:p-6"
                 >
                   <div className="flex items-center gap-3 mb-3">
-                    <span className="inline-flex items-center justify-center w-9 h-9 rounded-full border-4 border-black bg-green-400">
+                    <span className="inline-flex items-center justify-center w-9 h-9 rounded-full border border-black/20 bg-yellow-200">
                       <Check className="w-4 h-4 text-black" />
                     </span>
-                    <span className="inline-flex items-center justify-center px-3 py-1 border-4 border-black text-xs md:text-sm font-black bg-yellow-200">
+                    <span className="inline-flex items-center justify-center px-3 py-1 border border-black/20 text-xs md:text-sm font-semibold bg-white">
                       RULE {String(index + 1).padStart(2, '0')}
                     </span>
                   </div>
-                  <div className="border-l-4 border-black pl-4">
-                    <div className="text-lg md:text-xl font-black text-black">{rule.title}</div>
-                    <p className="text-sm md:text-base font-bold text-black leading-relaxed mt-2">{rule.description}</p>
+                  <div className="border-l border-black/20 pl-4">
+                    <div className="text-lg md:text-xl font-semibold text-black">{rule.title}</div>
+                    <p className="text-sm md:text-base font-semibold text-black/70 leading-relaxed mt-2">{rule.description}</p>
                   </div>
                 </div>
               ))}
             </div>
           </div>
 
-          <div id="award-ceremony" className="bg-yellow-400 border-4 border-black p-8 md:p-12 mt-8 scroll-mt-24" style={{ boxShadow: '8px 8px 0 0 var(--shadow-color)' }}>
+          <div id="award-ceremony" className="card-surface p-8 md:p-12 mt-10">
             <div className="flex items-center justify-center gap-3 mb-8">
               <Trophy className="w-10 h-10" style={{ color: 'var(--accent)' }} />
               <h3 className="text-3xl font-black uppercase" style={{ color: 'var(--accent)' }}>表彰式</h3>
             </div>
 
             <div className="max-w-3xl mx-auto">
-              <div className="bg-white border-4 border-black p-8" style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}>
+              <div className="card-surface p-8">
                 <div className="text-center">
-                  <div className="text-3xl md:text-4xl font-black text-black mb-4">
+                  <div className="text-3xl md:text-4xl font-semibold text-black mb-4">
                     宇治田原カントリー倶楽部
                   </div>
-                  <p className="text-lg md:text-xl text-black font-bold leading-relaxed">
+                  <p className="text-lg md:text-xl text-black/70 font-semibold leading-relaxed">
                     プレー終了後、会場にて表彰式を行います。<br />
                     賞品をご用意しておりますので、お楽しみに！
                   </p>
@@ -621,15 +615,15 @@ export function LandingPage() {
             </div>
           </div>
 
-          <div id="after-party" className="bg-yellow-400 border-4 border-black p-8 md:p-12 mt-8 scroll-mt-24" style={{ boxShadow: '8px 8px 0 0 var(--shadow-color)' }}>
+          <div id="after-party" className="card-surface p-8 md:p-12 mt-10">
             <div className="flex items-center justify-center gap-3 mb-8">
               <Utensils className="w-10 h-10" style={{ color: 'var(--accent)' }} />
               <h3 className="text-3xl font-black uppercase" style={{ color: 'var(--accent)' }}>懇親会</h3>
             </div>
 
-            <div className="max-w-3xl mx-auto">
-              <div className="bg-white border-4 border-black p-6 mb-6" style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}>
-                <div className="text-center mb-4">
+            <div className="section-grid section-grid--2">
+              <div className="card-surface p-6 md:col-span-2">
+                <div className="text-center">
                   <div className="text-3xl md:text-4xl font-black text-black mb-4">
                     🍜 麺屋 希楽夢
                   </div>
@@ -637,8 +631,8 @@ export function LandingPage() {
                     <Clock className="w-6 h-6" />
                     <span className="text-xl md:text-2xl font-black">18:00〜（予定）</span>
                   </div>
-                  <div className="bg-yellow-400 border-4 border-black p-4">
-                    <p className="text-base md:text-lg text-black font-bold leading-relaxed">
+                  <div className="card-soft p-4">
+                    <p className="text-base md:text-lg text-black/70 font-semibold leading-relaxed">
                       〒610-0201<br />
                       京都府綴喜郡宇治田原町南亥子90-1
                     </p>
@@ -646,13 +640,12 @@ export function LandingPage() {
                 </div>
               </div>
 
-              <div className="text-center">
+              <div className="md:col-span-2 flex justify-center">
                 <a
                   href="https://www.google.com/maps/search/?api=1&query=麺屋希楽夢+京都府綴喜郡宇治田原町南亥子90-1"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-white px-6 py-3 border-4 border-black text-lg font-black uppercase hover:translate-x-1 hover:translate-y-1 transition-transform"
-                  style={{ color: 'var(--accent)', boxShadow: '4px 4px 0 0 var(--shadow-color)' }}
+                  className="inline-flex items-center gap-2 bg-white px-6 py-3 border border-black/20 text-sm uppercase tracking-[0.25em] font-semibold text-black hover:text-black/70 transition-colors"
                 >
                   <MapPin className="w-5 h-5" />
                   Googleマップで見る
@@ -660,29 +653,29 @@ export function LandingPage() {
                 </a>
               </div>
 
-              <div className="bg-white border-4 border-black p-6 mt-6" style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}>
+              <div className="card-surface p-6">
                 <div className="text-center mb-4">
                   <p className="text-lg font-bold text-black mb-2">参加費（食事代）</p>
                   <p className="text-4xl md:text-5xl font-black" style={{ color: 'var(--accent)' }}>¥2,000</p>
                 </div>
               </div>
 
-              <div className="bg-white border-4 border-black p-6 mt-6">
-                <p className="text-lg text-black font-bold leading-relaxed text-center">
+              <div className="card-surface p-6">
+                <p className="text-lg text-black/70 font-semibold leading-relaxed text-center">
                   お食事はお鍋を予定しております🍲<br />
                   <span className="text-base">※飲み物は各自でご用意をお願いします。</span>
                 </p>
               </div>
 
-              <div className="bg-white border-4 border-black p-6 mt-6">
-                <p className="text-lg text-black font-bold leading-relaxed text-center">
+              <div className="card-surface p-6 md:col-span-2">
+                <p className="text-lg text-black/70 font-semibold leading-relaxed text-center">
                   プレー後は麺屋希楽夢にて<p>懇親会を開催！</p>
                   <p>ゴルフの余韻を<br />楽しみながら、</p><p>美味しい料理とともに交流を深めましょう。</p>
                   <p>※参加自由</p>
                 </p>
               </div>
 
-              <div className="bg-white border-4 border-black p-6 mt-6" style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}>
+              <div className="card-surface p-6">
                 <div className="text-center">
                   <p className="text-xl font-black text-black mb-4">
                     インスタグラムはこちら！
@@ -691,8 +684,7 @@ export function LandingPage() {
                     href="https://www.instagram.com/menya.kiramu/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-3 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-600 px-8 py-4 border-4 border-black text-white text-lg font-black uppercase hover:translate-x-1 hover:translate-y-1 transition-transform"
-                    style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}
+                    className="inline-flex items-center gap-3 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-600 px-6 py-3 border border-black/20 text-white text-sm uppercase tracking-[0.25em] font-semibold hover:opacity-90 transition-opacity"
                   >
                     <Instagram className="w-6 h-6" />
                     Instagram
@@ -701,7 +693,7 @@ export function LandingPage() {
                 </div>
               </div>
 
-              <div className="bg-white border-4 border-black p-6 mt-6" style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}>
+              <div className="card-surface p-6">
                 <div className="text-center">
                   <p className="text-xl font-black text-black mb-4">
                     公式LINEはこちら！
@@ -710,8 +702,8 @@ export function LandingPage() {
                     href="https://line.me/R/ti/p/@091wotfr"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-3 px-8 py-4 border-4 border-black text-white text-lg font-black uppercase hover:translate-x-1 hover:translate-y-1 transition-transform"
-                    style={{ backgroundColor: '#06C755', boxShadow: '4px 4px 0 0 var(--shadow-color)' }}
+                    className="inline-flex items-center gap-3 px-6 py-3 border border-black/20 text-white text-sm uppercase tracking-[0.25em] font-semibold hover:opacity-90 transition-opacity"
+                    style={{ backgroundColor: '#06C755' }}
                   >
                     <MessageCircle className="w-6 h-6" />
                     LINE
@@ -720,7 +712,7 @@ export function LandingPage() {
                 </div>
               </div>
 
-              <div className="bg-white border-4 border-black p-6 mt-6" style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}>
+              <div className="card-surface p-6">
                 <div className="text-center">
                   <p className="text-xl font-black text-black mb-4">
                     希楽夢HPはこちら！
@@ -729,8 +721,8 @@ export function LandingPage() {
                     href="https://menyakiramu.netlify.app/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-3 px-8 py-4 border-4 border-black text-white text-lg font-black uppercase hover:translate-x-1 hover:translate-y-1 transition-transform"
-                    style={{ backgroundColor: '#c78c1b', boxShadow: '4px 4px 0 0 var(--shadow-color)' }}
+                    className="inline-flex items-center gap-3 px-6 py-3 border border-black/20 text-white text-sm uppercase tracking-[0.25em] font-semibold hover:opacity-90 transition-opacity"
+                    style={{ backgroundColor: '#c78c1b' }}
                   >
                     <Globe className="w-6 h-6" />
                     希楽夢HP
@@ -741,14 +733,14 @@ export function LandingPage() {
             </div>
           </div>
 
-          <div id="deadline" className="bg-yellow-400 border-4 border-black p-10 md:p-16 mt-8 scroll-mt-24" style={{ boxShadow: '8px 8px 0 0 var(--shadow-color)' }}>
+          <div id="deadline" className="card-surface p-10 md:p-16 mt-10">
             <div className="flex items-center justify-center gap-3 mb-8">
               <Calendar className="w-10 h-10" style={{ color: 'var(--accent)' }} />
               <h3 className="text-3xl md:text-4xl font-black uppercase" style={{ color: 'var(--accent)' }}>懇親会回答締め切り</h3>
             </div>
 
             <div className="text-center">
-              <div className="inline-block bg-white border-4 border-black p-8 md:p-12" style={{ boxShadow: '6px 6px 0 0 var(--shadow-color)' }}>
+              <div className="card-surface inline-block p-8 md:p-12">
                 <div className="text-5xl md:text-7xl font-black mb-4" style={{ color: 'var(--accent)' }}>
                   2026年2月24日
                 </div>
@@ -757,8 +749,8 @@ export function LandingPage() {
                 </div>
               </div>
 
-              <div className="mt-8 bg-white border-4 border-black p-6 max-w-2xl mx-auto">
-                <p className="text-lg md:text-xl text-black font-bold leading-relaxed">
+              <div className="mt-8 card-soft p-6 max-w-2xl mx-auto">
+                <p className="text-lg md:text-xl text-black/70 font-semibold leading-relaxed">
                   期日までにご回答いただけますよう、お願いいたします。締切日を過ぎてもご連絡がない場合は、不参加として扱わせていただきます。
                 </p>
               </div>
@@ -767,8 +759,8 @@ export function LandingPage() {
         </div>
       </section>
 
-      <section id="score-photo" className="py-20 px-4 bg-yellow-300 scroll-mt-24">
-        <div className="max-w-6xl mx-auto">
+      <section id="score-photo" className="section-wrap bg-yellow-300">
+        <div className="site-shell">
           <div className="section-header">
             <span className="section-eyebrow">SCORE PHOTO</span>
             <h2 className="section-title text-black">スコアフォト作成</h2>
@@ -778,15 +770,15 @@ export function LandingPage() {
             <div className="section-line" />
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-10 items-stretch">
-            <div className="bg-white border-4 border-black p-6 md:p-8 h-full flex flex-col" style={{ boxShadow: '8px 8px 0 0 var(--shadow-color)' }}>
+          <div className="section-grid section-grid--2 items-stretch">
+            <div className="card-surface p-6 md:p-8 h-full flex flex-col">
               <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
-                <span className="inline-flex items-center gap-2 bg-yellow-200 border-4 border-black px-4 py-2 text-sm md:text-base font-black uppercase">
+                <span className="inline-flex items-center gap-2 bg-yellow-200 border border-black/20 px-4 py-2 text-xs md:text-sm font-semibold uppercase tracking-[0.2em]">
                   フォーム入力
                 </span>
-                <span className="text-sm md:text-base font-black text-black">入力はカンタン</span>
+                <span className="text-sm md:text-base font-semibold text-black/60">入力はカンタン</span>
               </div>
-              <div className="relative bg-yellow-100 border-4 border-black p-3" style={{ boxShadow: '6px 6px 0 0 var(--shadow-color)' }}>
+              <div className="card-soft p-3">
                 <img
                   src="/score-photo-form.png"
                   alt="スコアフォト作成フォーム"
@@ -794,24 +786,24 @@ export function LandingPage() {
                   loading="lazy"
                 />
               </div>
-              <div className="mt-6 grid sm:grid-cols-3 gap-3 text-sm md:text-base font-black text-black">
-                <div className="bg-yellow-200 border-4 border-black px-4 py-3 text-center">パー自動反映</div>
-                <div className="bg-yellow-200 border-4 border-black px-4 py-3 text-center">合計自動計算</div>
-                <div className="bg-yellow-200 border-4 border-black px-4 py-3 text-center">スマホ対応</div>
-                <div className="bg-yellow-200 border-4 border-black px-4 py-3 text-center">スコア途中保存</div>
-                <div className="bg-yellow-200 border-4 border-black px-4 py-3 text-center">好きな画像選択</div>
-                <div className="bg-yellow-200 border-4 border-black px-4 py-3 text-center">大会名入力OK</div>
+              <div className="mt-6 grid sm:grid-cols-3 gap-3 text-xs md:text-sm font-semibold text-black">
+                <div className="card-soft px-4 py-3 text-center">パー自動反映</div>
+                <div className="card-soft px-4 py-3 text-center">合計自動計算</div>
+                <div className="card-soft px-4 py-3 text-center">スマホ対応</div>
+                <div className="card-soft px-4 py-3 text-center">スコア途中保存</div>
+                <div className="card-soft px-4 py-3 text-center">好きな画像選択</div>
+                <div className="card-soft px-4 py-3 text-center">大会名入力OK</div>
               </div>
             </div>
 
-            <div className="bg-white border-4 border-black p-6 md:p-8 h-full flex flex-col" style={{ boxShadow: '8px 8px 0 0 var(--shadow-color)' }}>
+            <div className="card-surface p-6 md:p-8 h-full flex flex-col">
               <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
-                <span className="inline-flex items-center gap-2 bg-yellow-200 border-4 border-black px-4 py-2 text-sm md:text-base font-black uppercase">
+                <span className="inline-flex items-center gap-2 bg-yellow-200 border border-black/20 px-4 py-2 text-xs md:text-sm font-semibold uppercase tracking-[0.2em]">
                   完成イメージ
                 </span>
-                <span className="text-sm md:text-base font-black text-black">そのまま保存OK</span>
+                <span className="text-sm md:text-base font-semibold text-black/60">そのまま保存OK</span>
               </div>
-              <div className="relative bg-black border-4 border-black p-3" style={{ boxShadow: '6px 6px 0 0 var(--shadow-color)' }}>
+              <div className="rounded-2xl overflow-hidden border border-black/20 bg-black/90 p-3">
                 <img
                   src="/score-photo-sample.png"
                   alt="スコアフォト完成イメージ"
@@ -822,12 +814,11 @@ export function LandingPage() {
               <div className="mt-6 flex flex-col items-center gap-4">
                 <button
                   onClick={goToScorePhoto}
-                  className="bg-yellow-400 px-8 md:px-10 py-4 border-4 border-black text-base md:text-lg font-black uppercase hover:translate-x-1 hover:translate-y-1 transition-transform"
-                  style={{ color: 'var(--accent)', boxShadow: '6px 6px 0 0 var(--shadow-color)' }}
+                  className="border border-black/30 px-6 md:px-8 py-3 text-xs md:text-sm uppercase tracking-[0.25em] font-semibold text-black hover:text-black/70 transition-colors"
                 >
                   スコアフォトを作成する
                 </button>
-                <p className="text-xs md:text-sm text-black font-bold text-center">
+                <p className="text-xs md:text-sm text-black/60 font-semibold text-center">
                   写真を選ぶだけでスコア入り画像が完成します
                 </p>
               </div>
@@ -836,13 +827,11 @@ export function LandingPage() {
 
           <div className="flex justify-center mt-24">
             <div
-              className="w-full max-w-lg bg-yellow-300 border-4 border-black border-dotted p-2"
-              style={{ boxShadow: '6px 6px 0 0 var(--shadow-color)' }}
+              className="w-full max-w-lg card-soft p-3"
             >
               <button
                 onClick={goToScorePhoto}
-                className="w-full bg-white px-6 md:px-10 py-3 border-4 border-black text-base md:text-lg font-black uppercase hover:translate-x-1 hover:translate-y-1 transition-transform"
-                style={{ color: 'var(--accent)' }}
+                className="w-full border border-black/30 px-6 md:px-10 py-3 text-xs md:text-sm uppercase tracking-[0.25em] font-semibold text-black hover:text-black/70 transition-colors"
               >
                 スコアフォトを作成する
               </button>
@@ -851,33 +840,30 @@ export function LandingPage() {
         </div>
       </section>
 
-      <section id="popular-menu" className="py-20 px-4 bg-yellow-300 scroll-mt-24">
-        <div className="max-w-6xl mx-auto">
+      <section id="popular-menu" className="section-wrap bg-yellow-300">
+        <div className="site-shell">
           <div className="section-header">
             <span className="section-eyebrow">POPULAR MENU</span>
             <h2 className="section-title text-black">人気メニュー</h2>
             <div className="section-line" />
           </div>
 
-          <div
-            className="relative bg-white border-4 border-black p-6 md:p-10 overflow-hidden"
-            style={{ boxShadow: '10px 10px 0 0 var(--shadow-color)' }}
-          >
-            <div className="grid md:grid-cols-2 gap-10 items-center">
+          <div className="relative card-surface p-6 md:p-10 overflow-hidden">
+            <div className="section-grid section-grid--2 items-center">
               <div className="space-y-6">
-                <div className="inline-flex items-center gap-3 bg-yellow-200 border-4 border-black px-4 py-2 font-black uppercase text-sm md:text-base">
-                  <span className="bg-black text-white px-3 py-1 text-xs md:text-sm">{featuredMenus[activeSlide].tag}</span>
-                  <span className="tracking-[0.15em] text-gray-500">{featuredMenus[activeSlide].subtitle}</span>
+                <div className="inline-flex items-center gap-3 bg-yellow-200 border border-black/20 px-4 py-2 text-xs md:text-sm font-semibold uppercase tracking-[0.25em]">
+                  <span className="bg-black/80 text-white px-3 py-1 text-[10px] md:text-xs rounded-full">{featuredMenus[activeSlide].tag}</span>
+                  <span className="tracking-[0.2em] text-black/50">{featuredMenus[activeSlide].subtitle}</span>
                 </div>
 
                 <div>
-                  <h3 className="text-3xl md:text-4xl lg:text-5xl font-black text-black leading-tight mb-2">
+                  <h3 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-black leading-tight mb-2">
                     {featuredMenus[activeSlide].title}
-                    <span className="text-2xl md:text-3xl font-black ml-2" style={{ color: 'var(--accent)' }}>
+                    <span className="text-2xl md:text-3xl font-semibold ml-2" style={{ color: 'var(--accent)' }}>
                       （{featuredMenus[activeSlide].price}）
                     </span>
                   </h3>
-                  <p className="text-base md:text-lg text-black leading-relaxed font-bold whitespace-pre-line">
+                  <p className="text-base md:text-lg text-black/70 leading-relaxed font-semibold whitespace-pre-line">
                     {featuredMenus[activeSlide].description}
                   </p>
                 </div>
@@ -885,8 +871,7 @@ export function LandingPage() {
                 <div className="flex items-center gap-4">
                   <button
                     onClick={prevSlide}
-                    className="flex items-center justify-center w-12 h-12 bg-white border-4 border-black rounded-full hover:-translate-x-1 transition-transform"
-                    style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}
+                    className="flex items-center justify-center w-11 h-11 bg-white border border-black/20 rounded-full hover:opacity-80 transition-opacity"
                     aria-label="前のメニュー"
                   >
                     <ChevronLeft className="w-6 h-6 text-black" />
@@ -895,29 +880,28 @@ export function LandingPage() {
                     {featuredMenus.map((item, index) => (
                       <span
                         key={item.id}
-                        className={`h-3 w-3 rounded-full border-2 border-black transition-all ${index === activeSlide ? 'bg-red-500 w-4' : 'bg-white'}`}
+                        className={`h-3 w-3 rounded-full border border-black/20 transition-all ${index === activeSlide ? 'bg-red-500 w-4' : 'bg-white'}`}
                         aria-label={`${index + 1}枚目`}
                       />
                     ))}
                   </div>
                   <button
                     onClick={nextSlide}
-                    className="flex items-center justify-center w-12 h-12 bg-white border-4 border-black rounded-full hover:translate-x-1 transition-transform"
-                    style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}
+                    className="flex items-center justify-center w-11 h-11 bg-white border border-black/20 rounded-full hover:opacity-80 transition-opacity"
                     aria-label="次のメニュー"
                   >
                     <ChevronRight className="w-6 h-6 text-black" />
                   </button>
                 </div>
 
-                <p className="text-sm md:text-base text-gray-600 font-bold">
+                <p className="text-sm md:text-base text-black/50 font-semibold">
                   {featuredMenus[activeSlide].note}
                 </p>
               </div>
 
               <div className="relative">
-                <div className="absolute -left-6 -top-6 w-24 h-24 bg-yellow-200 border-4 border-black rotate-6" style={{ boxShadow: '6px 6px 0 0 var(--shadow-color)' }} />
-                <div className="relative bg-white border-4 border-black p-4" style={{ boxShadow: '8px 8px 0 0 var(--shadow-color)' }}>
+                <div className="absolute -left-6 -top-6 w-24 h-24 bg-yellow-200 border border-black/20 rotate-6" />
+                <div className="relative card-surface p-4">
                   <img
                     src={featuredMenus[activeSlide].image}
                     alt={featuredMenus[activeSlide].title}
@@ -931,14 +915,13 @@ export function LandingPage() {
         </div>
       </section>
 
-      <section id="dj-booth" className="py-20 px-4 bg-yellow-300 scroll-mt-24">
-        <div className="max-w-5xl mx-auto mb-16">
+      <section id="dj-booth" className="section-wrap bg-yellow-300">
+        <div className="site-shell mb-16">
           <AttendeeStats table="after_party_attendees" />
         </div>
-        <div className="max-w-5xl mx-auto">
+        <div className="site-shell">
           <div
-            className="relative overflow-hidden bg-black text-white border-4 border-black p-6 md:p-10"
-            style={{ boxShadow: '8px 8px 0 0 var(--shadow-color), 0 0 28px rgba(0, 245, 255, 0.35)' }}
+            className="relative overflow-hidden bg-black/90 text-white border border-black/20 p-6 md:p-10 rounded-3xl"
           >
             <div
               className="absolute inset-0 opacity-50 pointer-events-none"
@@ -1023,8 +1006,8 @@ export function LandingPage() {
         </div>
       </section>
 
-      <section id="rsvp-form" className="py-20 px-4 bg-yellow-400 scroll-mt-24">
-        <div className="max-w-5xl mx-auto">
+      <section id="rsvp-form" className="section-wrap bg-yellow-400">
+        <div className="site-shell">
           <div className="section-header">
             <span className="section-eyebrow">RSVP</span>
             <h2 className="section-title text-black">懇親会参加申込</h2>
@@ -1040,8 +1023,8 @@ export function LandingPage() {
 
       <MediaUploadSection />
 
-      <section id="line-register" className="py-12 md:py-16 px-4 bg-yellow-300 scroll-mt-24">
-        <div className="max-w-4xl mx-auto">
+      <section id="line-register" className="section-wrap--tight bg-yellow-300">
+        <div className="site-shell">
           <a
             href="https://line.me/R/ti/p/@091wotfr"
             target="_blank"
@@ -1051,8 +1034,7 @@ export function LandingPage() {
             <img
               src="/名称_未_設定-1.png"
               alt="麺屋希楽夢 LINE公式アカウント - 営業日、メニュー情報、SNS情報をこちらから登録"
-              className="w-full h-auto border-4 border-black"
-              style={{ boxShadow: '8px 8px 0 0 var(--shadow-color)' }}
+              className="w-full h-auto border border-black/20 rounded-3xl"
               loading="lazy"
             />
           </a>
@@ -1060,7 +1042,7 @@ export function LandingPage() {
       </section>
 
       <footer className="bg-yellow-300 text-black py-12 px-4 border-t border-black/10">
-        <div className="max-w-5xl mx-auto text-left">
+        <div className="site-shell text-left">
           <div className="section-eyebrow mb-4">CONTACT</div>
           <h3 className="text-2xl font-semibold mb-4 uppercase tracking-[0.2em]">KIRAMU GOLF COMPETITION 2026</h3>
           <p className="text-black/70 mb-6 font-semibold">
