@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { supabase } from '../lib/supabase';
+import { supabase, isSupabaseConfigured } from '../lib/supabase';
 import { CheckCircle2 } from 'lucide-react';
 
 export function RSVPForm() {
@@ -12,6 +12,19 @@ export function RSVPForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState('');
+
+  if (!isSupabaseConfigured || !supabase) {
+    return (
+      <div className="max-w-2xl mx-auto bg-yellow-400 border-4 border-black p-8 md:p-12 text-center" style={{ boxShadow: '8px 8px 0 0 #000' }}>
+        <h3 className="text-2xl md:text-3xl font-black text-black mb-4 uppercase">
+          準備中
+        </h3>
+        <p className="text-black font-bold">
+          懇親会参加申込フォームは現在準備中です。少し時間をおいてからご確認ください。
+        </p>
+      </div>
+    );
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

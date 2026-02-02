@@ -39,7 +39,7 @@ export function MediaUploadAdmin() {
       setRefreshing(true);
     }
     setError('');
-    if (!isMediaSupabaseConfigured) {
+    if (!isMediaSupabaseConfigured || !mediaSupabase) {
       setError('メディア用のSupabase設定が見つかりません。');
       setLoading(false);
       setRefreshing(false);
@@ -94,7 +94,7 @@ export function MediaUploadAdmin() {
   useEffect(() => {
     fetchMedia();
 
-    if (!isMediaSupabaseConfigured) {
+    if (!isMediaSupabaseConfigured || !mediaSupabase) {
       return;
     }
 
@@ -121,6 +121,10 @@ export function MediaUploadAdmin() {
     setDeletingId(item.id);
 
     try {
+      if (!mediaSupabase) {
+        throw new Error('media_supabase_not_configured');
+      }
+
       if (item.cloudinary_url || item.cloudinary_public_id) {
         const response = await fetch('/.netlify/functions/cloudinary-delete', {
           method: 'POST',

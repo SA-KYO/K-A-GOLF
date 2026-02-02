@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { supabase, GolfAttendee } from '../lib/supabase';
+import { supabase, isSupabaseConfigured, GolfAttendee } from '../lib/supabase';
 import { CheckCircle2, XCircle, MessageSquare, Phone, User, Trash2, Download } from 'lucide-react';
 
 type AttendeeListProps = {
@@ -15,6 +15,7 @@ export function AttendeeList({ title, table, csvFilePrefix, showPhone = false }:
   const [filter, setFilter] = useState<'all' | 'attending' | 'not_attending'>('all');
 
   const fetchAttendees = async () => {
+    if (!supabase) return;
     try {
       const { data, error } = await supabase
         .from(table)
@@ -34,6 +35,7 @@ export function AttendeeList({ title, table, csvFilePrefix, showPhone = false }:
   };
 
   const handleDelete = async (id: string, name: string) => {
+    if (!supabase) return;
     if (!window.confirm(`${name}さんの回答を削除しますか？`)) {
       return;
     }
@@ -105,6 +107,11 @@ export function AttendeeList({ title, table, csvFilePrefix, showPhone = false }:
   };
 
   useEffect(() => {
+    if (!isSupabaseConfigured || !supabase) {
+      setLoading(false);
+      return;
+    }
+
     fetchAttendees();
 
     const channel = supabase
@@ -121,6 +128,14 @@ export function AttendeeList({ title, table, csvFilePrefix, showPhone = false }:
       supabase.removeChannel(channel);
     };
   }, [table]);
+
+  if (!isSupabaseConfigured || !supabase) {
+    return (
+      <div className="text-center py-12">
+        <div className="text-black text-lg font-black">参加者データは準備中です</div>
+      </div>
+    );
+  }
 
   const filteredAttendees = attendees.filter(attendee => {
     if (filter === 'all') return true;

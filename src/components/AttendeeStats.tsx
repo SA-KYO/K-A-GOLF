@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { supabase } from '../lib/supabase';
+import { supabase, isSupabaseConfigured } from '../lib/supabase';
 import { Users } from 'lucide-react';
 
 type AttendeeStatsProps = {
@@ -12,6 +12,7 @@ export function AttendeeStats({ table = 'golf_attendees' }: AttendeeStatsProps) 
   const [loading, setLoading] = useState(true);
 
   const fetchStats = async () => {
+    if (!supabase) return;
     try {
       const { data, error } = await supabase
         .from(table)
@@ -31,6 +32,11 @@ export function AttendeeStats({ table = 'golf_attendees' }: AttendeeStatsProps) 
   };
 
   useEffect(() => {
+    if (!isSupabaseConfigured || !supabase) {
+      setLoading(false);
+      return;
+    }
+
     fetchStats();
 
     const channel = supabase
@@ -47,6 +53,14 @@ export function AttendeeStats({ table = 'golf_attendees' }: AttendeeStatsProps) 
       supabase.removeChannel(channel);
     };
   }, [table]);
+
+  if (!isSupabaseConfigured || !supabase) {
+    return (
+      <div className="text-center py-4">
+        <div className="text-black font-black">参加状況は準備中です</div>
+      </div>
+    );
+  }
 
   if (loading) {
     return (

@@ -33,7 +33,7 @@ export function MediaGallerySection() {
 
   const fetchMedia = async () => {
     setError('');
-    if (!isMediaSupabaseConfigured) {
+    if (!isMediaSupabaseConfigured || !mediaSupabase) {
       setError('メディア用のSupabase設定が見つかりません。');
       setLoading(false);
       return;
@@ -90,7 +90,7 @@ export function MediaGallerySection() {
   useEffect(() => {
     fetchMedia();
 
-    if (!isMediaSupabaseConfigured) {
+    if (!isMediaSupabaseConfigured || !mediaSupabase) {
       return;
     }
 

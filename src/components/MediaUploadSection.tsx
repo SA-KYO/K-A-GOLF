@@ -194,7 +194,7 @@ export function MediaUploadSection() {
       return;
     }
 
-    if (!isMediaSupabaseConfigured) {
+    if (!isMediaSupabaseConfigured || !mediaSupabase) {
       setError('メディア用のSupabase設定が見つかりません。');
       return;
     }
