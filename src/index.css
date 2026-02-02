@@ -175,7 +175,6 @@
     box-shadow: var(--card-shadow) !important;
   }
 }
-}
 
 @keyframes clockRotate {
   0% {
