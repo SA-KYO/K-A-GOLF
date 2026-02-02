@@ -199,7 +199,7 @@ export function ScorePhotoSettingsPage() {
     return (
       <div className="min-h-screen bg-yellow-300 flex items-center justify-center px-4">
         <div className="max-w-md w-full">
-          <div className="bg-white border-4 border-black p-8 md:p-12" style={{ boxShadow: '8px 8px 0 0 #000' }}>
+          <div className="bg-white border-4 border-black p-8 md:p-12" style={{ boxShadow: '8px 8px 0 0 var(--shadow-color)' }}>
             <h1 className="text-2xl font-black text-black text-center mb-6 uppercase">
               透かし設定（管理者）
             </h1>
@@ -225,7 +225,7 @@ export function ScorePhotoSettingsPage() {
               <button
                 type="submit"
                 className="w-full bg-yellow-400 px-6 py-3 border-4 border-black text-black font-black uppercase hover:translate-x-1 hover:translate-y-1 transition-transform"
-                style={{ boxShadow: '6px 6px 0 0 #000' }}
+                style={{ boxShadow: '6px 6px 0 0 var(--shadow-color)' }}
               >
                 ログイン
               </button>
@@ -242,13 +242,13 @@ export function ScorePhotoSettingsPage() {
         <button
           onClick={goBack}
           className="mb-6 flex items-center gap-2 bg-yellow-400 px-6 py-3 border-4 border-black font-black uppercase hover:translate-x-1 hover:translate-y-1 transition-transform"
-          style={{ boxShadow: '4px 4px 0 0 #000' }}
+          style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}
         >
           <ArrowLeft className="w-5 h-5" />
           戻る
         </button>
 
-        <div className="bg-white border-4 border-black p-6 md:p-8" style={{ boxShadow: '8px 8px 0 0 #000' }}>
+        <div className="bg-white border-4 border-black p-6 md:p-8" style={{ boxShadow: '8px 8px 0 0 var(--shadow-color)' }}>
           <h1 className="text-2xl md:text-3xl font-black text-black mb-6 uppercase">
             透かし設定
           </h1>
@@ -278,7 +278,7 @@ export function ScorePhotoSettingsPage() {
                     type="button"
                     onClick={handleClearLogo}
                     className="px-3 py-2 border-2 border-black bg-red-400 text-black text-xs font-black uppercase hover:translate-x-0.5 hover:translate-y-0.5 transition-transform"
-                    style={{ boxShadow: '3px 3px 0 0 #000' }}
+                    style={{ boxShadow: '3px 3px 0 0 var(--shadow-color)' }}
                   >
                     クリア
                   </button>
@@ -325,7 +325,7 @@ export function ScorePhotoSettingsPage() {
               type="button"
               onClick={handleSave}
               className="flex items-center gap-2 bg-yellow-400 px-6 py-3 border-4 border-black text-black font-black uppercase hover:translate-x-1 hover:translate-y-1 transition-transform"
-              style={{ boxShadow: '6px 6px 0 0 #000' }}
+              style={{ boxShadow: '6px 6px 0 0 var(--shadow-color)' }}
             >
               <Save className="w-4 h-4" />
               保存する

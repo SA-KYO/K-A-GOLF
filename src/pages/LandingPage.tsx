@@ -259,7 +259,7 @@ export function LandingPage() {
           aria-controls="site-menu"
           aria-label={isMenuOpen ? 'メニューを閉じる' : 'メニューを開く'}
           className="flex items-center gap-2 bg-yellow-400 border-4 border-black px-4 py-3 font-black uppercase hover:translate-x-1 hover:translate-y-1 transition-transform"
-          style={{ boxShadow: '6px 6px 0 0 #000' }}
+          style={{ boxShadow: '6px 6px 0 0 var(--shadow-color)' }}
         >
           <Menu className="w-5 h-5" />
           MENU
@@ -277,14 +277,14 @@ export function LandingPage() {
           <div
             id="site-menu"
             className="absolute right-0 top-0 h-screen max-h-screen w-full max-w-xs sm:max-w-sm bg-yellow-300 border-l-4 border-black px-6 py-8 overflow-y-auto overscroll-contain touch-pan-y h-[100dvh] max-h-[100dvh] pb-[calc(env(safe-area-inset-bottom)+2rem)]"
-            style={{ boxShadow: '-10px 0 0 0 #000', WebkitOverflowScrolling: 'touch' }}
+            style={{ boxShadow: '-10px 0 0 0 var(--shadow-color)', WebkitOverflowScrolling: 'touch' }}
           >
             <div className="flex items-center justify-between mb-6">
               <div className="text-2xl font-black text-black uppercase">MENU</div>
               <button
                 type="button"
                 className="bg-white border-4 border-black px-3 py-2 font-black hover:translate-x-0.5 hover:translate-y-0.5 transition-transform"
-                style={{ boxShadow: '4px 4px 0 0 #000' }}
+                style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}
                 onClick={() => setIsMenuOpen(false)}
               >
                 <X className="w-4 h-4" />
@@ -297,7 +297,7 @@ export function LandingPage() {
                   type="button"
                   onClick={() => handleMenuSelect(item.id)}
                   className="w-full text-left bg-white border-4 border-black px-4 py-3 font-black text-black hover:translate-x-1 hover:translate-y-1 transition-transform"
-                  style={{ boxShadow: '4px 4px 0 0 #000' }}
+                  style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}
                 >
                   {item.label}
                 </button>
@@ -331,7 +331,7 @@ export function LandingPage() {
             KIRAMU CUP GOLF COMPETITION 2026
           </p>
 
-          <div className="bg-white rounded-none p-6 md:p-12 mb-12 border-4 border-black mx-6 md:mx-0" style={{ boxShadow: '8px 8px 0 0 #000' }}>
+          <div className="bg-white rounded-none p-6 md:p-12 mb-12 border-4 border-black mx-6 md:mx-0" style={{ boxShadow: '8px 8px 0 0 var(--shadow-color)' }}>
             <div className="flex items-center justify-center gap-3 mb-6">
               <Calendar className="w-8 h-8 text-black" />
               <h2 className="text-2xl md:text-3xl font-black text-black uppercase">開催まで</h2>
@@ -342,7 +342,7 @@ export function LandingPage() {
           <button
             onClick={scrollToForm}
             className="bg-yellow-400 px-8 md:px-12 py-4 md:py-5 border-4 border-black text-lg md:text-xl font-black uppercase hover:translate-x-1 hover:translate-y-1 transition-transform"
-            style={{ color: '#22C55E', boxShadow: '6px 6px 0 0 #000' }}
+            style={{ color: '#22C55E', boxShadow: '6px 6px 0 0 var(--shadow-color)' }}
           >
             懇親会参加申込はこちら
           </button>
@@ -357,7 +357,7 @@ export function LandingPage() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 mb-12">
-            <div className="bg-yellow-400 border-4 border-black p-10" style={{ boxShadow: '8px 8px 0 0 #000' }}>
+            <div className="bg-yellow-400 border-4 border-black p-10" style={{ boxShadow: '8px 8px 0 0 var(--shadow-color)' }}>
               <div className="flex items-center justify-center gap-3 mb-8">
                 <Calendar className="w-10 h-10" style={{ color: '#22C55E' }} />
                 <h3 className="text-3xl font-black uppercase" style={{ color: '#22C55E' }}>開催日時</h3>
@@ -370,13 +370,13 @@ export function LandingPage() {
                 <div className="text-2xl md:text-3xl font-black text-black mb-4">
                   2026年
                 </div>
-                <div className="inline-block px-6 py-3 bg-white text-black text-xl font-black border-4 border-black" style={{ boxShadow: '4px 4px 0 0 #000' }}>
+                <div className="inline-block px-6 py-3 bg-white text-black text-xl font-black border-4 border-black" style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}>
                   火曜日
                 </div>
               </div>
 
               <div className="space-y-4 mt-6">
-                <div className="time-display-container flex flex-col items-center justify-center gap-3 border-4 border-black p-6 animate-fade-in-scale animate-glow" style={{ backgroundColor: '#22C55E', boxShadow: '4px 4px 0 0 #000' }}>
+                <div className="time-display-container flex flex-col items-center justify-center gap-3 border-4 border-black p-6 animate-fade-in-scale animate-glow" style={{ backgroundColor: '#22C55E', boxShadow: '4px 4px 0 0 var(--shadow-color)' }}>
                   <Clock className="w-10 h-10 text-white animate-clock-rotate" />
                   <div className="text-5xl md:text-7xl font-black text-white animate-pulse-slow">7:50</div>
                   <div className="text-2xl md:text-3xl font-black text-white">スタート室集合</div>
@@ -388,7 +388,7 @@ export function LandingPage() {
               </div>
             </div>
 
-            <div className="bg-yellow-400 border-4 border-black p-10" style={{ boxShadow: '8px 8px 0 0 #000' }}>
+            <div className="bg-yellow-400 border-4 border-black p-10" style={{ boxShadow: '8px 8px 0 0 var(--shadow-color)' }}>
               <div className="flex items-center justify-center gap-3 mb-8">
                 <MapPin className="w-10 h-10" style={{ color: '#22C55E' }} />
                 <h3 className="text-3xl font-black uppercase" style={{ color: '#22C55E' }}>ゴルフ会場</h3>
@@ -409,7 +409,7 @@ export function LandingPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-white px-6 py-3 border-4 border-black text-lg font-black uppercase hover:translate-x-1 hover:translate-y-1 transition-transform"
-                  style={{ color: '#22C55E', boxShadow: '4px 4px 0 0 #000' }}
+                  style={{ color: '#22C55E', boxShadow: '4px 4px 0 0 var(--shadow-color)' }}
                 >
                   <MapPin className="w-5 h-5" />
                   Googleマップで見る
@@ -419,20 +419,20 @@ export function LandingPage() {
             </div>
           </div>
 
-          <div className="bg-yellow-400 border-4 border-black p-8 md:p-12 mb-8" style={{ boxShadow: '8px 8px 0 0 #000' }}>
+          <div className="bg-yellow-400 border-4 border-black p-8 md:p-12 mb-8" style={{ boxShadow: '8px 8px 0 0 var(--shadow-color)' }}>
             <div className="flex items-center justify-center gap-3 mb-6">
               <DollarSign className="w-10 h-10" style={{ color: '#22C55E' }} />
               <h3 className="text-3xl font-black uppercase" style={{ color: '#22C55E' }}>参加費用</h3>
             </div>
             <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-              <div className="bg-white border-4 border-black p-6" style={{ boxShadow: '4px 4px 0 0 #000' }}>
+              <div className="bg-white border-4 border-black p-6" style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}>
                 <div className="text-center">
                   <p className="text-lg font-bold text-black mb-2">プレー費</p>
                   <p className="text-4xl md:text-5xl font-black mb-2" style={{ color: '#22C55E' }}>¥8,180</p>
                   <p className="text-sm md:text-base text-black font-bold">昼食・表彰式ワンドリンク付</p>
                 </div>
               </div>
-              <div className="bg-white border-4 border-black p-6" style={{ boxShadow: '4px 4px 0 0 #000' }}>
+              <div className="bg-white border-4 border-black p-6" style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}>
                 <div className="text-center">
                   <p className="text-lg font-bold text-black mb-2">コンペルフィー</p>
                   <p className="text-4xl md:text-5xl font-black mb-2" style={{ color: '#22C55E' }}>¥2,000</p>
@@ -442,7 +442,7 @@ export function LandingPage() {
             </div>
           </div>
 
-          <div className="bg-yellow-400 border-4 border-black p-8 md:p-12" style={{ boxShadow: '8px 8px 0 0 #000' }}>
+          <div className="bg-yellow-400 border-4 border-black p-8 md:p-12" style={{ boxShadow: '8px 8px 0 0 var(--shadow-color)' }}>
             <div className="flex items-center justify-center gap-3 mb-6">
               <Utensils className="w-8 h-8" style={{ color: '#22C55E' }} />
               <Trophy className="w-8 h-8" style={{ color: '#22C55E' }} />
@@ -451,7 +451,7 @@ export function LandingPage() {
               イベント内容
             </h3>
             <div className="space-y-6 text-black max-w-3xl mx-auto">
-              <div className="bg-white border-4 border-black p-8 md:p-10" style={{ boxShadow: '4px 4px 0 0 #000' }}>
+              <div className="bg-white border-4 border-black p-8 md:p-10" style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}>
                 <p className="text-3xl md:text-4xl lg:text-5xl leading-tight font-black text-center" style={{ color: '#22C55E' }}>
                   麺屋希楽夢<p>初のゴルフコンペ開催！</p>
                 </p>
@@ -468,21 +468,21 @@ export function LandingPage() {
             </div>
           </div>
 
-          <div id="groupings" className="bg-yellow-400 border-4 border-black p-8 md:p-12 mt-8 scroll-mt-24" style={{ boxShadow: '8px 8px 0 0 #000' }}>
+          <div id="groupings" className="bg-yellow-400 border-4 border-black p-8 md:p-12 mt-8 scroll-mt-24" style={{ boxShadow: '8px 8px 0 0 var(--shadow-color)' }}>
             <div className="flex items-center justify-center gap-3 mb-6">
               <Users className="w-9 h-9" style={{ color: '#22C55E' }} />
               <h3 className="text-3xl md:text-4xl font-black uppercase" style={{ color: '#22C55E' }}>組み分け</h3>
             </div>
 
             <div className="flex justify-center mb-8">
-              <div className="inline-flex items-center gap-2 bg-white border-4 border-black px-6 py-3 text-xl md:text-2xl font-black text-black" style={{ boxShadow: '4px 4px 0 0 #000' }}>
+              <div className="inline-flex items-center gap-2 bg-white border-4 border-black px-6 py-3 text-xl md:text-2xl font-black text-black" style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}>
                 08:12〜 嘉納スタート
               </div>
             </div>
 
             <div className="grid gap-6 md:grid-cols-2 max-w-5xl mx-auto">
               {groupings.map((group) => (
-                <div key={group.label} className="bg-white border-4 border-black p-6" style={{ boxShadow: '4px 4px 0 0 #000' }}>
+                <div key={group.label} className="bg-white border-4 border-black p-6" style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}>
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-3">
                       <div
@@ -504,7 +504,7 @@ export function LandingPage() {
                         <li
                           key={member.name}
                           className="bg-white border-2 border-black rounded-full px-4 py-2 text-center font-black"
-                          style={{ boxShadow: '3px 3px 0 0 #000' }}
+                          style={{ boxShadow: '3px 3px 0 0 var(--shadow-color)' }}
                         >
                           <span className="inline-flex items-center gap-2">
                             <span className="w-4 h-4 rounded-full border-2 border-black border-dotted bg-gray-200" />
@@ -521,7 +521,7 @@ export function LandingPage() {
             </div>
           </div>
 
-          <div id="special-awards" className="bg-yellow-400 border-4 border-black p-8 md:p-12 mt-8 scroll-mt-24" style={{ boxShadow: '8px 8px 0 0 #000' }}>
+          <div id="special-awards" className="bg-yellow-400 border-4 border-black p-8 md:p-12 mt-8 scroll-mt-24" style={{ boxShadow: '8px 8px 0 0 var(--shadow-color)' }}>
             <div className="flex items-center justify-center gap-3 mb-8">
               <Medal className="w-10 h-10" style={{ color: '#22C55E' }} />
               <h3 className="text-3xl md:text-4xl font-black uppercase" style={{ color: '#22C55E' }}>特別賞</h3>
@@ -534,7 +534,7 @@ export function LandingPage() {
                   <div
                     key={award.title}
                     className="bg-white border-4 border-black p-6 text-center"
-                    style={{ boxShadow: '4px 4px 0 0 #000' }}
+                    style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}
                   >
                     <div
                       className="mx-auto mb-4 w-16 h-16 rounded-full border-4 border-black flex items-center justify-center"
@@ -562,7 +562,7 @@ export function LandingPage() {
             </div>
           </div>
 
-          <div id="local-rules" className="bg-yellow-400 border-4 border-black p-8 md:p-12 mt-8 scroll-mt-24" style={{ boxShadow: '8px 8px 0 0 #000' }}>
+          <div id="local-rules" className="bg-yellow-400 border-4 border-black p-8 md:p-12 mt-8 scroll-mt-24" style={{ boxShadow: '8px 8px 0 0 var(--shadow-color)' }}>
             <div className="flex items-center justify-center gap-3 mb-8">
               <AlertCircle className="w-10 h-10" style={{ color: '#22C55E' }} />
               <h3 className="text-3xl md:text-4xl font-black uppercase" style={{ color: '#22C55E' }}>希楽夢杯ローカルルール</h3>
@@ -573,7 +573,7 @@ export function LandingPage() {
                 <div
                   key={rule.title}
                   className="bg-white border-4 border-black p-5 md:p-6"
-                  style={{ boxShadow: '6px 6px 0 0 #000' }}
+                  style={{ boxShadow: '6px 6px 0 0 var(--shadow-color)' }}
                 >
                   <div className="flex items-center gap-3 mb-3">
                     <span className="inline-flex items-center justify-center w-9 h-9 rounded-full border-4 border-black bg-green-400">
@@ -592,14 +592,14 @@ export function LandingPage() {
             </div>
           </div>
 
-          <div id="award-ceremony" className="bg-yellow-400 border-4 border-black p-8 md:p-12 mt-8 scroll-mt-24" style={{ boxShadow: '8px 8px 0 0 #000' }}>
+          <div id="award-ceremony" className="bg-yellow-400 border-4 border-black p-8 md:p-12 mt-8 scroll-mt-24" style={{ boxShadow: '8px 8px 0 0 var(--shadow-color)' }}>
             <div className="flex items-center justify-center gap-3 mb-8">
               <Trophy className="w-10 h-10" style={{ color: '#22C55E' }} />
               <h3 className="text-3xl font-black uppercase" style={{ color: '#22C55E' }}>表彰式</h3>
             </div>
 
             <div className="max-w-3xl mx-auto">
-              <div className="bg-white border-4 border-black p-8" style={{ boxShadow: '4px 4px 0 0 #000' }}>
+              <div className="bg-white border-4 border-black p-8" style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}>
                 <div className="text-center">
                   <div className="text-3xl md:text-4xl font-black text-black mb-4">
                     宇治田原カントリー倶楽部
@@ -613,14 +613,14 @@ export function LandingPage() {
             </div>
           </div>
 
-          <div id="after-party" className="bg-yellow-400 border-4 border-black p-8 md:p-12 mt-8 scroll-mt-24" style={{ boxShadow: '8px 8px 0 0 #000' }}>
+          <div id="after-party" className="bg-yellow-400 border-4 border-black p-8 md:p-12 mt-8 scroll-mt-24" style={{ boxShadow: '8px 8px 0 0 var(--shadow-color)' }}>
             <div className="flex items-center justify-center gap-3 mb-8">
               <Utensils className="w-10 h-10" style={{ color: '#22C55E' }} />
               <h3 className="text-3xl font-black uppercase" style={{ color: '#22C55E' }}>懇親会</h3>
             </div>
 
             <div className="max-w-3xl mx-auto">
-              <div className="bg-white border-4 border-black p-6 mb-6" style={{ boxShadow: '4px 4px 0 0 #000' }}>
+              <div className="bg-white border-4 border-black p-6 mb-6" style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}>
                 <div className="text-center mb-4">
                   <div className="text-3xl md:text-4xl font-black text-black mb-4">
                     🍜 麺屋 希楽夢
@@ -644,7 +644,7 @@ export function LandingPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-white px-6 py-3 border-4 border-black text-lg font-black uppercase hover:translate-x-1 hover:translate-y-1 transition-transform"
-                  style={{ color: '#22C55E', boxShadow: '4px 4px 0 0 #000' }}
+                  style={{ color: '#22C55E', boxShadow: '4px 4px 0 0 var(--shadow-color)' }}
                 >
                   <MapPin className="w-5 h-5" />
                   Googleマップで見る
@@ -652,7 +652,7 @@ export function LandingPage() {
                 </a>
               </div>
 
-              <div className="bg-white border-4 border-black p-6 mt-6" style={{ boxShadow: '4px 4px 0 0 #000' }}>
+              <div className="bg-white border-4 border-black p-6 mt-6" style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}>
                 <div className="text-center mb-4">
                   <p className="text-lg font-bold text-black mb-2">参加費（食事代）</p>
                   <p className="text-4xl md:text-5xl font-black" style={{ color: '#22C55E' }}>¥2,000</p>
@@ -674,7 +674,7 @@ export function LandingPage() {
                 </p>
               </div>
 
-              <div className="bg-white border-4 border-black p-6 mt-6" style={{ boxShadow: '4px 4px 0 0 #000' }}>
+              <div className="bg-white border-4 border-black p-6 mt-6" style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}>
                 <div className="text-center">
                   <p className="text-xl font-black text-black mb-4">
                     インスタグラムはこちら！
@@ -684,7 +684,7 @@ export function LandingPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-3 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-600 px-8 py-4 border-4 border-black text-white text-lg font-black uppercase hover:translate-x-1 hover:translate-y-1 transition-transform"
-                    style={{ boxShadow: '4px 4px 0 0 #000' }}
+                    style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}
                   >
                     <Instagram className="w-6 h-6" />
                     Instagram
@@ -693,7 +693,7 @@ export function LandingPage() {
                 </div>
               </div>
 
-              <div className="bg-white border-4 border-black p-6 mt-6" style={{ boxShadow: '4px 4px 0 0 #000' }}>
+              <div className="bg-white border-4 border-black p-6 mt-6" style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}>
                 <div className="text-center">
                   <p className="text-xl font-black text-black mb-4">
                     公式LINEはこちら！
@@ -703,7 +703,7 @@ export function LandingPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-3 px-8 py-4 border-4 border-black text-white text-lg font-black uppercase hover:translate-x-1 hover:translate-y-1 transition-transform"
-                    style={{ backgroundColor: '#06C755', boxShadow: '4px 4px 0 0 #000' }}
+                    style={{ backgroundColor: '#06C755', boxShadow: '4px 4px 0 0 var(--shadow-color)' }}
                   >
                     <MessageCircle className="w-6 h-6" />
                     LINE
@@ -712,7 +712,7 @@ export function LandingPage() {
                 </div>
               </div>
 
-              <div className="bg-white border-4 border-black p-6 mt-6" style={{ boxShadow: '4px 4px 0 0 #000' }}>
+              <div className="bg-white border-4 border-black p-6 mt-6" style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}>
                 <div className="text-center">
                   <p className="text-xl font-black text-black mb-4">
                     希楽夢HPはこちら！
@@ -722,7 +722,7 @@ export function LandingPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-3 px-8 py-4 border-4 border-black text-white text-lg font-black uppercase hover:translate-x-1 hover:translate-y-1 transition-transform"
-                    style={{ backgroundColor: '#c78c1b', boxShadow: '4px 4px 0 0 #000' }}
+                    style={{ backgroundColor: '#c78c1b', boxShadow: '4px 4px 0 0 var(--shadow-color)' }}
                   >
                     <Globe className="w-6 h-6" />
                     希楽夢HP
@@ -733,14 +733,14 @@ export function LandingPage() {
             </div>
           </div>
 
-          <div id="deadline" className="bg-yellow-400 border-4 border-black p-10 md:p-16 mt-8 scroll-mt-24" style={{ boxShadow: '8px 8px 0 0 #000' }}>
+          <div id="deadline" className="bg-yellow-400 border-4 border-black p-10 md:p-16 mt-8 scroll-mt-24" style={{ boxShadow: '8px 8px 0 0 var(--shadow-color)' }}>
             <div className="flex items-center justify-center gap-3 mb-8">
               <Calendar className="w-10 h-10" style={{ color: '#22C55E' }} />
               <h3 className="text-3xl md:text-4xl font-black uppercase" style={{ color: '#22C55E' }}>懇親会回答締め切り</h3>
             </div>
 
             <div className="text-center">
-              <div className="inline-block bg-white border-4 border-black p-8 md:p-12" style={{ boxShadow: '6px 6px 0 0 #000' }}>
+              <div className="inline-block bg-white border-4 border-black p-8 md:p-12" style={{ boxShadow: '6px 6px 0 0 var(--shadow-color)' }}>
                 <div className="text-5xl md:text-7xl font-black mb-4" style={{ color: '#22C55E' }}>
                   2026年2月24日
                 </div>
@@ -772,14 +772,14 @@ export function LandingPage() {
           </div>
 
           <div className="grid lg:grid-cols-2 gap-10 items-stretch">
-            <div className="bg-white border-4 border-black p-6 md:p-8 h-full flex flex-col" style={{ boxShadow: '8px 8px 0 0 #000' }}>
+            <div className="bg-white border-4 border-black p-6 md:p-8 h-full flex flex-col" style={{ boxShadow: '8px 8px 0 0 var(--shadow-color)' }}>
               <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
                 <span className="inline-flex items-center gap-2 bg-yellow-200 border-4 border-black px-4 py-2 text-sm md:text-base font-black uppercase">
                   フォーム入力
                 </span>
                 <span className="text-sm md:text-base font-black text-black">入力はカンタン</span>
               </div>
-              <div className="relative bg-yellow-100 border-4 border-black p-3" style={{ boxShadow: '6px 6px 0 0 #000' }}>
+              <div className="relative bg-yellow-100 border-4 border-black p-3" style={{ boxShadow: '6px 6px 0 0 var(--shadow-color)' }}>
                 <img
                   src="/score-photo-form.png"
                   alt="スコアフォト作成フォーム"
@@ -797,14 +797,14 @@ export function LandingPage() {
               </div>
             </div>
 
-            <div className="bg-white border-4 border-black p-6 md:p-8 h-full flex flex-col" style={{ boxShadow: '8px 8px 0 0 #000' }}>
+            <div className="bg-white border-4 border-black p-6 md:p-8 h-full flex flex-col" style={{ boxShadow: '8px 8px 0 0 var(--shadow-color)' }}>
               <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
                 <span className="inline-flex items-center gap-2 bg-yellow-200 border-4 border-black px-4 py-2 text-sm md:text-base font-black uppercase">
                   完成イメージ
                 </span>
                 <span className="text-sm md:text-base font-black text-black">そのまま保存OK</span>
               </div>
-              <div className="relative bg-black border-4 border-black p-3" style={{ boxShadow: '6px 6px 0 0 #000' }}>
+              <div className="relative bg-black border-4 border-black p-3" style={{ boxShadow: '6px 6px 0 0 var(--shadow-color)' }}>
                 <img
                   src="/score-photo-sample.png"
                   alt="スコアフォト完成イメージ"
@@ -816,7 +816,7 @@ export function LandingPage() {
                 <button
                   onClick={goToScorePhoto}
                   className="bg-yellow-400 px-8 md:px-10 py-4 border-4 border-black text-base md:text-lg font-black uppercase hover:translate-x-1 hover:translate-y-1 transition-transform"
-                  style={{ color: '#22C55E', boxShadow: '6px 6px 0 0 #000' }}
+                  style={{ color: '#22C55E', boxShadow: '6px 6px 0 0 var(--shadow-color)' }}
                 >
                   スコアフォトを作成する
                 </button>
@@ -830,7 +830,7 @@ export function LandingPage() {
           <div className="flex justify-center mt-24">
             <div
               className="w-full max-w-lg bg-yellow-300 border-4 border-black border-dotted p-2"
-              style={{ boxShadow: '6px 6px 0 0 #000' }}
+              style={{ boxShadow: '6px 6px 0 0 var(--shadow-color)' }}
             >
               <button
                 onClick={goToScorePhoto}
@@ -855,7 +855,7 @@ export function LandingPage() {
 
           <div
             className="relative bg-white border-4 border-black p-6 md:p-10 overflow-hidden"
-            style={{ boxShadow: '10px 10px 0 0 #000' }}
+            style={{ boxShadow: '10px 10px 0 0 var(--shadow-color)' }}
           >
             <div className="grid md:grid-cols-2 gap-10 items-center">
               <div className="space-y-6">
@@ -880,7 +880,7 @@ export function LandingPage() {
                   <button
                     onClick={prevSlide}
                     className="flex items-center justify-center w-12 h-12 bg-white border-4 border-black rounded-full hover:-translate-x-1 transition-transform"
-                    style={{ boxShadow: '4px 4px 0 0 #000' }}
+                    style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}
                     aria-label="前のメニュー"
                   >
                     <ChevronLeft className="w-6 h-6 text-black" />
@@ -897,7 +897,7 @@ export function LandingPage() {
                   <button
                     onClick={nextSlide}
                     className="flex items-center justify-center w-12 h-12 bg-white border-4 border-black rounded-full hover:translate-x-1 transition-transform"
-                    style={{ boxShadow: '4px 4px 0 0 #000' }}
+                    style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}
                     aria-label="次のメニュー"
                   >
                     <ChevronRight className="w-6 h-6 text-black" />
@@ -910,8 +910,8 @@ export function LandingPage() {
               </div>
 
               <div className="relative">
-                <div className="absolute -left-6 -top-6 w-24 h-24 bg-yellow-200 border-4 border-black rotate-6" style={{ boxShadow: '6px 6px 0 0 #000' }} />
-                <div className="relative bg-white border-4 border-black p-4" style={{ boxShadow: '8px 8px 0 0 #000' }}>
+                <div className="absolute -left-6 -top-6 w-24 h-24 bg-yellow-200 border-4 border-black rotate-6" style={{ boxShadow: '6px 6px 0 0 var(--shadow-color)' }} />
+                <div className="relative bg-white border-4 border-black p-4" style={{ boxShadow: '8px 8px 0 0 var(--shadow-color)' }}>
                   <img
                     src={featuredMenus[activeSlide].image}
                     alt={featuredMenus[activeSlide].title}
@@ -932,7 +932,7 @@ export function LandingPage() {
         <div className="max-w-5xl mx-auto">
           <div
             className="relative overflow-hidden bg-black text-white border-4 border-black p-6 md:p-10"
-            style={{ boxShadow: '8px 8px 0 0 #000, 0 0 28px rgba(0, 245, 255, 0.35)' }}
+            style={{ boxShadow: '8px 8px 0 0 var(--shadow-color), 0 0 28px rgba(0, 245, 255, 0.35)' }}
           >
             <div
               className="absolute inset-0 opacity-50 pointer-events-none"
@@ -945,7 +945,7 @@ export function LandingPage() {
               <div>
                 <div
                   className="inline-flex items-center gap-2 bg-yellow-300 text-black px-3 py-2 border-4 border-black font-black uppercase"
-                  style={{ boxShadow: '4px 4px 0 0 #000' }}
+                  style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}
                 >
                   <span className="h-2 w-2 rounded-full bg-red-500 animate-pulse" />
                   KIRAMUブース
@@ -964,7 +964,7 @@ export function LandingPage() {
               </div>
               <div className="flex flex-col items-center gap-4">
                 <div className="relative">
-                  <div className="bg-[#1b1b1b] border-4 border-black p-5" style={{ boxShadow: '6px 6px 0 0 #000' }}>
+                  <div className="bg-[#1b1b1b] border-4 border-black p-5" style={{ boxShadow: '6px 6px 0 0 var(--shadow-color)' }}>
                     <button
                       type="button"
                       onClick={toggleDjSound}
@@ -973,7 +973,7 @@ export function LandingPage() {
                       className={`relative mx-auto flex items-center justify-center w-28 h-28 md:w-32 md:h-32 rounded-full border-4 border-black bg-red-600 transition-transform focus:outline-none ${
                         isDjPlaying ? 'ring-4 ring-cyan-300/70 scale-105' : 'hover:scale-[1.02]'
                       }`}
-                      style={{ boxShadow: '0 0 20px rgba(255, 0, 122, 0.6), 6px 6px 0 0 #000' }}
+                      style={{ boxShadow: '0 0 20px rgba(255, 0, 122, 0.6), 6px 6px 0 0 var(--shadow-color)' }}
                     >
                       <span
                         className={`absolute inset-2 rounded-full border-4 border-black ${isDjPlaying ? 'animate-spin' : ''}`}
@@ -1047,7 +1047,7 @@ export function LandingPage() {
               src="/名称_未_設定-1.png"
               alt="麺屋希楽夢 LINE公式アカウント - 営業日、メニュー情報、SNS情報をこちらから登録"
               className="w-full h-auto border-4 border-black"
-              style={{ boxShadow: '8px 8px 0 0 #000' }}
+              style={{ boxShadow: '8px 8px 0 0 var(--shadow-color)' }}
               loading="lazy"
             />
           </a>

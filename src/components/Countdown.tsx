@@ -90,13 +90,13 @@ export function Countdown() {
         }
 
         .neo-brutal-card {
-          box-shadow: 6px 6px 0 0 #000;
+          box-shadow: 6px 6px 0 0 var(--shadow-color);
           transition: all 0.2s ease;
         }
 
         .neo-brutal-card:hover {
           transform: translate(2px, 2px);
-          box-shadow: 4px 4px 0 0 #000;
+          box-shadow: 4px 4px 0 0 var(--shadow-color);
         }
       `}</style>
 

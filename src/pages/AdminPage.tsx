@@ -41,7 +41,7 @@ export function AdminPage() {
           <button
             onClick={handleLogout}
             className="inline-flex items-center gap-2 bg-red-400 text-black px-4 py-2 border-4 border-black hover:translate-x-0.5 hover:translate-y-0.5 font-black uppercase transition-transform"
-            style={{ boxShadow: '4px 4px 0 0 #000' }}
+            style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}
           >
             <LogOut className="w-5 h-5" />
             <span>ログアウト</span>

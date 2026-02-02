@@ -152,7 +152,7 @@ export function AttendeeList({ title, table, csvFilePrefix, showPhone = false }:
 
   return (
     <div className="max-w-6xl mx-auto">
-      <div className="bg-white border-4 border-black p-6 md:p-8" style={{ boxShadow: '8px 8px 0 0 #000' }}>
+      <div className="bg-white border-4 border-black p-6 md:p-8" style={{ boxShadow: '8px 8px 0 0 var(--shadow-color)' }}>
         <h2 className="text-3xl md:text-4xl font-black text-center mb-8 text-black uppercase">
           {title}
         </h2>
@@ -165,7 +165,7 @@ export function AttendeeList({ title, table, csvFilePrefix, showPhone = false }:
                 ? 'bg-yellow-300 text-black'
                 : 'bg-white text-black hover:bg-gray-100'
             }`}
-            style={filter === 'all' ? { boxShadow: '4px 4px 0 0 #000' } : {}}
+            style={filter === 'all' ? { boxShadow: '4px 4px 0 0 var(--shadow-color)' } : {}}
           >
             全て ({attendees.length})
           </button>
@@ -176,7 +176,7 @@ export function AttendeeList({ title, table, csvFilePrefix, showPhone = false }:
                 ? 'bg-green-400 text-black'
                 : 'bg-white text-black hover:bg-gray-100'
             }`}
-            style={filter === 'attending' ? { boxShadow: '4px 4px 0 0 #000' } : {}}
+            style={filter === 'attending' ? { boxShadow: '4px 4px 0 0 var(--shadow-color)' } : {}}
           >
             参加 ({attendees.filter(a => a.attendance_status === 'attending').length})
           </button>
@@ -187,7 +187,7 @@ export function AttendeeList({ title, table, csvFilePrefix, showPhone = false }:
                 ? 'bg-red-400 text-black'
                 : 'bg-white text-black hover:bg-gray-100'
             }`}
-            style={filter === 'not_attending' ? { boxShadow: '4px 4px 0 0 #000' } : {}}
+            style={filter === 'not_attending' ? { boxShadow: '4px 4px 0 0 var(--shadow-color)' } : {}}
           >
             不参加 ({attendees.filter(a => a.attendance_status === 'not_attending').length})
           </button>
@@ -198,7 +198,7 @@ export function AttendeeList({ title, table, csvFilePrefix, showPhone = false }:
             onClick={exportToCSV}
             disabled={filteredAttendees.length === 0}
             className="flex items-center gap-2 px-6 py-3 bg-blue-400 text-black border-4 border-black font-black uppercase hover:translate-x-0.5 hover:translate-y-0.5 transition-transform disabled:opacity-50 disabled:cursor-not-allowed"
-            style={{ boxShadow: '4px 4px 0 0 #000' }}
+            style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}
           >
             <Download className="w-5 h-5" />
             <span>CSVダウンロード</span>
@@ -217,7 +217,7 @@ export function AttendeeList({ title, table, csvFilePrefix, showPhone = false }:
                 className={`border-4 border-black p-4 md:p-6 ${
                   attendee.attendance_status === 'attending' ? 'bg-green-200' : 'bg-red-200'
                 }`}
-                style={{ boxShadow: '6px 6px 0 0 #000' }}
+                style={{ boxShadow: '6px 6px 0 0 var(--shadow-color)' }}
               >
                 <div className="flex items-start justify-between gap-4 flex-wrap">
                   <div className="flex-1 min-w-[200px]">
@@ -263,7 +263,7 @@ export function AttendeeList({ title, table, csvFilePrefix, showPhone = false }:
                     <button
                       onClick={() => handleDelete(attendee.id, attendee.name)}
                       className="flex items-center gap-2 px-3 py-2 text-sm bg-red-400 text-black hover:translate-x-0.5 hover:translate-y-0.5 border-4 border-black font-black uppercase transition-transform"
-                      style={{ boxShadow: '4px 4px 0 0 #000' }}
+                      style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}
                       title="削除"
                     >
                       <Trash2 className="w-4 h-4" />

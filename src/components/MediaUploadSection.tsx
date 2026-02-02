@@ -296,7 +296,7 @@ export function MediaUploadSection() {
               type="button"
               onClick={goToGallery}
               className="group relative w-full max-w-xl overflow-hidden border-4 border-black bg-white px-6 py-8 text-left hover:translate-x-1 hover:translate-y-1 transition-transform"
-              style={{ boxShadow: '8px 8px 0 0 #000' }}
+              style={{ boxShadow: '8px 8px 0 0 var(--shadow-color)' }}
             >
               <div
                 className="absolute inset-0"
@@ -310,7 +310,7 @@ export function MediaUploadSection() {
               <div className="relative flex flex-col items-center text-center gap-3">
                 <span
                   className="flex h-14 w-14 items-center justify-center rounded-full border-4 border-black bg-white"
-                  style={{ boxShadow: '4px 4px 0 0 #000' }}
+                  style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}
                 >
                   <ImageIcon className="h-6 w-6 text-black" />
                 </span>
@@ -325,7 +325,7 @@ export function MediaUploadSection() {
         </div>
 
         {isSubmitted ? (
-          <div className="max-w-2xl mx-auto bg-yellow-400 border-4 border-black p-8 md:p-12 text-center" style={{ boxShadow: '8px 8px 0 0 #000' }}>
+          <div className="max-w-2xl mx-auto bg-yellow-400 border-4 border-black p-8 md:p-12 text-center" style={{ boxShadow: '8px 8px 0 0 var(--shadow-color)' }}>
             <CheckCircle2 className="w-20 h-20 text-black mx-auto mb-4" />
             <h3 className="text-2xl md:text-3xl font-black text-black mb-4 uppercase">
               アップロード完了！
@@ -337,13 +337,13 @@ export function MediaUploadSection() {
               type="button"
               onClick={() => setIsSubmitted(false)}
               className="bg-yellow-400 px-8 py-3 border-4 border-black hover:translate-x-1 hover:translate-y-1 transition-transform font-black uppercase"
-              style={{ color: '#22C55E', boxShadow: '6px 6px 0 0 #000' }}
+              style={{ color: '#22C55E', boxShadow: '6px 6px 0 0 var(--shadow-color)' }}
             >
               追加でアップロードする
             </button>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="bg-white border-4 border-black p-8 md:p-12" style={{ boxShadow: '8px 8px 0 0 #000' }}>
+          <form onSubmit={handleSubmit} className="bg-white border-4 border-black p-8 md:p-12" style={{ boxShadow: '8px 8px 0 0 var(--shadow-color)' }}>
             <h3 className="text-2xl md:text-3xl font-black text-center mb-8 text-black uppercase">
               画像・動画を送る
             </h3>
@@ -384,7 +384,7 @@ export function MediaUploadSection() {
                 className={`flex flex-col items-center justify-center gap-3 border-4 border-black px-6 py-10 text-center cursor-pointer transition-colors ${
                   isDragActive ? 'bg-yellow-300' : 'bg-yellow-400'
                 }`}
-                style={{ boxShadow: '6px 6px 0 0 #000' }}
+                style={{ boxShadow: '6px 6px 0 0 var(--shadow-color)' }}
               >
                 <UploadCloud className="w-10 h-10 text-black" />
                 <div className="text-lg md:text-xl font-black text-black uppercase">
@@ -405,7 +405,7 @@ export function MediaUploadSection() {
             </div>
 
             {selectedFiles.length > 0 && (
-              <div className="mt-6 bg-yellow-100 border-4 border-black p-4" style={{ boxShadow: '4px 4px 0 0 #000' }}>
+              <div className="mt-6 bg-yellow-100 border-4 border-black p-4" style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}>
                 <div className="flex flex-wrap items-center justify-between gap-4">
                   <div className="font-black text-black">
                     選択中: {selectedFiles.length}件 / 合計 {formatBytes(totalSize)}
@@ -415,7 +415,7 @@ export function MediaUploadSection() {
                     onClick={handleClearFiles}
                     disabled={isSubmitting}
                     className="flex items-center gap-2 px-4 py-2 border-4 border-black bg-red-400 text-black font-black uppercase hover:translate-x-0.5 hover:translate-y-0.5 transition-transform"
-                    style={{ boxShadow: '4px 4px 0 0 #000' }}
+                    style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}
                   >
                     <Trash2 className="w-4 h-4" />
                     クリア
@@ -423,7 +423,7 @@ export function MediaUploadSection() {
                 </div>
 
                 {isSubmitting && (
-                  <div className="mt-4 border-4 border-black bg-white p-4" style={{ boxShadow: '4px 4px 0 0 #000' }}>
+                  <div className="mt-4 border-4 border-black bg-white p-4" style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}>
                     <div className="flex items-center justify-between gap-3 text-black font-black">
                       <span>アップロード中 {currentFileIndex !== null ? currentFileIndex + 1 : 0}/{selectedFiles.length}</span>
                       <span>{overallProgress}%</span>
@@ -442,7 +442,7 @@ export function MediaUploadSection() {
                     <div
                       key={`${file.name}-${index}`}
                       className="flex flex-wrap items-center justify-between gap-3 border-4 border-black bg-white px-4 py-3"
-                      style={{ boxShadow: '4px 4px 0 0 #000' }}
+                      style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}
                     >
                       <div className="flex items-center gap-3">
                         {file.type.startsWith('image/') ? (
@@ -458,7 +458,7 @@ export function MediaUploadSection() {
                         onClick={() => handleRemoveFile(index)}
                         disabled={isSubmitting}
                         className="flex items-center gap-2 px-3 py-2 border-4 border-black bg-yellow-400 text-black text-sm font-black uppercase hover:translate-x-0.5 hover:translate-y-0.5 transition-transform"
-                        style={{ boxShadow: '4px 4px 0 0 #000' }}
+                        style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}
                       >
                         <Trash2 className="w-4 h-4" />
                         削除
@@ -490,7 +490,7 @@ export function MediaUploadSection() {
               </div>
             )}
 
-            <div className="mt-6 bg-gray-50 border-4 border-black p-4" style={{ boxShadow: '4px 4px 0 0 #000' }}>
+            <div className="mt-6 bg-gray-50 border-4 border-black p-4" style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}>
               <div className="font-black text-black mb-2 uppercase">
                 アップロード条件
               </div>
@@ -518,7 +518,7 @@ export function MediaUploadSection() {
               type="submit"
               disabled={isSubmitting || selectedFiles.length === 0 || !agreedToShare}
               className="mt-6 w-full bg-yellow-400 text-black py-4 border-4 border-black hover:translate-x-1 hover:translate-y-1 transition-transform font-black text-lg uppercase disabled:opacity-50 disabled:cursor-not-allowed"
-              style={{ boxShadow: '6px 6px 0 0 #000' }}
+              style={{ boxShadow: '6px 6px 0 0 var(--shadow-color)' }}
             >
               {isSubmitting ? 'アップロード中...' : 'アップロードする'}
             </button>

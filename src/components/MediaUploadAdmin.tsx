@@ -165,7 +165,7 @@ export function MediaUploadAdmin() {
 
   return (
     <div className="mt-12">
-      <div className="bg-white border-4 border-black p-6 md:p-8" style={{ boxShadow: '8px 8px 0 0 #000' }}>
+      <div className="bg-white border-4 border-black p-6 md:p-8" style={{ boxShadow: '8px 8px 0 0 var(--shadow-color)' }}>
         <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
           <h2 className="text-3xl md:text-4xl font-black text-black uppercase">
             メディア管理
@@ -175,7 +175,7 @@ export function MediaUploadAdmin() {
             onClick={() => fetchMedia(true)}
             disabled={refreshing}
             className="flex items-center gap-2 px-4 py-2 border-4 border-black bg-yellow-300 text-black font-black uppercase hover:translate-x-0.5 hover:translate-y-0.5 transition-transform disabled:opacity-50"
-            style={{ boxShadow: '4px 4px 0 0 #000' }}
+            style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}
           >
             <RefreshCw className="w-4 h-4" />
             {refreshing ? '更新中...' : '更新'}
@@ -205,7 +205,7 @@ export function MediaUploadAdmin() {
                 <div
                   key={item.id}
                   className="border-4 border-black bg-yellow-300 overflow-hidden"
-                  style={{ boxShadow: '6px 6px 0 0 #000' }}
+                  style={{ boxShadow: '6px 6px 0 0 var(--shadow-color)' }}
                 >
                   <div className="border-b-4 border-black bg-black">
                     {isImage ? (
@@ -243,7 +243,7 @@ export function MediaUploadAdmin() {
                       onClick={() => handleDelete(item)}
                       disabled={deletingId === item.id}
                       className="w-full flex items-center justify-center gap-2 px-3 py-2 text-sm bg-red-400 text-black hover:translate-x-0.5 hover:translate-y-0.5 border-4 border-black font-black uppercase transition-transform disabled:opacity-50"
-                      style={{ boxShadow: '4px 4px 0 0 #000' }}
+                      style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}
                     >
                       <Trash2 className="w-4 h-4" />
                       {deletingId === item.id ? '削除中...' : '削除'}

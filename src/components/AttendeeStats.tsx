@@ -71,9 +71,9 @@ export function AttendeeStats({ table = 'golf_attendees' }: AttendeeStatsProps) 
   }
 
   return (
-    <div className="bg-yellow-400 border-4 border-black p-6 md:p-8" style={{ boxShadow: '8px 8px 0 0 #000' }}>
+    <div className="bg-yellow-400 border-4 border-black p-6 md:p-8" style={{ boxShadow: '8px 8px 0 0 var(--shadow-color)' }}>
       <div className="flex flex-col items-center justify-center gap-2 mb-4">
-        <div className="bg-white border-4 border-black px-4 py-2 text-sm md:text-base font-black" style={{ boxShadow: '4px 4px 0 0 #000' }}>
+        <div className="bg-white border-4 border-black px-4 py-2 text-sm md:text-base font-black" style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}>
           【懇親会】
         </div>
         <div className="flex items-center justify-center gap-3">
@@ -82,13 +82,13 @@ export function AttendeeStats({ table = 'golf_attendees' }: AttendeeStatsProps) 
         </div>
       </div>
       <div className="grid grid-cols-2 gap-4 md:gap-6 mt-6">
-        <div className="bg-yellow-400 border-4 border-black p-4 md:p-6 text-center" style={{ boxShadow: '6px 6px 0 0 #000' }}>
+        <div className="bg-yellow-400 border-4 border-black p-4 md:p-6 text-center" style={{ boxShadow: '6px 6px 0 0 var(--shadow-color)' }}>
           <div className="text-3xl md:text-5xl font-black text-black mb-2">
             {attendingCount}
           </div>
           <div className="text-sm md:text-base text-black font-black uppercase">参加予定</div>
         </div>
-        <div className="bg-yellow-400 border-4 border-black p-4 md:p-6 text-center" style={{ boxShadow: '6px 6px 0 0 #000' }}>
+        <div className="bg-yellow-400 border-4 border-black p-4 md:p-6 text-center" style={{ boxShadow: '6px 6px 0 0 var(--shadow-color)' }}>
           <div className="text-3xl md:text-5xl font-black text-black mb-2">
             {totalCount}
           </div>

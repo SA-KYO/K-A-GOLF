@@ -165,7 +165,7 @@ export function MediaGallerySection() {
                 className={`flex items-center gap-2 px-6 py-3 border-4 border-black font-black uppercase hover:translate-x-1 hover:translate-y-1 transition-transform ${
                   activeTab === 'image' ? 'bg-yellow-200' : 'bg-white'
                 }`}
-                style={{ boxShadow: '4px 4px 0 0 #000' }}
+                style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}
               >
                 <ImageIcon className="w-5 h-5" />
                 写真
@@ -179,7 +179,7 @@ export function MediaGallerySection() {
                 className={`flex items-center gap-2 px-6 py-3 border-4 border-black font-black uppercase hover:translate-x-1 hover:translate-y-1 transition-transform ${
                   activeTab === 'video' ? 'bg-yellow-200' : 'bg-white'
                 }`}
-                style={{ boxShadow: '4px 4px 0 0 #000' }}
+                style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}
               >
                 <Video className="w-5 h-5" />
                 動画
@@ -188,7 +188,7 @@ export function MediaGallerySection() {
             </div>
 
             {!hasFilteredItems ? (
-              <div className="max-w-2xl mx-auto bg-white border-4 border-black p-8 text-center font-bold text-black" style={{ boxShadow: '6px 6px 0 0 #000' }}>
+              <div className="max-w-2xl mx-auto bg-white border-4 border-black p-8 text-center font-bold text-black" style={{ boxShadow: '6px 6px 0 0 var(--shadow-color)' }}>
                 {activeTab === 'image'
                   ? '表示できる写真がありません。ぜひ思い出を投稿してください！'
                   : '表示できる動画がありません。ぜひ思い出を投稿してください！'}
@@ -202,7 +202,7 @@ export function MediaGallerySection() {
                 <div
                   key={item.id}
                   className="bg-white border-4 border-black overflow-hidden"
-                  style={{ boxShadow: '6px 6px 0 0 #000' }}
+                  style={{ boxShadow: '6px 6px 0 0 var(--shadow-color)' }}
                 >
                   <div className="border-b-4 border-black bg-black">
                     {isImage ? (
@@ -259,7 +259,7 @@ export function MediaGallerySection() {
                         rel="noopener noreferrer"
                         download={item.original_name}
                         className="mb-3 inline-flex items-center gap-2 bg-yellow-400 text-black border-2 border-black px-3 py-2 text-xs font-black uppercase hover:translate-x-0.5 hover:translate-y-0.5 transition-transform"
-                        style={{ boxShadow: '3px 3px 0 0 #000' }}
+                        style={{ boxShadow: '3px 3px 0 0 var(--shadow-color)' }}
                       >
                         ↓ 開いて保存
                       </a>

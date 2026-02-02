@@ -1438,7 +1438,7 @@ export function ScorePhotoPage() {
         <button
           onClick={goBack}
           className="mb-6 flex items-center gap-2 bg-yellow-400 px-6 py-3 border-4 border-black font-black uppercase hover:translate-x-1 hover:translate-y-1 transition-transform"
-          style={{ boxShadow: '4px 4px 0 0 #000' }}
+          style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}
         >
           <ArrowLeft className="w-5 h-5" />
           戻る
@@ -1454,7 +1454,7 @@ export function ScorePhotoPage() {
         </div>
 
         <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-8">
-          <div className="bg-white border-4 border-black p-6 md:p-8" style={{ boxShadow: '8px 8px 0 0 #000' }}>
+          <div className="bg-white border-4 border-black p-6 md:p-8" style={{ boxShadow: '8px 8px 0 0 var(--shadow-color)' }}>
             <div className="grid md:grid-cols-2 gap-6">
               <div>
                 <label className="block text-sm font-black text-black mb-2 uppercase">大会名</label>
@@ -1492,7 +1492,7 @@ export function ScorePhotoPage() {
               </div>
             </div>
 
-            <div className="mt-6 bg-yellow-100 border-4 border-black p-4" style={{ boxShadow: '4px 4px 0 0 #000' }}>
+            <div className="mt-6 bg-yellow-100 border-4 border-black p-4" style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}>
               <label className="block text-sm font-black text-black mb-2 uppercase">
                 ゴルフ場検索（全国データ）
               </label>
@@ -1509,7 +1509,7 @@ export function ScorePhotoPage() {
                   onClick={handleCourseSearch}
                   disabled={isSearching}
                   className="px-4 py-3 border-4 border-black bg-white text-black font-black uppercase hover:translate-x-0.5 hover:translate-y-0.5 transition-transform disabled:opacity-50"
-                  style={{ boxShadow: '4px 4px 0 0 #000' }}
+                  style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}
                 >
                   {isSearching ? '検索中...' : '検索'}
                 </button>
@@ -1532,7 +1532,7 @@ export function ScorePhotoPage() {
                       type="button"
                       onClick={() => handleCourseSelect(course)}
                       className="w-full text-left border-4 border-black bg-white px-4 py-3 font-bold hover:bg-yellow-200 transition-colors"
-                      style={{ boxShadow: '4px 4px 0 0 #000' }}
+                      style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}
                     >
                       <div className="text-base">{course.name}</div>
                       {course.prefecture && (
@@ -1547,7 +1547,7 @@ export function ScorePhotoPage() {
             {courseSegments.length > 0 && (
               <div
                 className="mt-6 bg-white border-4 border-black p-4"
-                style={{ boxShadow: '4px 4px 0 0 #000' }}
+                style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}
               >
                 <div className="text-sm font-black text-black uppercase">コース選択（9H × 2）</div>
                 <div className="mt-3 grid gap-3 md:grid-cols-2">
@@ -1737,7 +1737,7 @@ export function ScorePhotoPage() {
                   type="button"
                   onClick={handleSaveDraft}
                   className="flex-1 min-w-[200px] flex items-center justify-center gap-2 bg-white text-black px-6 py-3 border-4 border-black text-lg font-black uppercase hover:translate-x-1 hover:translate-y-1 transition-transform"
-                  style={{ boxShadow: '6px 6px 0 0 #000' }}
+                  style={{ boxShadow: '6px 6px 0 0 var(--shadow-color)' }}
                 >
                   入力内容を保存
                 </button>
@@ -1745,7 +1745,7 @@ export function ScorePhotoPage() {
                   type="button"
                   onClick={handleResetDraft}
                   className="flex-1 min-w-[200px] flex items-center justify-center gap-2 bg-red-400 text-black px-6 py-3 border-4 border-black text-lg font-black uppercase hover:translate-x-1 hover:translate-y-1 transition-transform"
-                  style={{ boxShadow: '6px 6px 0 0 #000' }}
+                  style={{ boxShadow: '6px 6px 0 0 var(--shadow-color)' }}
                 >
                   入力内容をリセット
                 </button>
@@ -1763,7 +1763,7 @@ export function ScorePhotoPage() {
             <div
               ref={previewRef}
               className="relative border-4 border-black bg-black"
-              style={{ boxShadow: '8px 8px 0 0 #000' }}
+              style={{ boxShadow: '8px 8px 0 0 var(--shadow-color)' }}
             >
               <canvas ref={canvasRef} className="w-full h-auto block" />
               {!isExporting &&
@@ -1782,7 +1782,7 @@ export function ScorePhotoPage() {
                         transform: `translate(-50%, -50%) rotate(${stamp.rotation}deg)`,
                         outline: isActive ? '4px solid #FACC15' : 'none',
                         outlineOffset: isActive ? '2px' : undefined,
-                        boxShadow: isActive ? '0 0 0 2px #000' : undefined,
+                        boxShadow: isActive ? '0 0 0 2px var(--shadow-color)' : undefined,
                       }}
                       onPointerDown={(event) => handleStampPointerDown(stamp.id, event)}
                       onPointerMove={(event) => handleStampPointerMove(stamp.id, event)}
@@ -1800,7 +1800,7 @@ export function ScorePhotoPage() {
                   );
                 })}
             </div>
-            <div className="bg-white border-4 border-black p-4" style={{ boxShadow: '4px 4px 0 0 #000' }}>
+            <div className="bg-white border-4 border-black p-4" style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}>
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <h3 className="text-lg font-black text-black uppercase">スタンプ</h3>
                 <button
@@ -1808,7 +1808,7 @@ export function ScorePhotoPage() {
                   onClick={handleRemoveActiveStamp}
                   disabled={!activeStampId}
                   className="px-4 py-2 border-4 border-black font-black text-sm uppercase bg-yellow-200 hover:translate-x-0.5 hover:translate-y-0.5 transition-transform disabled:opacity-50"
-                  style={{ boxShadow: '3px 3px 0 0 #000' }}
+                  style={{ boxShadow: '3px 3px 0 0 var(--shadow-color)' }}
                 >
                   選択中を削除
                 </button>
@@ -1828,12 +1828,12 @@ export function ScorePhotoPage() {
                           type="button"
                           onClick={() => addStamp(stamp.id)}
                           className={`relative w-full border-4 border-black p-2 text-left ${isActive ? 'bg-yellow-200 ring-4 ring-black' : 'bg-white'}`}
-                          style={{ boxShadow: '3px 3px 0 0 #000' }}
+                          style={{ boxShadow: '3px 3px 0 0 var(--shadow-color)' }}
                         >
                           {isActive && (
                             <span
                               className="absolute -top-3 -right-3 bg-black text-white text-[10px] font-black px-2 py-1 border-2 border-black"
-                              style={{ boxShadow: '2px 2px 0 0 #000' }}
+                              style={{ boxShadow: '2px 2px 0 0 var(--shadow-color)' }}
                             >
                               選択中
                             </span>
@@ -1903,7 +1903,7 @@ export function ScorePhotoPage() {
                   type="button"
                   onClick={handleResetStamps}
                   className="px-4 py-2 border-4 border-black font-black text-xs uppercase bg-white hover:translate-x-0.5 hover:translate-y-0.5 transition-transform"
-                  style={{ boxShadow: '3px 3px 0 0 #000' }}
+                  style={{ boxShadow: '3px 3px 0 0 var(--shadow-color)' }}
                 >
                   デフォルトに戻す
                 </button>
@@ -1912,7 +1912,7 @@ export function ScorePhotoPage() {
                   onClick={handleStampResetPosition}
                   disabled={!activeStampId}
                   className="px-4 py-2 border-4 border-black font-black text-xs uppercase bg-white hover:translate-x-0.5 hover:translate-y-0.5 transition-transform disabled:opacity-50"
-                  style={{ boxShadow: '3px 3px 0 0 #000' }}
+                  style={{ boxShadow: '3px 3px 0 0 var(--shadow-color)' }}
                 >
                   位置を中央に戻す
                 </button>
@@ -1921,7 +1921,7 @@ export function ScorePhotoPage() {
                   onClick={handleStampResetRotation}
                   disabled={!activeStampId}
                   className="px-4 py-2 border-4 border-black font-black text-xs uppercase bg-white hover:translate-x-0.5 hover:translate-y-0.5 transition-transform disabled:opacity-50"
-                  style={{ boxShadow: '3px 3px 0 0 #000' }}
+                  style={{ boxShadow: '3px 3px 0 0 var(--shadow-color)' }}
                 >
                   回転を0°に戻す
                 </button>
@@ -1941,7 +1941,7 @@ export function ScorePhotoPage() {
               type="button"
               onClick={handleDownload}
               className="w-full flex items-center justify-center gap-2 bg-yellow-400 text-black px-6 py-3 border-4 border-black text-lg font-black uppercase hover:translate-x-1 hover:translate-y-1 transition-transform"
-              style={{ boxShadow: '6px 6px 0 0 #000' }}
+              style={{ boxShadow: '6px 6px 0 0 var(--shadow-color)' }}
             >
               <Download className="w-5 h-5" />
               画像を保存する

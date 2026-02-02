@@ -12,13 +12,13 @@ export function PrivacyPolicy() {
         <button
           onClick={goBack}
           className="mb-8 flex items-center gap-2 bg-yellow-400 px-6 py-3 border-4 border-black font-black uppercase hover:translate-x-1 hover:translate-y-1 transition-transform"
-          style={{ boxShadow: '4px 4px 0 0 #000' }}
+          style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}
         >
           <ArrowLeft className="w-5 h-5" />
           戻る
         </button>
 
-        <div className="bg-white border-4 border-black p-8 md:p-12" style={{ boxShadow: '8px 8px 0 0 #000' }}>
+        <div className="bg-white border-4 border-black p-8 md:p-12" style={{ boxShadow: '8px 8px 0 0 var(--shadow-color)' }}>
           <h1 className="text-3xl md:text-4xl font-black text-center mb-8 uppercase" style={{ color: '#22C55E' }}>
             プライバシーポリシー
           </h1>
