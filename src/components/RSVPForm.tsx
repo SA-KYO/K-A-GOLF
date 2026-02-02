@@ -79,7 +79,7 @@ export function RSVPForm() {
         <button
           onClick={() => setIsSubmitted(false)}
           className="bg-yellow-400 px-8 py-3 border-4 border-black hover:translate-x-1 hover:translate-y-1 transition-transform font-black uppercase"
-          style={{ color: 'var(--accent)', boxShadow: '6px 6px 0 0 var(--shadow-color)' }}
+          style={{ color: 'var(--forest)', boxShadow: '6px 6px 0 0 var(--shadow-color)' }}
         >
           別の方の回答を入力
         </button>
@@ -155,7 +155,7 @@ export function RSVPForm() {
                     ? 'bg-yellow-400'
                     : 'bg-white hover:bg-gray-100'
                 }`}
-                style={formData.attendance_status === 'not_attending' ? { color: 'var(--accent)', boxShadow: '4px 4px 0 0 var(--shadow-color)' } : {}}
+                style={formData.attendance_status === 'not_attending' ? { color: 'var(--forest)', boxShadow: '4px 4px 0 0 var(--shadow-color)' } : {}}
               >
                 <div className="text-lg font-black uppercase">参加しない</div>
               </div>

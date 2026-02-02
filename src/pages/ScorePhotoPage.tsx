@@ -1445,7 +1445,7 @@ export function ScorePhotoPage() {
         </button>
 
         <div className="text-center mb-10">
-          <h1 className="text-3xl md:text-5xl font-black mb-4 uppercase" style={{ color: 'var(--accent)' }}>
+          <h1 className="text-3xl md:text-5xl font-black mb-4 uppercase" style={{ color: 'var(--forest)' }}>
             スコアフォト作成
           </h1>
           <p className="text-black text-lg font-bold">

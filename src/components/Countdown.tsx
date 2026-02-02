@@ -106,7 +106,7 @@ export function Countdown() {
             <div className="steam text-2xl">💨</div>
           </div>
           <div className="bg-yellow-400 border-4 border-black neo-brutal-card p-3 md:p-6 min-w-[70px] md:min-w-[100px]">
-            <div className={`text-3xl md:text-5xl font-black ${prevSeconds !== timeLeft.seconds ? 'number-flip' : ''}`} style={{ color: 'var(--accent)' }}>
+            <div className={`text-3xl md:text-5xl font-black ${prevSeconds !== timeLeft.seconds ? 'number-flip' : ''}`} style={{ color: 'var(--forest)' }}>
               {timeLeft.days}
             </div>
           </div>
@@ -118,7 +118,7 @@ export function Countdown() {
             <div className="steam text-2xl" style={{ animationDelay: '0.3s' }}>💨</div>
           </div>
           <div className="bg-yellow-400 border-4 border-black neo-brutal-card p-3 md:p-6 min-w-[70px] md:min-w-[100px]">
-            <div className={`text-3xl md:text-5xl font-black ${prevSeconds !== timeLeft.seconds ? 'number-flip' : ''}`} style={{ color: 'var(--accent)' }}>
+            <div className={`text-3xl md:text-5xl font-black ${prevSeconds !== timeLeft.seconds ? 'number-flip' : ''}`} style={{ color: 'var(--forest)' }}>
               {timeLeft.hours}
             </div>
           </div>
@@ -130,7 +130,7 @@ export function Countdown() {
             <div className="steam text-2xl" style={{ animationDelay: '0.6s' }}>💨</div>
           </div>
           <div className="bg-yellow-400 border-4 border-black neo-brutal-card p-3 md:p-6 min-w-[70px] md:min-w-[100px]">
-            <div className={`text-3xl md:text-5xl font-black ${prevSeconds !== timeLeft.seconds ? 'number-flip' : ''}`} style={{ color: 'var(--accent)' }}>
+            <div className={`text-3xl md:text-5xl font-black ${prevSeconds !== timeLeft.seconds ? 'number-flip' : ''}`} style={{ color: 'var(--forest)' }}>
               {timeLeft.minutes}
             </div>
           </div>
@@ -142,7 +142,7 @@ export function Countdown() {
             <div className="steam text-2xl" style={{ animationDelay: '0.9s' }}>💨</div>
           </div>
           <div className="bg-yellow-400 border-4 border-black neo-brutal-card p-3 md:p-6 min-w-[70px] md:min-w-[100px]">
-            <div className={`text-3xl md:text-5xl font-black ${prevSeconds !== timeLeft.seconds ? 'number-flip' : ''}`} style={{ color: 'var(--accent)' }}>
+            <div className={`text-3xl md:text-5xl font-black ${prevSeconds !== timeLeft.seconds ? 'number-flip' : ''}`} style={{ color: 'var(--forest)' }}>
               {timeLeft.seconds}
             </div>
           </div>

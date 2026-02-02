@@ -18,7 +18,7 @@ export function PrivacyPolicy() {
         </button>
 
         <div className="card-surface p-8 md:p-12">
-          <h1 className="text-3xl md:text-4xl font-semibold text-left mb-8 uppercase tracking-[0.2em]" style={{ color: 'var(--accent)' }}>
+          <h1 className="text-3xl md:text-4xl font-semibold text-left mb-8 uppercase tracking-[0.2em]" style={{ color: 'var(--forest)' }}>
             プライバシーポリシー
           </h1>
 

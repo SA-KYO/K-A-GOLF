@@ -47,7 +47,6 @@ export function LandingPage() {
       label: 'A',
       title: '第1組',
       count: 4,
-      color: '#FF5C8A',
       members: [
         { name: '北川彩佳', highlight: true },
         { name: '那須せいか', highlight: true },
@@ -59,7 +58,6 @@ export function LandingPage() {
       label: 'B',
       title: '第2組',
       count: 3,
-      color: '#20C997',
       members: [
         { name: '片山祐介' },
         { name: '佐々木杏太' },
@@ -70,7 +68,6 @@ export function LandingPage() {
       label: 'C',
       title: '第3組',
       count: 3,
-      color: '#4DA3FF',
       members: [
         { name: '中尾匠' },
         { name: '奥村ひとみ', highlight: true },
@@ -81,7 +78,6 @@ export function LandingPage() {
       label: 'D',
       title: '第4組',
       count: 4,
-      color: '#FFD54F',
       members: [
         { name: '秋田佳英' },
         { name: '草野耕平' },
@@ -94,14 +90,12 @@ export function LandingPage() {
   const specialAwards = [
     {
       title: 'ドラコン賞',
-      accent: '#F4B400',
       icon: Target,
       description: '最も飛距離を出した方に贈呈！',
       note: '※指定ホールのみ対象',
     },
     {
       title: 'ニアピン賞',
-      accent: '#4DA3FF',
       icon: Trophy,
       description: 'ピンに最も近づけた方に贈呈！',
       note: '※指定ホールのみ対象',
@@ -330,7 +324,7 @@ export function LandingPage() {
             <span className="hero-kicker">KIRAMU CUP 2026</span>
             <h1 className="hero-title">
               希楽夢杯、<br />
-              ゴルフ、<br />
+              <span className="hero-title-accent">ゴルフ</span>、<br />
               始メル。
             </h1>
             <div className="hero-lead">
@@ -387,7 +381,7 @@ export function LandingPage() {
             <div className="card-surface p-10">
               <div className="flex items-center justify-center gap-3 mb-8">
                 <Calendar className="w-10 h-10" style={{ color: 'var(--accent)' }} />
-                <h3 className="text-3xl font-black uppercase" style={{ color: 'var(--accent)' }}>開催日時</h3>
+                <h3 className="text-3xl font-black uppercase" style={{ color: 'var(--forest)' }}>開催日時</h3>
               </div>
 
               <div className="text-center mb-6">
@@ -403,7 +397,7 @@ export function LandingPage() {
               </div>
 
               <div className="space-y-4 mt-6">
-                <div className="time-display-container flex flex-col items-center justify-center gap-3 border-4 border-black p-6 animate-fade-in-scale animate-glow" style={{ backgroundColor: 'var(--accent)', boxShadow: '4px 4px 0 0 var(--shadow-color)' }}>
+                <div className="time-display-container flex flex-col items-center justify-center gap-3 border-4 border-black p-6 animate-fade-in-scale animate-glow" style={{ backgroundColor: 'var(--forest)', boxShadow: '4px 4px 0 0 var(--shadow-color)' }}>
                   <Clock className="w-10 h-10 text-white animate-clock-rotate" />
                   <div className="text-5xl md:text-7xl font-black text-white animate-pulse-slow">7:50</div>
                   <div className="text-2xl md:text-3xl font-black text-white">スタート室集合</div>
@@ -418,7 +412,7 @@ export function LandingPage() {
             <div className="card-surface p-10">
               <div className="flex items-center justify-center gap-3 mb-8">
                 <MapPin className="w-10 h-10" style={{ color: 'var(--accent)' }} />
-                <h3 className="text-3xl font-black uppercase" style={{ color: 'var(--accent)' }}>ゴルフ会場</h3>
+                <h3 className="text-3xl font-black uppercase" style={{ color: 'var(--forest)' }}>ゴルフ会場</h3>
               </div>
 
               <div className="text-center mb-6">
@@ -436,7 +430,7 @@ export function LandingPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-white px-6 py-3 border-4 border-black text-lg font-black uppercase hover:translate-x-1 hover:translate-y-1 transition-transform"
-                  style={{ color: 'var(--accent)', boxShadow: '4px 4px 0 0 var(--shadow-color)' }}
+                  style={{ color: 'var(--forest)', boxShadow: '4px 4px 0 0 var(--shadow-color)' }}
                 >
                   <MapPin className="w-5 h-5" />
                   Googleマップで見る
@@ -449,20 +443,20 @@ export function LandingPage() {
           <div className="card-soft p-8 md:p-12 mb-8">
             <div className="flex items-center justify-center gap-3 mb-6">
               <DollarSign className="w-10 h-10" style={{ color: 'var(--accent)' }} />
-              <h3 className="text-3xl font-black uppercase" style={{ color: 'var(--accent)' }}>参加費用</h3>
+              <h3 className="text-3xl font-black uppercase" style={{ color: 'var(--forest)' }}>参加費用</h3>
             </div>
             <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
               <div className="bg-white border-4 border-black p-6" style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}>
                 <div className="text-center">
                   <p className="text-lg font-bold text-black mb-2">プレー費</p>
-                  <p className="text-4xl md:text-5xl font-black mb-2" style={{ color: 'var(--accent)' }}>¥8,180</p>
+                  <p className="text-4xl md:text-5xl font-black mb-2" style={{ color: 'var(--forest)' }}>¥8,180</p>
                   <p className="text-sm md:text-base text-black font-bold">昼食・表彰式ワンドリンク付</p>
                 </div>
               </div>
               <div className="bg-white border-4 border-black p-6" style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}>
                 <div className="text-center">
                   <p className="text-lg font-bold text-black mb-2">コンペルフィー</p>
-                  <p className="text-4xl md:text-5xl font-black mb-2" style={{ color: 'var(--accent)' }}>¥2,000</p>
+                  <p className="text-4xl md:text-5xl font-black mb-2" style={{ color: 'var(--forest)' }}>¥2,000</p>
                   <p className="text-sm md:text-base text-black font-bold">賞品費</p>
                 </div>
               </div>
@@ -474,12 +468,12 @@ export function LandingPage() {
               <Utensils className="w-8 h-8" style={{ color: 'var(--accent)' }} />
               <Trophy className="w-8 h-8" style={{ color: 'var(--accent)' }} />
             </div>
-            <h3 className="text-2xl md:text-3xl font-black text-center mb-8 uppercase" style={{ color: 'var(--accent)' }}>
+            <h3 className="text-2xl md:text-3xl font-black text-center mb-8 uppercase" style={{ color: 'var(--forest)' }}>
               イベント内容
             </h3>
             <div className="space-y-6 text-black max-w-3xl mx-auto">
               <div className="bg-white border-4 border-black p-8 md:p-10" style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}>
-                <p className="text-3xl md:text-4xl lg:text-5xl leading-tight font-black text-center" style={{ color: 'var(--accent)' }}>
+                <p className="text-3xl md:text-4xl lg:text-5xl leading-tight font-black text-center" style={{ color: 'var(--forest)' }}>
                   麺屋希楽夢<p>初のゴルフコンペ開催！</p>
                 </p>
               </div>
@@ -515,8 +509,7 @@ export function LandingPage() {
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-3">
                       <div
-                        className="w-12 h-12 rounded-full border border-black/30 flex items-center justify-center text-lg font-semibold text-black"
-                        style={{ backgroundColor: group.color }}
+                        className="w-12 h-12 rounded-full border border-black/30 flex items-center justify-center text-lg font-semibold text-black bg-yellow-200"
                       >
                         {group.label}
                       </div>
@@ -538,7 +531,7 @@ export function LandingPage() {
                             <span className="w-4 h-4 rounded-full border border-black/30 border-dotted bg-gray-200" />
                             <span
                               className="text-black"
-                              style={member.highlight ? { color: 'var(--accent)' } : undefined}
+                              style={member.highlight ? { color: 'var(--forest)' } : undefined}
                             >
                               {member.name}
                         </span>
@@ -565,20 +558,14 @@ export function LandingPage() {
                 const Icon = award.icon;
                 return (
                   <div key={award.title} className="card-surface p-6 text-center">
-                    <div
-                      className="mx-auto mb-4 w-16 h-16 rounded-full border border-black/20 flex items-center justify-center"
-                      style={{ backgroundColor: award.accent }}
-                    >
-                      <Icon className="w-8 h-8 text-white" />
+                    <div className="mx-auto mb-4 w-16 h-16 rounded-full border border-black/20 flex items-center justify-center bg-yellow-200">
+                      <Icon className="w-8 h-8" style={{ color: 'var(--accent)' }} />
                     </div>
                     <div className="text-2xl md:text-3xl font-semibold text-black">{award.title}</div>
                     <div className="w-10 h-[2px] bg-black/20 mx-auto my-4" />
                     <p className="text-base md:text-lg font-semibold text-black/70">{award.description}</p>
                     {award.badge && (
-                      <div
-                        className="inline-flex items-center justify-center border border-black/20 px-4 py-2 text-sm md:text-base font-semibold mt-5"
-                        style={{ backgroundColor: award.accent }}
-                      >
+                      <div className="inline-flex items-center justify-center border border-black/20 px-4 py-2 text-sm md:text-base font-semibold mt-5 bg-white">
                         {award.badge}
                       </div>
                     )}
@@ -688,7 +675,7 @@ export function LandingPage() {
               <div className="card-surface p-6">
                 <div className="text-center mb-4">
                   <p className="text-lg font-bold text-black mb-2">参加費（食事代）</p>
-                  <p className="text-4xl md:text-5xl font-black" style={{ color: 'var(--accent)' }}>¥2,000</p>
+                  <p className="text-4xl md:text-5xl font-black" style={{ color: 'var(--forest)' }}>¥2,000</p>
                 </div>
               </div>
 
@@ -716,11 +703,12 @@ export function LandingPage() {
                     href="https://www.instagram.com/menya.kiramu/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-3 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-600 px-6 py-3 border border-black/20 text-white text-sm uppercase tracking-[0.25em] font-semibold hover:opacity-90 transition-opacity"
+                    className="inline-flex items-center gap-3 bg-white px-6 py-3 border border-black/20 text-sm uppercase tracking-[0.25em] font-semibold hover:opacity-80 transition-opacity"
+                    style={{ color: 'var(--forest)' }}
                   >
-                    <Instagram className="w-6 h-6" />
+                    <Instagram className="w-6 h-6" style={{ color: 'var(--accent)' }} />
                     Instagram
-                    <ExternalLink className="w-5 h-5" />
+                    <ExternalLink className="w-5 h-5" style={{ color: 'var(--accent)' }} />
                   </a>
                 </div>
               </div>
@@ -734,12 +722,12 @@ export function LandingPage() {
                     href="https://line.me/R/ti/p/@091wotfr"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-3 px-6 py-3 border border-black/20 text-white text-sm uppercase tracking-[0.25em] font-semibold hover:opacity-90 transition-opacity"
-                    style={{ backgroundColor: '#06C755' }}
+                    className="inline-flex items-center gap-3 px-6 py-3 border border-black/20 text-sm uppercase tracking-[0.25em] font-semibold hover:opacity-80 transition-opacity bg-white"
+                    style={{ color: 'var(--forest)' }}
                   >
-                    <MessageCircle className="w-6 h-6" />
+                    <MessageCircle className="w-6 h-6" style={{ color: 'var(--accent)' }} />
                     LINE
-                    <ExternalLink className="w-5 h-5" />
+                    <ExternalLink className="w-5 h-5" style={{ color: 'var(--accent)' }} />
                   </a>
                 </div>
               </div>
@@ -753,12 +741,12 @@ export function LandingPage() {
                     href="https://menyakiramu.netlify.app/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-3 px-6 py-3 border border-black/20 text-white text-sm uppercase tracking-[0.25em] font-semibold hover:opacity-90 transition-opacity"
-                    style={{ backgroundColor: '#c78c1b' }}
+                    className="inline-flex items-center gap-3 px-6 py-3 border border-black/20 text-sm uppercase tracking-[0.25em] font-semibold hover:opacity-80 transition-opacity bg-white"
+                    style={{ color: 'var(--forest)' }}
                   >
-                    <Globe className="w-6 h-6" />
+                    <Globe className="w-6 h-6" style={{ color: 'var(--accent)' }} />
                     希楽夢HP
-                    <ExternalLink className="w-5 h-5" />
+                    <ExternalLink className="w-5 h-5" style={{ color: 'var(--accent)' }} />
                   </a>
                 </div>
               </div>
@@ -775,7 +763,7 @@ export function LandingPage() {
 
             <div className="text-center">
               <div className="card-surface inline-block p-8 md:p-12">
-                <div className="text-5xl md:text-7xl font-black mb-4" style={{ color: 'var(--accent)' }}>
+                <div className="text-5xl md:text-7xl font-black mb-4" style={{ color: 'var(--forest)' }}>
                   2026年2月24日
                 </div>
                 <div className="text-2xl md:text-3xl font-black text-black">
@@ -895,7 +883,7 @@ export function LandingPage() {
                 <div>
                   <h3 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-black leading-tight mb-2">
                     {featuredMenus[activeSlide].title}
-                    <span className="text-2xl md:text-3xl font-semibold ml-2" style={{ color: 'var(--accent)' }}>
+                    <span className="text-2xl md:text-3xl font-semibold ml-2" style={{ color: 'var(--forest)' }}>
                       （{featuredMenus[activeSlide].price}）
                     </span>
                   </h3>
@@ -916,7 +904,7 @@ export function LandingPage() {
                     {featuredMenus.map((item, index) => (
                       <span
                         key={item.id}
-                        className={`h-3 w-3 rounded-full border border-black/20 transition-all ${index === activeSlide ? 'bg-red-500 w-4' : 'bg-white'}`}
+                        className={`h-3 w-3 rounded-full border border-black/20 transition-all ${index === activeSlide ? 'bg-[#1f3d2b] w-4' : 'bg-white'}`}
                         aria-label={`${index + 1}枚目`}
                       />
                     ))}
@@ -965,70 +953,59 @@ export function LandingPage() {
         </div>
         <div className="site-shell">
           <div
-            className="relative overflow-hidden bg-black/90 text-white border border-black/20 p-6 md:p-10 rounded-3xl"
+            className="relative overflow-hidden bg-black text-white border border-black/20 p-6 md:p-10 rounded-none"
           >
-            <div
-              className="absolute inset-0 opacity-50 pointer-events-none"
-              style={{
-                background:
-                  'radial-gradient(circle at 20% 20%, rgba(0, 245, 255, 0.35), transparent 45%), radial-gradient(circle at 80% 30%, rgba(255, 0, 122, 0.35), transparent 40%), linear-gradient(120deg, rgba(255, 255, 255, 0.05), transparent 60%)',
-              }}
-            />
             <div className="relative grid gap-8 md:grid-cols-[1.2fr_1fr] items-center">
               <div>
-                <div
-                  className="inline-flex items-center gap-2 bg-yellow-300 text-black px-3 py-2 border-4 border-black font-black uppercase"
-                  style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}
-                >
-                  <span className="h-2 w-2 rounded-full bg-red-500 animate-pulse" />
+                <div className="inline-flex items-center gap-2 bg-white text-black px-3 py-2 border border-black/20 font-black uppercase">
+                  <span className="h-2 w-2 rounded-full" style={{ backgroundColor: 'var(--accent)' }} />
                   KIRAMUブース
                 </div>
-                <h3 className="mt-4 text-2xl md:text-3xl font-black uppercase tracking-wide" style={{ color: '#00F5FF' }}>
+                <h3 className="mt-4 text-2xl md:text-3xl font-black uppercase tracking-wide" style={{ color: 'var(--forest)' }}>
                   KIRAMU DJ SET
                 </h3>
-                <p className="mt-3 text-sm md:text-base text-white/90 font-bold">
+                <p className="mt-3 text-sm md:text-base text-white/80 font-bold">
                   レコードボタンを押すと、KOJIMA-Yayyyy!!!が流れます。
                 </p>
-                <div className="mt-4 flex flex-wrap gap-2 text-xs md:text-sm font-black uppercase text-yellow-300">
-                  <span className="px-3 py-1 border-2 border-yellow-300">KOJIMA</span>
-                  <span className="px-3 py-1 border-2 border-yellow-300">VINYL</span>
-                  <span className="px-3 py-1 border-2 border-yellow-300">HYPE</span>
+                <div className="mt-4 flex flex-wrap gap-2 text-xs md:text-sm font-black uppercase text-white/80">
+                  <span className="px-3 py-1 border border-black/20">KOJIMA</span>
+                  <span className="px-3 py-1 border border-black/20">VINYL</span>
+                  <span className="px-3 py-1 border border-black/20">HYPE</span>
                 </div>
               </div>
               <div className="flex flex-col items-center gap-4">
                 <div className="relative">
-                  <div className="bg-[#1b1b1b] border-4 border-black p-5" style={{ boxShadow: '6px 6px 0 0 var(--shadow-color)' }}>
+                  <div className="bg-[#141414] border border-black/20 p-5">
                     <button
                       type="button"
                       onClick={toggleDjSound}
                       aria-pressed={isDjPlaying}
                       aria-label={isDjPlaying ? 'DJサウンドを停止' : 'DJサウンドを再生'}
-                      className={`relative mx-auto flex items-center justify-center w-28 h-28 md:w-32 md:h-32 rounded-full border-4 border-black bg-red-600 transition-transform focus:outline-none ${
-                        isDjPlaying ? 'ring-4 ring-cyan-300/70 scale-105' : 'hover:scale-[1.02]'
+                      className={`relative mx-auto flex items-center justify-center w-28 h-28 md:w-32 md:h-32 rounded-full border-4 border-black bg-[#1f3d2b] transition-transform focus:outline-none ${
+                        isDjPlaying ? 'scale-105' : 'hover:scale-[1.02]'
                       }`}
-                      style={{ boxShadow: '0 0 20px rgba(255, 0, 122, 0.6), 6px 6px 0 0 var(--shadow-color)' }}
                     >
                       <span
                         className={`absolute inset-2 rounded-full border-4 border-black ${isDjPlaying ? 'animate-spin' : ''}`}
                         style={{ background: 'repeating-radial-gradient(circle, #0b0b0b 0 6px, #1f1f1f 6px 12px)' }}
                       />
-                      <span className="absolute inset-8 rounded-full bg-yellow-300 border-4 border-black" />
+                      <span className="absolute inset-8 rounded-full bg-white border-4 border-black" />
                       <span className="relative text-xs md:text-sm font-black text-black tracking-widest">
                         {isDjPlaying ? 'STOP' : 'PLAY'}
                       </span>
                     </button>
-                    <div className="mt-3 text-center text-xs md:text-sm font-bold text-yellow-200">
+                    <div className="mt-3 text-center text-xs md:text-sm font-bold text-white/70">
                       {isDjPlaying ? '再生中...' : 'レコードボタンを押してスタート'}
                     </div>
                     <div className="mt-4 flex flex-col items-center gap-2">
-                      <div className="text-[10px] md:text-xs font-black uppercase tracking-widest text-cyan-200">
+                      <div className="text-[10px] md:text-xs font-black uppercase tracking-widest text-white/70">
                         BGM LIVE
                       </div>
                       <div className="flex items-end justify-center gap-2 h-10">
                         {[0, 1, 2, 3, 4, 5].map((bar) => (
                           <span
                             key={`dj-eq-${bar}`}
-                            className={`w-2 md:w-3 h-10 rounded-full border-2 border-black bg-cyan-300 ${
+                            className={`w-2 md:w-3 h-10 rounded-full border border-black/20 bg-white/60 ${
                               isDjPlaying ? 'animate-dj-eq' : 'opacity-50'
                             }`}
                             style={{ animationDelay: `${bar * 0.12}s` }}

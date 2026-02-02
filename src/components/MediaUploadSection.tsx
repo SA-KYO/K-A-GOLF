@@ -337,7 +337,7 @@ export function MediaUploadSection() {
               type="button"
               onClick={() => setIsSubmitted(false)}
               className="bg-yellow-400 px-8 py-3 border-4 border-black hover:translate-x-1 hover:translate-y-1 transition-transform font-black uppercase"
-              style={{ color: 'var(--accent)', boxShadow: '6px 6px 0 0 var(--shadow-color)' }}
+              style={{ color: 'var(--forest)', boxShadow: '6px 6px 0 0 var(--shadow-color)' }}
             >
               追加でアップロードする
             </button>
