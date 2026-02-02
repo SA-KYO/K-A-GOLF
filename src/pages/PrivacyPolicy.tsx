@@ -19,7 +19,7 @@ export function PrivacyPolicy() {
         </button>
 
         <div className="bg-white border-4 border-black p-8 md:p-12" style={{ boxShadow: '8px 8px 0 0 var(--shadow-color)' }}>
-          <h1 className="text-3xl md:text-4xl font-black text-center mb-8 uppercase" style={{ color: '#22C55E' }}>
+          <h1 className="text-3xl md:text-4xl font-black text-center mb-8 uppercase" style={{ color: 'var(--accent)' }}>
             プライバシーポリシー
           </h1>
 

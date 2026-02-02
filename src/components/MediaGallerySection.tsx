@@ -138,14 +138,13 @@ export function MediaGallerySection() {
   return (
     <section id="media-gallery" className="py-20 px-4 bg-yellow-400">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-5xl font-black mb-4 uppercase" style={{ color: '#22C55E' }}>
-            ギャラリー
-          </h2>
-          <div className="w-32 h-2 mx-auto mb-6" style={{ backgroundColor: '#22C55E' }} />
-          <p className="text-black text-lg font-bold">
+        <div className="section-header">
+          <span className="section-eyebrow">GALLERY</span>
+          <h2 className="section-title text-black">ギャラリー</h2>
+          <p className="text-base md:text-lg text-black/70 font-semibold">
             みんなの写真・動画がここに集まります
           </p>
+          <div className="section-line" />
         </div>
 
         {loading ? (

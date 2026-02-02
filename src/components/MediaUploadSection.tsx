@@ -283,14 +283,13 @@ export function MediaUploadSection() {
   return (
     <section id="media-upload" className="py-20 px-4 bg-yellow-300 scroll-mt-24">
       <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-5xl font-black mb-4 uppercase" style={{ color: '#22C55E' }}>
-            写真・動画アップロード
-          </h2>
-          <div className="w-32 h-2 mx-auto mb-6" style={{ backgroundColor: '#22C55E' }} />
-          <p className="text-black text-lg font-bold">
+        <div className="section-header">
+          <span className="section-eyebrow">MEDIA UPLOAD</span>
+          <h2 className="section-title text-black">写真・動画アップロード</h2>
+          <p className="text-base md:text-lg text-black/70 font-semibold">
             当日の思い出をみんなでシェアしよう
           </p>
+          <div className="section-line" />
           <div className="mt-6 flex justify-center">
             <button
               type="button"
@@ -337,7 +336,7 @@ export function MediaUploadSection() {
               type="button"
               onClick={() => setIsSubmitted(false)}
               className="bg-yellow-400 px-8 py-3 border-4 border-black hover:translate-x-1 hover:translate-y-1 transition-transform font-black uppercase"
-              style={{ color: '#22C55E', boxShadow: '6px 6px 0 0 var(--shadow-color)' }}
+              style={{ color: 'var(--accent)', boxShadow: '6px 6px 0 0 var(--shadow-color)' }}
             >
               追加でアップロードする
             </button>

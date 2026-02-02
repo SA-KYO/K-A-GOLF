@@ -77,8 +77,8 @@ export function AttendeeStats({ table = 'golf_attendees' }: AttendeeStatsProps) 
           【懇親会】
         </div>
         <div className="flex items-center justify-center gap-3">
-          <Users className="w-8 h-8" style={{ color: '#22C55E' }} />
-          <h3 className="text-2xl md:text-3xl font-black uppercase" style={{ color: '#22C55E' }}>現在の参加状況</h3>
+          <Users className="w-8 h-8" style={{ color: 'var(--accent)' }} />
+          <h3 className="text-2xl md:text-3xl font-black uppercase" style={{ color: 'var(--accent)' }}>現在の参加状況</h3>
         </div>
       </div>
       <div className="grid grid-cols-2 gap-4 md:gap-6 mt-6">
