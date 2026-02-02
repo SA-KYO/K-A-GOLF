@@ -139,6 +139,21 @@ export function LandingPage() {
     },
   ];
 
+  const motifIcons = [
+    Calendar,
+    MapPin,
+    Users,
+    Trophy,
+    Utensils,
+    Target,
+    Medal,
+    Check,
+    AlertCircle,
+    Clock,
+    DollarSign,
+    Globe,
+  ];
+
 
   const [activeSlide, setActiveSlide] = useState(0);
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -323,7 +338,7 @@ export function LandingPage() {
         <div className="relative z-10 max-w-6xl mx-auto w-full">
           <div className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] items-center">
             <div className="text-left">
-              <div className="section-eyebrow mb-6">OFFICIAL WEB</div>
+              <div className="section-eyebrow section-eyebrow--small mb-6">OFFICIAL WEB</div>
             <img
               src="/title-logo.png"
               alt="第一回 希楽夢杯"
@@ -359,6 +374,16 @@ export function LandingPage() {
             <span className="section-eyebrow">DETAILS</span>
             <h2 className="section-title text-black">イベント詳細</h2>
             <div className="section-line" />
+          </div>
+
+          <div className="motif-panel mb-12">
+            <div className="motif-grid">
+              {motifIcons.map((Icon, index) => (
+                <div key={`motif-${index}`} className="motif-dot">
+                  <Icon className="w-5 h-5 text-black" />
+                </div>
+              ))}
+            </div>
           </div>
 
           <div className="section-grid section-grid--2 mb-12">
@@ -1043,7 +1068,7 @@ export function LandingPage() {
 
       <footer className="bg-yellow-300 text-black py-12 px-4 border-t border-black/10">
         <div className="site-shell text-left">
-          <div className="section-eyebrow mb-4">CONTACT</div>
+          <div className="section-eyebrow section-eyebrow--small mb-4">CONTACT</div>
           <h3 className="text-2xl font-semibold mb-4 uppercase tracking-[0.2em]">KIRAMU GOLF COMPETITION 2026</h3>
           <p className="text-black/70 mb-6 font-semibold">
             ご不明な点がございましたら、お気軽にお問い合わせください。
