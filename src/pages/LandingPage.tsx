@@ -266,26 +266,6 @@ export function LandingPage() {
 
   return (
     <div className="min-h-screen bg-yellow-300 animate-page-enter">
-      <header className="fixed top-0 left-0 right-0 z-50 border-b border-black bg-white/80 backdrop-blur">
-        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="text-xs md:text-sm uppercase tracking-[0.4em] font-semibold text-black">
-            K-A GOLF CLUB
-          </div>
-          <button
-            type="button"
-            onClick={() => setIsMenuOpen((prev) => !prev)}
-            aria-expanded={isMenuOpen}
-            aria-controls="site-menu"
-            aria-label={isMenuOpen ? 'メニューを閉じる' : 'メニューを開く'}
-            className="group inline-flex items-center gap-3 text-[11px] md:text-xs uppercase tracking-[0.35em] font-semibold text-black"
-          >
-            <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-black/40">
-              <Menu className="w-4 h-4" />
-            </span>
-            MENU
-          </button>
-        </div>
-      </header>
 
       {isMenuOpen && (
         <div className="fixed inset-0 z-50">
@@ -326,51 +306,68 @@ export function LandingPage() {
         </div>
       )}
 
-      <section id="top" className="relative min-h-screen flex items-center px-4 pt-28 pb-24 scroll-mt-24"
-        style={{
-          backgroundImage: 'url(/golf-course-bg.jpg)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat'
-        }}
-      >
-        <div className="absolute inset-0 bg-yellow-300/70"></div>
-        <div className="relative z-10 max-w-6xl mx-auto w-full">
-          <div className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] items-center">
-            <div className="text-left">
-              <div className="section-eyebrow section-eyebrow--small mb-6">OFFICIAL WEB</div>
-            <img
-              src="/title-logo.png"
-              alt="第一回 希楽夢杯"
-                className="w-full max-w-xl h-auto"
-            />
-              <div className="section-line mt-6" />
-              <p className="mt-6 text-sm md:text-base text-black/70 font-semibold tracking-[0.32em] uppercase">
-                KIRAMU CUP GOLF COMPETITION 2026
-              </p>
-              <button
-                onClick={scrollToForm}
-                className="mt-10 inline-flex items-center gap-3 border border-black/40 px-6 py-3 text-xs md:text-sm uppercase tracking-[0.35em] font-semibold text-black hover:border-black/70 hover:text-black/70 transition-colors"
-              >
-                懇親会参加申込はこちら
-                <span className="text-base">→</span>
-              </button>
-            </div>
+      <section id="top" className="hero-banner">
+        <div className="site-shell hero-top">
+          <img
+            src="/title-logo.png"
+            alt="第一回 希楽夢杯"
+            className="hero-logo"
+          />
+          <button
+            type="button"
+            onClick={() => setIsMenuOpen((prev) => !prev)}
+            aria-expanded={isMenuOpen}
+            aria-controls="site-menu"
+            aria-label={isMenuOpen ? 'メニューを閉じる' : 'メニューを開く'}
+            className="hero-menu"
+          >
+            MENU
+          </button>
+        </div>
 
-            <div className="bg-white/90 p-6 md:p-10 card-surface">
-              <div className="flex items-center gap-3 mb-6">
-                <Calendar className="w-6 h-6 text-black" />
-                <h2 className="text-lg md:text-xl font-semibold text-black uppercase tracking-[0.28em]">開催まで</h2>
+        <div className="site-shell hero-grid">
+          <div>
+            <span className="hero-kicker">KIRAMU CUP 2026</span>
+            <h1 className="hero-title">
+              希楽夢杯、<br />
+              ゴルフ、<br />
+              始メル。
+            </h1>
+            <div className="hero-lead">
+              みんなで楽しくラウンドしながら、新しいゴルフの楽しさを体感する一日。
+            </div>
+            <button onClick={scrollToForm} className="hero-cta">
+              懇親会参加申込はこちら →
+            </button>
+          </div>
+
+          <div className="hero-visual">
+            <div className="hero-photo">
+              <img src="/golf-course-bg.jpg" alt="ゴルフ場" />
+            </div>
+            <div className="hero-countdown">
+              <div className="lesson-badge">COUNTDOWN</div>
+              <div className="mt-4">
+                <Countdown />
               </div>
-              <Countdown />
             </div>
           </div>
         </div>
+
+        <div className="site-shell hero-strip">
+          {featuredMenus.map((item) => (
+            <div key={item.id} className="strip-card">
+              <img src={item.image} alt={item.title} />
+              <div>{item.title}</div>
+            </div>
+          ))}
+        </div>
       </section>
 
-      <section id="event-details" className="section-wrap bg-yellow-400">
+      <section id="event-details" className="section-wrap bg-yellow-300">
         <div className="site-shell">
           <div className="section-header">
+            <span className="lesson-badge">LESSON 01</span>
             <span className="section-eyebrow">DETAILS</span>
             <h2 className="section-title text-black">イベント詳細</h2>
             <div className="section-line" />
@@ -499,9 +496,11 @@ export function LandingPage() {
           </div>
 
           <div id="groupings" className="card-surface p-8 md:p-12 mt-10">
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <Users className="w-9 h-9" style={{ color: 'var(--accent)' }} />
-              <h3 className="text-3xl md:text-4xl font-black uppercase" style={{ color: 'var(--accent)' }}>組み分け</h3>
+            <div className="section-header">
+              <span className="lesson-badge">LESSON 02</span>
+              <span className="section-eyebrow">GROUPINGS</span>
+              <h3 className="section-title text-black">組み分け</h3>
+              <div className="section-line" />
             </div>
 
             <div className="flex justify-center mb-8">
@@ -554,9 +553,11 @@ export function LandingPage() {
           </div>
 
           <div id="special-awards" className="card-surface p-8 md:p-12 mt-10">
-            <div className="flex items-center justify-center gap-3 mb-8">
-              <Medal className="w-10 h-10" style={{ color: 'var(--accent)' }} />
-              <h3 className="text-3xl md:text-4xl font-black uppercase" style={{ color: 'var(--accent)' }}>特別賞</h3>
+            <div className="section-header">
+              <span className="lesson-badge">LESSON 03</span>
+              <span className="section-eyebrow">AWARDS</span>
+              <h3 className="section-title text-black">特別賞</h3>
+              <div className="section-line" />
             </div>
 
             <div className="section-grid section-grid--2">
@@ -591,9 +592,11 @@ export function LandingPage() {
           </div>
 
           <div id="local-rules" className="card-surface p-8 md:p-12 mt-10">
-            <div className="flex items-center justify-center gap-3 mb-8">
-              <AlertCircle className="w-10 h-10" style={{ color: 'var(--accent)' }} />
-              <h3 className="text-3xl md:text-4xl font-black uppercase" style={{ color: 'var(--accent)' }}>希楽夢杯ローカルルール</h3>
+            <div className="section-header">
+              <span className="lesson-badge">LESSON 04</span>
+              <span className="section-eyebrow">LOCAL RULES</span>
+              <h3 className="section-title text-black">希楽夢杯ローカルルール</h3>
+              <div className="section-line" />
             </div>
 
             <div className="section-grid section-grid--2">
@@ -620,9 +623,11 @@ export function LandingPage() {
           </div>
 
           <div id="award-ceremony" className="card-surface p-8 md:p-12 mt-10">
-            <div className="flex items-center justify-center gap-3 mb-8">
-              <Trophy className="w-10 h-10" style={{ color: 'var(--accent)' }} />
-              <h3 className="text-3xl font-black uppercase" style={{ color: 'var(--accent)' }}>表彰式</h3>
+            <div className="section-header">
+              <span className="lesson-badge">LESSON 05</span>
+              <span className="section-eyebrow">CEREMONY</span>
+              <h3 className="section-title text-black">表彰式</h3>
+              <div className="section-line" />
             </div>
 
             <div className="max-w-3xl mx-auto">
@@ -641,9 +646,11 @@ export function LandingPage() {
           </div>
 
           <div id="after-party" className="card-surface p-8 md:p-12 mt-10">
-            <div className="flex items-center justify-center gap-3 mb-8">
-              <Utensils className="w-10 h-10" style={{ color: 'var(--accent)' }} />
-              <h3 className="text-3xl font-black uppercase" style={{ color: 'var(--accent)' }}>懇親会</h3>
+            <div className="section-header">
+              <span className="lesson-badge">LESSON 06</span>
+              <span className="section-eyebrow">AFTER PARTY</span>
+              <h3 className="section-title text-black">懇親会</h3>
+              <div className="section-line" />
             </div>
 
             <div className="section-grid section-grid--2">
@@ -759,9 +766,11 @@ export function LandingPage() {
           </div>
 
           <div id="deadline" className="card-surface p-10 md:p-16 mt-10">
-            <div className="flex items-center justify-center gap-3 mb-8">
-              <Calendar className="w-10 h-10" style={{ color: 'var(--accent)' }} />
-              <h3 className="text-3xl md:text-4xl font-black uppercase" style={{ color: 'var(--accent)' }}>懇親会回答締め切り</h3>
+            <div className="section-header">
+              <span className="lesson-badge">LESSON 07</span>
+              <span className="section-eyebrow">DEADLINE</span>
+              <h3 className="section-title text-black">懇親会回答締め切り</h3>
+              <div className="section-line" />
             </div>
 
             <div className="text-center">
@@ -787,6 +796,7 @@ export function LandingPage() {
       <section id="score-photo" className="section-wrap bg-yellow-300">
         <div className="site-shell">
           <div className="section-header">
+            <span className="lesson-badge">LESSON 08</span>
             <span className="section-eyebrow">SCORE PHOTO</span>
             <h2 className="section-title text-black">スコアフォト作成</h2>
             <p className="text-base md:text-lg text-black/70 font-semibold">
@@ -868,6 +878,7 @@ export function LandingPage() {
       <section id="popular-menu" className="section-wrap bg-yellow-300">
         <div className="site-shell">
           <div className="section-header">
+            <span className="lesson-badge">LESSON 09</span>
             <span className="section-eyebrow">POPULAR MENU</span>
             <h2 className="section-title text-black">人気メニュー</h2>
             <div className="section-line" />
@@ -941,6 +952,14 @@ export function LandingPage() {
       </section>
 
       <section id="dj-booth" className="section-wrap bg-yellow-300">
+        <div className="site-shell">
+          <div className="section-header">
+            <span className="lesson-badge">LESSON 10</span>
+            <span className="section-eyebrow">DJ BOOTH</span>
+            <h2 className="section-title text-black">DJブース</h2>
+            <div className="section-line" />
+          </div>
+        </div>
         <div className="site-shell mb-16">
           <AttendeeStats table="after_party_attendees" />
         </div>
@@ -1031,9 +1050,10 @@ export function LandingPage() {
         </div>
       </section>
 
-      <section id="rsvp-form" className="section-wrap bg-yellow-400">
+      <section id="rsvp-form" className="section-wrap bg-yellow-300">
         <div className="site-shell">
           <div className="section-header">
+            <span className="lesson-badge">LESSON 11</span>
             <span className="section-eyebrow">RSVP</span>
             <h2 className="section-title text-black">懇親会参加申込</h2>
             <p className="text-base md:text-lg text-black/70 font-semibold">

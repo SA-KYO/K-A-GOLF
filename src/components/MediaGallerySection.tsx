@@ -136,9 +136,10 @@ export function MediaGallerySection() {
   };
 
   return (
-    <section id="media-gallery" className="section-wrap bg-yellow-400">
+    <section id="media-gallery" className="section-wrap bg-yellow-300">
       <div className="site-shell">
         <div className="section-header">
+          <span className="lesson-badge">LESSON 13</span>
           <span className="section-eyebrow">GALLERY</span>
           <h2 className="section-title text-black">ギャラリー</h2>
           <p className="text-base md:text-lg text-black/70 font-semibold">

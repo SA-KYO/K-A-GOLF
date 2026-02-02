@@ -284,6 +284,7 @@ export function MediaUploadSection() {
     <section id="media-upload" className="section-wrap bg-yellow-300">
       <div className="site-shell">
         <div className="section-header">
+          <span className="lesson-badge">LESSON 12</span>
           <span className="section-eyebrow">MEDIA UPLOAD</span>
           <h2 className="section-title text-black">写真・動画アップロード</h2>
           <p className="text-base md:text-lg text-black/70 font-semibold">
