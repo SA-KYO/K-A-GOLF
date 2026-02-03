@@ -418,6 +418,12 @@
     height: 50%;
     background: linear-gradient(to top, rgba(196, 30, 58, 0.95) 0%, rgba(220, 50, 80, 0.7) 50%, transparent 100%);
     pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .gallery-card:hover .gallery-card-gradient {
+    opacity: 1;
   }
 
   .gallery-card-name {
@@ -430,6 +436,12 @@
     font-weight: 500;
     color: var(--text-white);
     letter-spacing: 0.1em;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .gallery-card:hover .gallery-card-name {
+    opacity: 1;
   }
 
   .hero-banner {
