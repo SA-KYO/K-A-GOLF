@@ -380,12 +380,18 @@ export function LandingPage() {
             </div>
 
             <div className="relative">
-              <div className="relative rounded-full overflow-hidden w-full max-w-md mx-auto aspect-square border-4 border-white/20">
-                <img src="/golf-course-bg.jpg" alt="ゴルフ場" className="w-full h-full object-cover" />
-                <div className="absolute inset-0 gradient-blue-bottom" />
-                <div className="absolute bottom-8 left-0 right-0 text-center z-10">
-                  <p className="text-white text-xl font-bold font-serif-jp">宇治田原カントリー倶楽部</p>
+              <div className="tilted-oval-frame mx-auto">
+                <div className="tilted-oval-container">
+                  <div className="tilted-oval-rings" />
+                  <div className="tilted-oval-image">
+                    <img src="/golf-course-bg.jpg" alt="ゴルフ場" />
+                  </div>
+                  <div className="absolute inset-0 gradient-blue-bottom rounded-full" style={{ transform: 'rotate(15deg)' }} />
+                  <div className="absolute bottom-8 left-0 right-0 text-center z-10" style={{ transform: 'rotate(15deg)' }}>
+                    <p className="text-white text-xl font-bold font-serif-jp">宇治田原カントリー倶楽部</p>
+                  </div>
                 </div>
+                <SmokeSVG className="cloud-smoke-bottom text-white/20" />
               </div>
               <SmokeWrapSVG className="absolute -left-16 top-1/4 w-24 h-96 text-white/15 animate-smoke" />
               <SmokeWrapSVG className="absolute -right-16 top-1/3 w-24 h-96 text-white/15 animate-smoke" flip />
@@ -540,12 +546,18 @@ export function LandingPage() {
         <div className="site-shell relative z-10">
           <div className="grid lg:grid-cols-[1.2fr_1fr] gap-16 items-center">
             <div className="relative order-2 lg:order-1">
-              <div className="relative rounded-full overflow-hidden w-full max-w-md mx-auto aspect-square border-4 border-white/20">
-                <img src="/tokusio.jpg" alt="希楽夢の料理" className="w-full h-full object-cover" />
-                <div className="absolute inset-0 gradient-green-bottom" />
-                <div className="absolute bottom-8 left-0 right-0 text-center z-10">
-                  <p className="text-white text-xl font-bold font-serif-jp">麺屋 希楽夢</p>
+              <div className="tilted-oval-frame mx-auto">
+                <div className="tilted-oval-container">
+                  <div className="tilted-oval-rings" />
+                  <div className="tilted-oval-image">
+                    <img src="/tokusio.jpg" alt="希楽夢の料理" />
+                  </div>
+                  <div className="absolute inset-0 gradient-green-bottom rounded-full" style={{ transform: 'rotate(15deg)' }} />
+                  <div className="absolute bottom-8 left-0 right-0 text-center z-10" style={{ transform: 'rotate(15deg)' }}>
+                    <p className="text-white text-xl font-bold font-serif-jp">麺屋 希楽夢</p>
+                  </div>
                 </div>
+                <SmokeSVG className="cloud-smoke-bottom text-white/20" />
               </div>
               <SmokeWrapSVG className="absolute -left-12 top-1/4 w-20 h-80 text-white/15 animate-smoke" />
               <SmokeWrapSVG className="absolute -right-12 top-1/3 w-20 h-80 text-white/15 animate-smoke" flip />
@@ -676,12 +688,18 @@ export function LandingPage() {
         <div className="site-shell relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="relative order-2 lg:order-1">
-              <div className="relative rounded-full overflow-hidden w-full max-w-md mx-auto aspect-square border-4 border-white/20">
-                <img src={featuredMenus[activeSlide].image} alt={featuredMenus[activeSlide].title} className="w-full h-full object-cover" />
-                <div className="absolute inset-0 gradient-blue-bottom" />
-                <div className="absolute bottom-8 left-0 right-0 text-center z-10">
-                  <p className="text-white text-xl font-bold font-serif-jp">{featuredMenus[activeSlide].title}</p>
+              <div className="tilted-oval-frame mx-auto">
+                <div className="tilted-oval-container">
+                  <div className="tilted-oval-rings" />
+                  <div className="tilted-oval-image">
+                    <img src={featuredMenus[activeSlide].image} alt={featuredMenus[activeSlide].title} />
+                  </div>
+                  <div className="absolute inset-0 gradient-blue-bottom rounded-full" style={{ transform: 'rotate(15deg)' }} />
+                  <div className="absolute bottom-8 left-0 right-0 text-center z-10" style={{ transform: 'rotate(15deg)' }}>
+                    <p className="text-white text-xl font-bold font-serif-jp">{featuredMenus[activeSlide].title}</p>
+                  </div>
                 </div>
+                <SmokeSVG className="cloud-smoke-bottom text-white/20" />
               </div>
               <SmokeWrapSVG className="absolute -left-12 top-1/4 w-20 h-80 text-white/15 animate-smoke" />
               <SmokeWrapSVG className="absolute -right-12 top-1/3 w-20 h-80 text-white/15 animate-smoke" flip />
@@ -763,6 +781,43 @@ export function LandingPage() {
               <audio ref={audioRef} src="/Yayyyyy!!.MP4" preload="none" onEnded={() => setIsDjPlaying(false)} />
             </div>
           </div>
+        </div>
+      </section>
+
+      <section id="staff-gallery" className="section-dark relative">
+        <div className="section-bg-text">STAFF</div>
+        <SmokeWrapSVG className="absolute left-0 top-0 bottom-0 w-40 text-white/5" />
+
+        <div className="site-shell relative z-10">
+          <div className="section-header section-header--center">
+            <div className="section-jp-title font-serif-jp">スタッフギャラリー</div>
+          </div>
+
+          <div className="grid grid-cols-3 gap-8 max-w-5xl mx-auto mb-16">
+            <div className="relative pb-16">
+              <div className="gallery-card gallery-card--grayscale aspect-[3/4]">
+                <img src="/tokusio.jpg" alt="あこ" className="w-full h-full object-cover" />
+              </div>
+              <div className="gallery-card-name">あこ</div>
+            </div>
+
+            <div className="relative pb-16">
+              <div className="gallery-card gallery-card--center aspect-[3/4]">
+                <img src="/cha-syu-.jpeg" alt="かこ" className="w-full h-full object-cover" />
+                <div className="gallery-card-gradient" />
+              </div>
+              <div className="gallery-card-name">かこ</div>
+            </div>
+
+            <div className="relative pb-16">
+              <div className="gallery-card gallery-card--grayscale aspect-[3/4]">
+                <img src="/syouyutukemen.jpg" alt="ロシアン佐藤" className="w-full h-full object-cover" />
+              </div>
+              <div className="gallery-card-name">ロシアン佐藤</div>
+            </div>
+          </div>
+
+          <SmokeSVG className="absolute bottom-0 left-10% w-96 h-48 text-white/15 animate-float" />
         </div>
       </section>
 
