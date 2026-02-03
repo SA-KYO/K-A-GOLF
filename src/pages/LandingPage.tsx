@@ -397,7 +397,7 @@ export function LandingPage() {
               </div>
 
               <div className="space-y-4 mt-6">
-                <div className="time-display-container flex flex-col items-center justify-center gap-3 border-4 border-black p-6 animate-fade-in-scale animate-glow" style={{ backgroundColor: 'var(--forest)', boxShadow: '4px 4px 0 0 var(--shadow-color)' }}>
+                <div className="time-display-container flex flex-col items-center justify-center gap-3 border-4 border-black p-6 animate-fade-in-scale animate-glow" style={{ backgroundColor: 'var(--pine)', boxShadow: '4px 4px 0 0 var(--shadow-color)' }}>
                   <Clock className="w-10 h-10 text-white animate-clock-rotate" />
                   <div className="text-5xl md:text-7xl font-black text-white animate-pulse-slow">7:50</div>
                   <div className="text-2xl md:text-3xl font-black text-white">スタート室集合</div>
