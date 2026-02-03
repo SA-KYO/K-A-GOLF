@@ -227,13 +227,13 @@
   .border-black {
     border-color: var(--accent);
   }
-  .border-black\\/10 {
+  .border-black\/10 {
     border-color: rgba(193, 18, 31, 0.22);
   }
-  .border-black\\/20 {
+  .border-black\/20 {
     border-color: rgba(193, 18, 31, 0.32);
   }
-  .border-black\\/30 {
+  .border-black\/30 {
     border-color: rgba(193, 18, 31, 0.45);
   }
   .border-4 {
