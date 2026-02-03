@@ -97,12 +97,6 @@
   .bg-black {
     background-color: #111;
   }
-  .bg-black\/70 {
-    background-color: rgb(var(--ink-rgb) / 0.7);
-  }
-  .bg-black\/30 {
-    background-color: rgb(var(--ink-rgb) / 0.3);
-  }
   .text-black {
     color: var(--ink);
   }
@@ -111,15 +105,6 @@
   }
   .border-black {
     border-color: var(--accent);
-  }
-  .border-black\\/10 {
-    border-color: rgba(197, 161, 90, 0.2);
-  }
-  .border-black\\/20 {
-    border-color: rgba(197, 161, 90, 0.3);
-  }
-  .border-black\\/30 {
-    border-color: rgba(197, 161, 90, 0.45);
   }
   .border-4 {
     border-width: 2px;
