@@ -369,6 +369,14 @@
     border: 3px solid rgba(255, 255, 255, 0.8);
     overflow: hidden;
     background: #000;
+    transition: all 0.4s ease;
+    cursor: pointer;
+  }
+
+  .gallery-card:hover {
+    border-color: rgba(196, 30, 58, 1);
+    box-shadow: 0 0 40px rgba(196, 30, 58, 0.8), 0 0 80px rgba(196, 30, 58, 0.4);
+    transform: translateY(-8px);
   }
 
   .gallery-card img {
@@ -376,6 +384,11 @@
     height: 100%;
     object-fit: cover;
     display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .gallery-card:hover img {
+    transform: scale(1.05);
   }
 
   .gallery-card--center {
@@ -384,8 +397,17 @@
     border-width: 4px;
   }
 
+  .gallery-card--center:hover {
+    transform: scale(1.1) translateY(-8px);
+  }
+
   .gallery-card--grayscale img {
     filter: grayscale(100%);
+    transition: filter 0.4s ease;
+  }
+
+  .gallery-card--grayscale:hover img {
+    filter: grayscale(60%);
   }
 
   .gallery-card-gradient {
