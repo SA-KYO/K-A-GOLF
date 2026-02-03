@@ -3,28 +3,27 @@ import { Countdown } from '../components/Countdown';
 import { RSVPForm } from '../components/RSVPForm';
 import { AttendeeStats } from '../components/AttendeeStats';
 import { MediaUploadSection } from '../components/MediaUploadSection';
-import { Calendar, MapPin, Clock, Utensils, Trophy, ExternalLink, DollarSign, Instagram, MessageCircle, Globe, ChevronLeft, ChevronRight, Users, Medal, Target, Check, AlertCircle, Menu, X } from 'lucide-react';
+import { Calendar, MapPin, Clock, Utensils, Trophy, ExternalLink, DollarSign, Instagram, MessageCircle, Globe, ChevronLeft, ChevronRight, Target, Check, Menu, X } from 'lucide-react';
 
-const SmokeSVG = ({ className }: { className?: string }) => (
-  <svg className={className} viewBox="0 0 400 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+const SmokeSVG = ({ className, style }: { className?: string; style?: React.CSSProperties }) => (
+  <svg className={className} style={style} viewBox="0 0 400 600" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M200 600C200 600 50 450 80 300C110 150 200 100 200 0C200 100 290 150 320 300C350 450 200 600 200 600Z" fill="currentColor" />
     <path d="M150 500C150 500 50 400 70 280C90 160 150 120 150 50C150 120 210 160 230 280C250 400 150 500 150 500Z" fill="currentColor" opacity="0.6" />
     <path d="M250 550C250 550 350 420 330 290C310 160 250 110 250 30C250 110 190 160 170 290C150 420 250 550 250 550Z" fill="currentColor" opacity="0.4" />
   </svg>
 );
 
-const StampSVG = ({ className, text }: { className?: string; text: string }) => (
-  <div className={`${className} relative`}>
-    <svg viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-      <rect x="5" y="5" width="90" height="110" fill="#c41e3a" stroke="#8b0000" strokeWidth="3" />
-      <rect x="10" y="10" width="80" height="100" fill="none" stroke="#ffffff" strokeWidth="1" opacity="0.5" />
-    </svg>
-    <div className="absolute inset-0 flex items-center justify-center">
-      <span className="text-white font-bold text-xs writing-vertical whitespace-nowrap" style={{ writingMode: 'vertical-rl' }}>
-        {text}
-      </span>
-    </div>
-  </div>
+const SmokeWrapSVG = ({ className, flip }: { className?: string; flip?: boolean }) => (
+  <svg
+    className={className}
+    viewBox="0 0 200 800"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    style={{ transform: flip ? 'scaleX(-1)' : undefined }}
+  >
+    <path d="M0 0C50 100 100 150 80 250C60 350 20 400 40 500C60 600 100 650 80 750C70 800 50 800 0 800V0Z" fill="currentColor" />
+    <path d="M0 100C30 150 60 180 50 250C40 320 10 350 20 420C30 490 60 520 50 590C45 630 30 650 0 680V100Z" fill="currentColor" opacity="0.5" />
+  </svg>
 );
 
 export function LandingPage() {
@@ -243,10 +242,10 @@ export function LandingPage() {
   }, [isMenuOpen, pendingScrollId]);
 
   return (
-    <div className="min-h-screen bg-dark animate-page-enter">
+    <div className="min-h-screen bg-[#0a0a0a] animate-page-enter">
       <div className="hero-top">
         <img src="/title-logo.png" alt="第一回 希楽夢杯" className="hero-logo" />
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-10">
           {['TOP', '喰王について', 'ファイター紹介', '最新情報'].map((item, i) => (
             <span key={i} className="nav-link cursor-pointer">{item}</span>
           ))}
@@ -279,7 +278,7 @@ export function LandingPage() {
           >
             <button
               type="button"
-              className="absolute top-6 right-6 w-12 h-12 flex items-center justify-center border border-white/30 hover:bg-white hover:text-black transition-colors"
+              className="absolute top-6 right-6 w-12 h-12 flex items-center justify-center border border-white/20 hover:bg-white hover:text-black transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
               <X className="w-6 h-6" />
@@ -290,10 +289,10 @@ export function LandingPage() {
                   key={item.id}
                   type="button"
                   onClick={() => handleMenuSelect(item.id)}
-                  className="w-full text-left py-3 group flex items-baseline gap-4 hover:text-[#c41e3a] transition-colors"
+                  className="w-full text-left py-3 group flex items-baseline gap-4 hover:text-[#3d7a35] transition-colors"
                 >
                   <span className="text-4xl md:text-5xl font-black tracking-tight uppercase">{item.en}</span>
-                  <span className="text-sm text-gray-500 group-hover:text-[#c41e3a]">{item.label}</span>
+                  <span className="text-sm text-gray-500 group-hover:text-[#3d7a35]">{item.label}</span>
                 </button>
               ))}
             </nav>
@@ -302,8 +301,8 @@ export function LandingPage() {
       )}
 
       <section id="top" className="hero-banner relative">
-        <SmokeSVG className="smoke-decoration smoke-left text-white/10 animate-smoke" />
-        <SmokeSVG className="smoke-decoration smoke-right text-white/10 animate-smoke" style={{ animationDelay: '-4s' }} />
+        <SmokeSVG className="smoke-decoration smoke-left text-white/8 animate-smoke" />
+        <SmokeSVG className="smoke-decoration smoke-right text-white/8 animate-smoke" style={{ animationDelay: '-5s' }} />
 
         <div className="site-shell hero-grid">
           <div className="relative z-10">
@@ -327,11 +326,16 @@ export function LandingPage() {
           </div>
 
           <div className="hero-visual">
-            <div className="hero-photo">
-              <img src="/golf-course-bg.jpg" alt="ゴルフ場" />
+            <div className="relative">
+              <div className="card-frame-gradient">
+                <img src="/golf-course-bg.jpg" alt="ゴルフ場" className="w-full" />
+                <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
+                  <p className="text-white text-lg font-medium font-serif-jp">宇治田原カントリー倶楽部</p>
+                </div>
+              </div>
+              <SmokeWrapSVG className="absolute -right-12 top-0 bottom-0 w-32 text-white/20 animate-float" />
             </div>
-            <StampSVG className="absolute -right-4 top-8 w-20 h-24" text="希楽夢杯" />
-            <div className="hero-countdown">
+            <div className="hero-countdown mt-6">
               <div className="lesson-badge mb-4">COUNTDOWN</div>
               <Countdown />
             </div>
@@ -349,142 +353,108 @@ export function LandingPage() {
       </section>
 
       <section id="event-details" className="section-dark relative">
-        <SmokeSVG className="smoke-decoration smoke-right text-white/5" />
+        <div className="section-bg-text">EVENT</div>
+        <SmokeWrapSVG className="absolute right-0 top-0 bottom-0 w-48 text-white/5" />
 
-        <div className="site-shell">
+        <div className="site-shell relative z-10">
           <div className="section-header">
-            <div className="section-en-title">EVENT</div>
             <div className="section-jp-title font-serif-jp">イベント詳細</div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 mb-16">
-            <div className="card-dark p-8 relative">
-              <StampSVG className="absolute -right-4 -top-4 w-16 h-20" text="開催日" />
-              <div className="flex items-center gap-3 mb-6">
-                <Calendar className="w-8 h-8 text-[#c41e3a]" />
-                <h3 className="text-2xl font-bold font-serif-jp">開催日時</h3>
+          <div className="grid lg:grid-cols-[1fr_1.2fr] gap-16 items-center mb-20">
+            <div className="space-y-8">
+              <div>
+                <p className="text-sm tracking-widest text-[#3d7a35] mb-3">DATE</p>
+                <div className="text-8xl md:text-9xl font-black leading-none">3/3</div>
+                <div className="text-2xl font-medium mt-2 text-gray-400">2026年 火曜日</div>
               </div>
-              <div className="text-center mb-8">
-                <div className="text-7xl md:text-8xl font-black mb-2 text-[#c41e3a]">3/3</div>
-                <div className="text-xl font-medium mb-4 text-gray-400">2026年</div>
-                <div className="inline-block px-6 py-2 border-2 border-[#c41e3a] text-lg font-semibold">火曜日</div>
-              </div>
-              <div className="space-y-4">
-                <div className="time-display-container flex flex-col items-center justify-center gap-2 border-2 border-[#c41e3a] p-6 bg-black/50">
-                  <Clock className="w-8 h-8 animate-clock-rotate text-[#c41e3a]" />
-                  <div className="text-5xl md:text-6xl font-black text-[#c41e3a]">7:50</div>
-                  <div className="text-lg font-semibold">スタート室集合</div>
-                </div>
-                <div className="flex items-center justify-center gap-3 p-4 border border-white/20 bg-black/30">
-                  <Trophy className="w-5 h-5 text-[#c41e3a]" />
-                  <span className="text-sm font-medium text-gray-400">08:12〜 嘉納スタート（5組予定）</span>
+              <div className="elegant-divider !mx-0 !ml-0" />
+              <div>
+                <p className="text-sm tracking-widest text-[#3d7a35] mb-3">TIME</p>
+                <div className="flex items-baseline gap-3">
+                  <Clock className="w-6 h-6 text-[#3d7a35]" />
+                  <span className="text-5xl font-black">7:50</span>
+                  <span className="text-lg text-gray-400">集合</span>
                 </div>
               </div>
             </div>
 
-            <div className="card-dark p-8">
-              <div className="flex items-center gap-3 mb-6">
-                <MapPin className="w-8 h-8 text-[#c41e3a]" />
-                <h3 className="text-2xl font-bold font-serif-jp">ゴルフ会場</h3>
-              </div>
-              <div className="text-center mb-8">
-                <div className="text-2xl md:text-3xl font-bold mb-6 font-serif-jp">宇治田原カントリー倶楽部</div>
-                <div className="p-4 border border-white/20 bg-black/30 mb-6">
-                  <p className="text-sm leading-relaxed text-gray-400">
-                    〒610-0211<br />
-                    京都府綴喜郡宇治田原町<br className="md:hidden" />奥山田長尾31-2
-                  </p>
+            <div className="relative">
+              <div className="relative rounded-full overflow-hidden w-full max-w-md mx-auto aspect-square border-4 border-white/20">
+                <img src="/golf-course-bg.jpg" alt="ゴルフ場" className="w-full h-full object-cover" />
+                <div className="absolute inset-0 gradient-blue-bottom" />
+                <div className="absolute bottom-8 left-0 right-0 text-center z-10">
+                  <p className="text-white text-xl font-bold font-serif-jp">宇治田原カントリー倶楽部</p>
                 </div>
-                <a
-                  href="https://www.google.com/maps/search/?api=1&query=宇治田原カントリー倶楽部"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 border-2 border-white text-sm font-semibold tracking-wider hover:bg-white hover:text-black transition-all"
-                >
-                  <MapPin className="w-4 h-4" />
-                  Googleマップで見る
-                  <ExternalLink className="w-4 h-4" />
-                </a>
               </div>
+              <SmokeWrapSVG className="absolute -left-16 top-1/4 w-24 h-96 text-white/15 animate-smoke" />
+              <SmokeWrapSVG className="absolute -right-16 top-1/3 w-24 h-96 text-white/15 animate-smoke" flip />
             </div>
           </div>
 
-          <div className="card-dark p-8 md:p-12 mb-8">
-            <div className="flex items-center justify-center gap-3 mb-8">
-              <DollarSign className="w-8 h-8 text-[#c41e3a]" />
-              <h3 className="text-2xl font-bold font-serif-jp">参加費用</h3>
-            </div>
-            <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
-              <div className="p-6 border-2 border-[#c41e3a] bg-black/50 text-center">
-                <p className="text-sm font-semibold mb-2 text-gray-400">プレー費</p>
-                <p className="text-5xl font-black mb-2 text-[#c41e3a]">¥8,180</p>
-                <p className="text-xs text-gray-500">昼食・表彰式ワンドリンク付</p>
-              </div>
-              <div className="p-6 border-2 border-[#c41e3a] bg-black/50 text-center">
-                <p className="text-sm font-semibold mb-2 text-gray-400">コンペルフィー</p>
-                <p className="text-5xl font-black mb-2 text-[#c41e3a]">¥2,000</p>
-                <p className="text-xs text-gray-500">賞品費</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="card-dark p-8 md:p-12">
-            <div className="flex items-center justify-center gap-3 mb-8">
-              <Utensils className="w-6 h-6 text-[#c41e3a]" />
-              <Trophy className="w-6 h-6 text-[#c41e3a]" />
-            </div>
-            <h3 className="text-2xl font-bold text-center mb-8 font-serif-jp">イベント内容</h3>
-            <div className="max-w-2xl mx-auto space-y-6 text-center">
-              <div className="p-6 border-2 border-[#c41e3a] bg-black/50">
-                <p className="text-3xl md:text-4xl font-black font-serif-jp leading-relaxed">
-                  麺屋希楽夢<br />初のゴルフコンペ開催！
-                </p>
-              </div>
-              <p className="text-base leading-relaxed text-gray-400">
-                京都府宇治田原町のラーメン屋<br />【麺屋 希楽夢】主催
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="card-elegant text-center">
+              <MapPin className="w-8 h-8 mx-auto mb-4 text-[#3d7a35]" />
+              <h3 className="text-xl font-bold mb-3 font-serif-jp">会場</h3>
+              <p className="text-sm text-gray-400 leading-relaxed">
+                京都府綴喜郡宇治田原町<br />奥山田長尾31-2
               </p>
-              <p className="text-base text-gray-500">初心者歓迎／おひとり参加OK</p>
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=宇治田原カントリー倶楽部"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 mt-4 text-sm text-[#3d7a35] hover:text-white transition-colors"
+              >
+                MAP <ExternalLink className="w-3 h-3" />
+              </a>
+            </div>
+
+            <div className="card-elegant text-center">
+              <DollarSign className="w-8 h-8 mx-auto mb-4 text-[#3d7a35]" />
+              <h3 className="text-xl font-bold mb-3 font-serif-jp">プレー費</h3>
+              <p className="text-4xl font-black text-[#3d7a35]">¥8,180</p>
+              <p className="text-xs text-gray-500 mt-2">昼食・ワンドリンク付</p>
+            </div>
+
+            <div className="card-elegant text-center">
+              <Trophy className="w-8 h-8 mx-auto mb-4 text-[#3d7a35]" />
+              <h3 className="text-xl font-bold mb-3 font-serif-jp">コンペフィー</h3>
+              <p className="text-4xl font-black text-[#3d7a35]">¥2,000</p>
+              <p className="text-xs text-gray-500 mt-2">賞品費</p>
             </div>
           </div>
         </div>
       </section>
 
       <section id="groupings" className="section-texture relative">
-        <SmokeSVG className="smoke-decoration smoke-left text-white/10" />
+        <div className="section-bg-text">GROUPINGS</div>
+        <SmokeWrapSVG className="absolute left-0 top-0 bottom-0 w-40 text-white/5" />
 
-        <div className="site-shell">
+        <div className="site-shell relative z-10">
           <div className="section-header">
-            <div className="section-en-title">GROUPINGS</div>
             <div className="section-jp-title font-serif-jp">組み分け</div>
+            <p className="section-jp-sub mt-2">08:12〜 嘉納スタート</p>
           </div>
 
-          <div className="flex justify-center mb-10">
-            <div className="inline-flex items-center gap-2 px-6 py-3 border-2 border-[#c41e3a] bg-black/50 text-sm font-semibold">
-              08:12〜 嘉納スタート
-            </div>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-8">
             {groupings.map((group) => (
-              <div key={group.label} className="card-frame p-6">
-                <div className="flex items-center justify-between mb-6">
-                  <div className="flex items-center gap-4">
-                    <div className="w-14 h-14 flex items-center justify-center text-2xl font-black border-2 border-[#c41e3a] bg-black text-[#c41e3a]">
-                      {group.label}
-                    </div>
-                    <div className="text-xl font-bold">{group.title}</div>
+              <div key={group.label} className="card-elegant">
+                <div className="flex items-center gap-6 mb-6">
+                  <div className="w-16 h-16 rounded-full flex items-center justify-center text-2xl font-black border-2 border-[#3d7a35] text-[#3d7a35]">
+                    {group.label}
                   </div>
-                  <div className="px-3 py-1 border border-white/30 text-sm text-gray-400">{group.count}人</div>
+                  <div>
+                    <div className="text-xl font-bold">{group.title}</div>
+                    <div className="text-sm text-gray-500">{group.count}名</div>
+                  </div>
                 </div>
-                <div className="border border-dashed border-[#c41e3a] p-4 bg-black/30">
-                  <ul className="grid gap-2 sm:grid-cols-2">
-                    {group.members.map((member) => (
-                      <li key={member.name} className="flex items-center gap-2 px-3 py-2 border border-white/10 bg-black/50">
-                        <span className={`w-2 h-2 border ${member.highlight ? 'border-[#c41e3a] bg-[#c41e3a]' : 'border-white/50 bg-transparent'}`} />
-                        <span className={`text-sm font-medium ${member.highlight ? 'text-[#c41e3a]' : 'text-white'}`}>{member.name}</span>
-                      </li>
-                    ))}
-                  </ul>
+                <div className="space-y-2">
+                  {group.members.map((member) => (
+                    <div key={member.name} className="flex items-center gap-3 py-2 border-b border-white/5">
+                      <span className={`w-2 h-2 rounded-full ${member.highlight ? 'bg-[#3d7a35]' : 'bg-white/20'}`} />
+                      <span className={`text-sm ${member.highlight ? 'text-[#3d7a35] font-medium' : 'text-gray-400'}`}>{member.name}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
             ))}
@@ -493,26 +463,25 @@ export function LandingPage() {
       </section>
 
       <section id="special-awards" className="section-dark relative">
-        <StampSVG className="absolute right-8 top-16 w-20 h-24" text="特別賞" />
+        <div className="section-bg-text">AWARDS</div>
 
-        <div className="site-shell">
+        <div className="site-shell relative z-10">
           <div className="section-header">
-            <div className="section-en-title">AWARDS</div>
             <div className="section-jp-title font-serif-jp">特別賞</div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-12">
             {specialAwards.map((award) => {
               const Icon = award.icon;
               return (
-                <div key={award.title} className="card-frame p-8 text-center">
-                  <div className="mx-auto mb-6 w-20 h-20 flex items-center justify-center border-2 border-[#c41e3a] bg-black">
-                    <Icon className="w-10 h-10 text-[#c41e3a]" />
+                <div key={award.title} className="text-center">
+                  <div className="mx-auto mb-8 w-28 h-28 rounded-full flex items-center justify-center border-2 border-[#3d7a35]/50 bg-[#3d7a35]/10">
+                    <Icon className="w-12 h-12 text-[#3d7a35]" />
                   </div>
-                  <div className="text-2xl md:text-3xl font-black mb-4 font-serif-jp">{award.title}</div>
-                  <div className="w-16 h-1 mx-auto mb-4 bg-[#c41e3a]" />
-                  <p className="text-sm mb-3 text-gray-400">{award.description}</p>
-                  {award.note && <p className="text-xs text-gray-600">{award.note}</p>}
+                  <div className="text-3xl font-black mb-4 font-serif-jp">{award.title}</div>
+                  <div className="elegant-divider" />
+                  <p className="text-sm text-gray-400">{award.description}</p>
+                  {award.note && <p className="text-xs text-gray-600 mt-2">{award.note}</p>}
                 </div>
               );
             })}
@@ -521,28 +490,23 @@ export function LandingPage() {
       </section>
 
       <section id="local-rules" className="section-texture relative">
-        <SmokeSVG className="smoke-decoration smoke-right text-white/10" />
+        <div className="section-bg-text">RULES</div>
+        <SmokeWrapSVG className="absolute right-0 top-0 bottom-0 w-40 text-white/5" flip />
 
-        <div className="site-shell">
+        <div className="site-shell relative z-10">
           <div className="section-header">
-            <div className="section-en-title">RULES</div>
             <div className="section-jp-title font-serif-jp">希楽夢杯ローカルルール</div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="space-y-4">
             {localRules.map((rule, index) => (
-              <div key={rule.title} className="card-dark p-5 md:p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <span className="w-10 h-10 flex items-center justify-center border-2 border-[#c41e3a] bg-black">
-                    <Check className="w-5 h-5 text-[#c41e3a]" />
-                  </span>
-                  <span className="text-xs font-semibold tracking-wider text-[#c41e3a]">
-                    RULE {String(index + 1).padStart(2, '0')}
-                  </span>
+              <div key={rule.title} className="card-elegant flex items-start gap-6">
+                <div className="w-12 h-12 rounded-full flex-shrink-0 flex items-center justify-center border border-[#3d7a35]/50 text-[#3d7a35] font-bold">
+                  {String(index + 1).padStart(2, '0')}
                 </div>
-                <div className="pl-13">
-                  <div className="text-base font-semibold mb-2">{rule.title}</div>
-                  <p className="text-sm leading-relaxed text-gray-400">{rule.description}</p>
+                <div>
+                  <div className="text-lg font-semibold mb-1">{rule.title}</div>
+                  <p className="text-sm text-gray-400 leading-relaxed">{rule.description}</p>
                 </div>
               </div>
             ))}
@@ -551,250 +515,205 @@ export function LandingPage() {
       </section>
 
       <section id="award-ceremony" className="section-dark relative">
-        <div className="site-shell">
-          <div className="section-header">
-            <div className="section-en-title">CEREMONY</div>
+        <div className="section-bg-text">CEREMONY</div>
+
+        <div className="site-shell relative z-10">
+          <div className="section-header section-header--center">
             <div className="section-jp-title font-serif-jp">表彰式</div>
           </div>
 
-          <div className="max-w-2xl mx-auto">
-            <div className="card-frame p-8 text-center">
-              <div className="text-3xl md:text-4xl font-black mb-6 font-serif-jp">宇治田原カントリー倶楽部</div>
-              <p className="text-base leading-relaxed text-gray-400">
-                プレー終了後、会場にて表彰式を行います。<br />
-                賞品をご用意しておりますので、お楽しみに！
-              </p>
-            </div>
+          <div className="max-w-2xl mx-auto text-center">
+            <div className="text-3xl md:text-4xl font-black mb-8 font-serif-jp">宇治田原カントリー倶楽部</div>
+            <div className="elegant-divider" />
+            <p className="text-gray-400 leading-relaxed">
+              プレー終了後、会場にて表彰式を行います。<br />
+              賞品をご用意しておりますので、お楽しみに！
+            </p>
           </div>
         </div>
       </section>
 
       <section id="after-party" className="section-texture relative">
-        <SmokeSVG className="smoke-decoration smoke-left text-white/10" />
-        <StampSVG className="absolute right-8 top-16 w-20 h-24" text="懇親会" />
+        <div className="section-bg-text">PARTY</div>
+        <SmokeWrapSVG className="absolute left-0 top-0 bottom-0 w-40 text-white/5" />
 
-        <div className="site-shell">
-          <div className="section-header">
-            <div className="section-en-title">AFTER PARTY</div>
-            <div className="section-jp-title font-serif-jp">懇親会</div>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="card-dark p-8 md:col-span-2">
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-black mb-4 font-serif-jp">麺屋 希楽夢</div>
-                <div className="flex items-center justify-center gap-2 mb-6 text-[#c41e3a]">
-                  <Clock className="w-5 h-5" />
-                  <span className="text-xl font-bold">18:00〜（予定）</span>
-                </div>
-                <div className="inline-block p-4 border-2 border-[#c41e3a] bg-black/50">
-                  <p className="text-sm leading-relaxed text-gray-400">
-                    〒610-0201<br />
-                    京都府綴喜郡宇治田原町南亥子90-1
-                  </p>
+        <div className="site-shell relative z-10">
+          <div className="grid lg:grid-cols-[1.2fr_1fr] gap-16 items-center">
+            <div className="relative order-2 lg:order-1">
+              <div className="relative rounded-full overflow-hidden w-full max-w-md mx-auto aspect-square border-4 border-white/20">
+                <img src="/tokusio.jpg" alt="希楽夢の料理" className="w-full h-full object-cover" />
+                <div className="absolute inset-0 gradient-green-bottom" />
+                <div className="absolute bottom-8 left-0 right-0 text-center z-10">
+                  <p className="text-white text-xl font-bold font-serif-jp">麺屋 希楽夢</p>
                 </div>
               </div>
+              <SmokeWrapSVG className="absolute -left-12 top-1/4 w-20 h-80 text-white/15 animate-smoke" />
+              <SmokeWrapSVG className="absolute -right-12 top-1/3 w-20 h-80 text-white/15 animate-smoke" flip />
             </div>
 
-            <div className="md:col-span-2 flex justify-center">
-              <a
-                href="https://www.google.com/maps/search/?api=1&query=麺屋希楽夢+京都府綴喜郡宇治田原町南亥子90-1"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 border-2 border-white text-sm font-semibold tracking-wider hover:bg-white hover:text-black transition-all"
-              >
-                <MapPin className="w-4 h-4" />
-                Googleマップで見る
-                <ExternalLink className="w-4 h-4" />
-              </a>
-            </div>
+            <div className="order-1 lg:order-2">
+              <div className="section-header !mb-8">
+                <div className="section-jp-title font-serif-jp">懇親会</div>
+              </div>
 
-            <div className="card-dark p-6 text-center">
-              <p className="text-sm font-semibold mb-2 text-gray-400">参加費（食事代）</p>
-              <p className="text-4xl font-black text-[#c41e3a]">¥2,000</p>
-            </div>
-
-            <div className="card-dark p-6">
-              <p className="text-sm leading-relaxed text-center text-gray-400">
-                お食事はお鍋を予定しております<br />
-                <span className="text-xs">※飲み物は各自でご用意をお願いします。</span>
-              </p>
-            </div>
-
-            <div className="card-dark p-6 md:col-span-2">
-              <p className="text-base leading-relaxed text-center text-gray-400">
+              <p className="text-gray-400 leading-loose mb-8">
                 プレー後は麺屋希楽夢にて懇親会を開催！<br />
                 ゴルフの余韻を楽しみながら、<br />
-                美味しい料理とともに交流を深めましょう。<br />
-                <span className="text-sm">※参加自由</span>
+                美味しい料理とともに交流を深めましょう。
               </p>
-            </div>
 
-            <div className="card-dark p-6 text-center">
-              <p className="text-sm font-semibold mb-4">インスタグラムはこちら！</p>
-              <a
-                href="https://www.instagram.com/menya.kiramu/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2 border-2 border-[#c41e3a] text-sm font-semibold tracking-wider text-[#c41e3a] hover:bg-[#c41e3a] hover:text-white transition-all"
-              >
-                <Instagram className="w-4 h-4" />
-                Instagram
-                <ExternalLink className="w-3 h-3" />
-              </a>
-            </div>
+              <div className="space-y-4 mb-8">
+                <div className="flex items-center gap-4">
+                  <Clock className="w-5 h-5 text-[#3d7a35]" />
+                  <span className="text-xl font-bold">18:00〜（予定）</span>
+                </div>
+                <div className="flex items-center gap-4">
+                  <DollarSign className="w-5 h-5 text-[#3d7a35]" />
+                  <span className="text-xl font-bold">¥2,000</span>
+                  <span className="text-sm text-gray-500">（食事代）</span>
+                </div>
+              </div>
 
-            <div className="card-dark p-6 text-center">
-              <p className="text-sm font-semibold mb-4">公式LINEはこちら！</p>
-              <a
-                href="https://line.me/R/ti/p/@091wotfr"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2 border-2 border-[#c41e3a] text-sm font-semibold tracking-wider text-[#c41e3a] hover:bg-[#c41e3a] hover:text-white transition-all"
-              >
-                <MessageCircle className="w-4 h-4" />
-                LINE
-                <ExternalLink className="w-3 h-3" />
-              </a>
-            </div>
+              <div className="flex flex-wrap gap-4">
+                <a
+                  href="https://www.instagram.com/menya.kiramu/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 py-2 border border-white/20 text-sm hover:border-[#3d7a35] hover:text-[#3d7a35] transition-all"
+                >
+                  <Instagram className="w-4 h-4" />
+                  Instagram
+                </a>
+                <a
+                  href="https://line.me/R/ti/p/@091wotfr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 py-2 border border-white/20 text-sm hover:border-[#3d7a35] hover:text-[#3d7a35] transition-all"
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  LINE
+                </a>
+                <a
+                  href="https://menyakiramu.netlify.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 py-2 border border-white/20 text-sm hover:border-[#3d7a35] hover:text-[#3d7a35] transition-all"
+                >
+                  <Globe className="w-4 h-4" />
+                  HP
+                </a>
+              </div>
 
-            <div className="card-dark p-6 text-center md:col-span-2">
-              <p className="text-sm font-semibold mb-4">希楽夢HPはこちら！</p>
-              <a
-                href="https://menyakiramu.netlify.app/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2 border-2 border-[#c41e3a] text-sm font-semibold tracking-wider text-[#c41e3a] hover:bg-[#c41e3a] hover:text-white transition-all"
-              >
-                <Globe className="w-4 h-4" />
-                希楽夢HP
-                <ExternalLink className="w-3 h-3" />
-              </a>
+              <button className="view-more-btn mt-10">
+                VIEW MORE
+              </button>
             </div>
           </div>
         </div>
       </section>
 
       <section id="deadline" className="section-dark relative">
-        <div className="site-shell">
+        <div className="section-bg-text">DEADLINE</div>
+
+        <div className="site-shell relative z-10">
           <div className="section-header section-header--center">
-            <div className="section-en-title">DEADLINE</div>
             <div className="section-jp-title font-serif-jp">懇親会回答締め切り</div>
           </div>
 
           <div className="text-center">
-            <div className="inline-block p-8 md:p-12 border-2 border-[#c41e3a] bg-black/50">
-              <div className="text-5xl md:text-7xl font-black mb-4 text-[#c41e3a]">2026年2月24日</div>
-              <div className="text-xl font-bold">までにご回答ください</div>
-            </div>
-
-            <div className="mt-8 p-6 max-w-xl mx-auto border-2 border-[#c41e3a] bg-black/50">
-              <p className="text-sm leading-relaxed text-gray-400">
-                期日までにご回答いただけますよう、お願いいたします。締切日を過ぎてもご連絡がない場合は、不参加として扱わせていただきます。
-              </p>
-            </div>
+            <div className="text-6xl md:text-8xl font-black mb-6">2/24</div>
+            <div className="text-xl text-gray-400">2026年</div>
+            <div className="elegant-divider" />
+            <p className="text-sm text-gray-500 max-w-md mx-auto">
+              期日までにご回答いただけますよう、お願いいたします。
+            </p>
           </div>
         </div>
       </section>
 
       <section id="score-photo" className="section-texture relative">
-        <SmokeSVG className="smoke-decoration smoke-right text-white/10" />
+        <div className="section-bg-text">PHOTO</div>
+        <SmokeWrapSVG className="absolute right-0 top-0 bottom-0 w-40 text-white/5" flip />
 
-        <div className="site-shell">
-          <div className="section-header">
-            <div className="section-en-title">SCORE PHOTO</div>
-            <div className="section-jp-title font-serif-jp">スコアフォト作成</div>
-            <p className="section-jp-sub">写真にスコアを重ねて保存できます</p>
-          </div>
+        <div className="site-shell relative z-10">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <div className="section-header !mb-8">
+                <div className="section-jp-title font-serif-jp">スコアフォト作成</div>
+                <p className="section-jp-sub mt-2">写真にスコアを重ねて保存できます</p>
+              </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="card-dark p-6 md:p-8">
-              <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
-                <span className="lesson-badge">フォーム入力</span>
-                <span className="text-xs text-gray-500">入力はカンタン</span>
-              </div>
-              <div className="border-2 border-[#c41e3a] p-2">
-                <img src="/score-photo-form.png" alt="スコアフォト作成フォーム" className="w-full h-auto object-cover" loading="lazy" />
-              </div>
-              <div className="mt-6 grid sm:grid-cols-3 gap-2 text-xs">
-                {['パー自動反映', '合計自動計算', 'スマホ対応', 'スコア途中保存', '好きな画像選択', '大会名入力OK'].map((feature) => (
-                  <div key={feature} className="px-3 py-2 text-center border border-white/20 bg-black/50 text-gray-400">{feature}</div>
+              <p className="text-gray-400 leading-loose mb-8">
+                お好きな写真を選んで、スコアを入力するだけ。<br />
+                思い出に残るオリジナルのスコアフォトが完成します。
+              </p>
+
+              <div className="flex flex-wrap gap-2 mb-8">
+                {['パー自動反映', '合計自動計算', 'スマホ対応', '好きな画像選択'].map((feature) => (
+                  <span key={feature} className="px-4 py-2 text-xs border border-white/10 text-gray-400">{feature}</span>
                 ))}
               </div>
+
+              <button onClick={goToScorePhoto} className="view-more-btn">
+                VIEW MORE
+              </button>
             </div>
 
-            <div className="card-dark p-6 md:p-8">
-              <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
-                <span className="lesson-badge">完成イメージ</span>
-                <span className="text-xs text-gray-500">そのまま保存OK</span>
+            <div className="relative">
+              <div className="relative rounded-2xl overflow-hidden border-2 border-white/20">
+                <img src="/score-photo-sample.png" alt="スコアフォト完成イメージ" className="w-full h-auto" loading="lazy" />
               </div>
-              <div className="border-2 border-[#c41e3a] p-2 bg-black">
-                <img src="/score-photo-sample.png" alt="スコアフォト完成イメージ" className="w-full h-auto object-cover" loading="lazy" />
-              </div>
-              <div className="mt-6 flex flex-col items-center gap-4">
-                <button onClick={goToScorePhoto} className="px-8 py-3 border-2 border-white text-sm font-semibold tracking-wider hover:bg-white hover:text-black transition-all">
-                  スコアフォトを作成する
-                </button>
-                <p className="text-xs text-center text-gray-500">写真を選ぶだけでスコア入り画像が完成します</p>
-              </div>
+              <SmokeWrapSVG className="absolute -right-8 top-1/4 w-16 h-64 text-white/15 animate-float" flip />
             </div>
-          </div>
-
-          <div className="flex justify-center mt-16">
-            <button onClick={goToScorePhoto} className="view-more-btn">
-              VIEW MORE
-            </button>
           </div>
         </div>
       </section>
 
       <section id="popular-menu" className="section-dark relative">
-        <SmokeSVG className="smoke-decoration smoke-left text-white/10" />
+        <div className="section-bg-text">MENU</div>
+        <SmokeWrapSVG className="absolute left-0 top-0 bottom-0 w-40 text-white/5" />
 
-        <div className="site-shell">
-          <div className="section-header">
-            <div className="section-en-title">MENU</div>
-            <div className="section-jp-title font-serif-jp">人気メニュー</div>
-          </div>
-
-          <div className="card-dark p-6 md:p-10">
-            <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div className="space-y-6">
-                <div className="inline-flex items-center gap-3">
-                  <span className="px-3 py-1 text-xs font-semibold bg-[#c41e3a] text-white">{featuredMenus[activeSlide].tag}</span>
-                  <span className="text-xs tracking-wider text-gray-500">{featuredMenus[activeSlide].subtitle}</span>
+        <div className="site-shell relative z-10">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="relative order-2 lg:order-1">
+              <div className="relative rounded-full overflow-hidden w-full max-w-md mx-auto aspect-square border-4 border-white/20">
+                <img src={featuredMenus[activeSlide].image} alt={featuredMenus[activeSlide].title} className="w-full h-full object-cover" />
+                <div className="absolute inset-0 gradient-blue-bottom" />
+                <div className="absolute bottom-8 left-0 right-0 text-center z-10">
+                  <p className="text-white text-xl font-bold font-serif-jp">{featuredMenus[activeSlide].title}</p>
                 </div>
+              </div>
+              <SmokeWrapSVG className="absolute -left-12 top-1/4 w-20 h-80 text-white/15 animate-smoke" />
+              <SmokeWrapSVG className="absolute -right-12 top-1/3 w-20 h-80 text-white/15 animate-smoke" flip />
+            </div>
 
-                <div>
-                  <h3 className="text-3xl md:text-4xl font-black mb-2 font-serif-jp">
-                    {featuredMenus[activeSlide].title}
-                    <span className="text-lg md:text-xl ml-2 text-[#c41e3a]">（{featuredMenus[activeSlide].price}）</span>
-                  </h3>
-                  <p className="text-sm leading-relaxed whitespace-pre-line text-gray-400">{featuredMenus[activeSlide].description}</p>
-                </div>
-
-                <div className="flex items-center gap-4">
-                  <button onClick={prevSlide} className="w-12 h-12 flex items-center justify-center border-2 border-white hover:bg-white hover:text-black transition-colors" aria-label="前のメニュー">
-                    <ChevronLeft className="w-6 h-6" />
-                  </button>
-                  <div className="flex items-center gap-2">
-                    {featuredMenus.map((item, index) => (
-                      <span key={item.id} className={`h-2 transition-all ${index === activeSlide ? 'w-8 bg-[#c41e3a]' : 'w-2 bg-white/30'}`} aria-label={`${index + 1}枚目`} />
-                    ))}
-                  </div>
-                  <button onClick={nextSlide} className="w-12 h-12 flex items-center justify-center border-2 border-white hover:bg-white hover:text-black transition-colors" aria-label="次のメニュー">
-                    <ChevronRight className="w-6 h-6" />
-                  </button>
-                </div>
-
-                <p className="text-xs text-gray-500">{featuredMenus[activeSlide].note}</p>
+            <div className="order-1 lg:order-2">
+              <div className="section-header !mb-8">
+                <div className="section-jp-title font-serif-jp">人気メニュー</div>
               </div>
 
-              <div className="relative">
-                <div className="absolute -left-4 -top-4 w-24 h-24 border-2 border-[#c41e3a] -z-10" />
-                <div className="card-frame">
-                  <img src={featuredMenus[activeSlide].image} alt={featuredMenus[activeSlide].title} className="w-full h-auto object-cover filter grayscale-[30%]" loading="lazy" />
+              <div className="mb-6">
+                <span className="text-xs tracking-widest text-[#3d7a35]">{featuredMenus[activeSlide].subtitle}</span>
+              </div>
+
+              <h3 className="text-3xl md:text-4xl font-black mb-2 font-serif-jp">
+                {featuredMenus[activeSlide].title}
+              </h3>
+              <p className="text-2xl font-bold text-[#3d7a35] mb-6">{featuredMenus[activeSlide].price}</p>
+              <p className="text-sm text-gray-400 leading-relaxed mb-8">{featuredMenus[activeSlide].description}</p>
+
+              <div className="flex items-center gap-6">
+                <button onClick={prevSlide} className="w-12 h-12 rounded-full flex items-center justify-center border border-white/20 hover:border-white hover:bg-white hover:text-black transition-all" aria-label="前のメニュー">
+                  <ChevronLeft className="w-5 h-5" />
+                </button>
+                <div className="flex items-center gap-2">
+                  {featuredMenus.map((item, index) => (
+                    <span key={item.id} className={`h-1.5 rounded-full transition-all ${index === activeSlide ? 'w-8 bg-[#3d7a35]' : 'w-1.5 bg-white/20'}`} />
+                  ))}
                 </div>
+                <button onClick={nextSlide} className="w-12 h-12 rounded-full flex items-center justify-center border border-white/20 hover:border-white hover:bg-white hover:text-black transition-all" aria-label="次のメニュー">
+                  <ChevronRight className="w-5 h-5" />
+                </button>
               </div>
             </div>
           </div>
@@ -802,79 +721,59 @@ export function LandingPage() {
       </section>
 
       <section id="dj-booth" className="section-texture relative">
-        <div className="site-shell">
+        <div className="section-bg-text">DJ</div>
+
+        <div className="site-shell relative z-10">
           <div className="section-header">
-            <div className="section-en-title">DJ BOOTH</div>
             <div className="section-jp-title font-serif-jp">DJブース</div>
           </div>
-        </div>
-        <div className="site-shell mb-16">
-          <AttendeeStats table="after_party_attendees" />
-        </div>
-        <div className="site-shell">
-          <div className="card-dark p-6 md:p-10">
-            <div className="grid gap-8 md:grid-cols-[1.2fr_1fr] items-center">
-              <div>
-                <div className="inline-flex items-center gap-2 px-4 py-2 border-2 border-[#c41e3a] bg-black/50 mb-4">
-                  <span className="h-2 w-2 rounded-full bg-[#c41e3a] animate-pulse" />
-                  <span className="text-sm font-semibold text-[#c41e3a]">KIRAMUブース</span>
-                </div>
-                <h3 className="text-2xl md:text-3xl font-black mb-4 font-serif-jp text-[#c41e3a]">KIRAMU DJ SET</h3>
-                <p className="text-sm mb-6 text-gray-400">レコードボタンを押すと、KOJIMA-Yayyyy!!!が流れます。</p>
-                <div className="flex flex-wrap gap-2 text-xs">
-                  {['KOJIMA', 'VINYL', 'HYPE'].map((tag) => (
-                    <span key={tag} className="px-3 py-1 border border-white/20 text-gray-500">{tag}</span>
-                  ))}
-                </div>
-              </div>
-              <div className="flex flex-col items-center gap-4">
-                <div className="p-6 border-2 border-[#c41e3a] bg-black/80">
-                  <button
-                    type="button"
-                    onClick={toggleDjSound}
-                    aria-pressed={isDjPlaying}
-                    aria-label={isDjPlaying ? 'DJサウンドを停止' : 'DJサウンドを再生'}
-                    className={`relative mx-auto flex items-center justify-center w-32 h-32 md:w-36 md:h-36 rounded-full border-2 border-[#c41e3a] transition-all ${
-                      isDjPlaying ? 'scale-105 shadow-[0_0_40px_rgba(196,30,58,0.5)]' : 'hover:shadow-[0_0_25px_rgba(196,30,58,0.3)]'
-                    }`}
-                    style={{ background: 'linear-gradient(145deg, #3d0a0a, #0a0a0a)' }}
-                  >
-                    <span
-                      className={`absolute inset-3 rounded-full border border-[#c41e3a]/30 ${isDjPlaying ? 'animate-spin' : ''}`}
-                      style={{ background: 'repeating-radial-gradient(circle, #0a0a0a 0 4px, #151515 4px 8px)' }}
-                    />
-                    <span className="absolute inset-12 rounded-full bg-[#c41e3a] opacity-20" />
-                    <span className="relative text-sm font-black tracking-widest text-[#c41e3a]">{isDjPlaying ? 'STOP' : 'PLAY'}</span>
-                  </button>
-                  <div className="mt-4 text-center text-xs text-gray-500">{isDjPlaying ? '再生中...' : 'レコードボタンを押してスタート'}</div>
-                  <div className="mt-4 flex flex-col items-center gap-2">
-                    <div className="text-[10px] tracking-widest text-[#c41e3a]">BGM LIVE</div>
-                    <div className="flex items-end justify-center gap-1 h-8">
-                      {[0, 1, 2, 3, 4, 5].map((bar) => (
-                        <span
-                          key={`dj-eq-${bar}`}
-                          className={`w-2 h-8 bg-[#c41e3a] ${isDjPlaying ? 'animate-dj-eq' : 'opacity-30'}`}
-                          style={{ animationDelay: `${bar * 0.12}s` }}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                </div>
+
+          <div className="mb-16">
+            <AttendeeStats table="after_party_attendees" />
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <p className="text-sm tracking-widest text-[#3d7a35] mb-4">KIRAMU DJ SET</p>
+              <p className="text-gray-400 leading-loose mb-6">レコードボタンを押すと、KOJIMA-Yayyyy!!!が流れます。</p>
+              <div className="flex flex-wrap gap-2">
+                {['KOJIMA', 'VINYL', 'HYPE'].map((tag) => (
+                  <span key={tag} className="px-4 py-1 text-xs border border-white/10 text-gray-500">{tag}</span>
+                ))}
               </div>
             </div>
-            <audio ref={audioRef} src="/Yayyyyy!!.MP4" preload="none" onEnded={() => setIsDjPlaying(false)} />
+
+            <div className="flex justify-center">
+              <button
+                type="button"
+                onClick={toggleDjSound}
+                aria-pressed={isDjPlaying}
+                aria-label={isDjPlaying ? 'DJサウンドを停止' : 'DJサウンドを再生'}
+                className={`relative flex items-center justify-center w-40 h-40 rounded-full border-2 transition-all ${
+                  isDjPlaying ? 'border-[#3d7a35] scale-105 shadow-[0_0_60px_rgba(61,122,53,0.4)]' : 'border-white/30 hover:border-[#3d7a35]'
+                }`}
+                style={{ background: 'radial-gradient(circle at 30% 30%, #1a1a1a 0%, #0a0a0a 100%)' }}
+              >
+                <span
+                  className={`absolute inset-4 rounded-full border border-white/10 ${isDjPlaying ? 'animate-spin' : ''}`}
+                  style={{ background: 'repeating-radial-gradient(circle, #0a0a0a 0 3px, #151515 3px 6px)', animationDuration: '3s' }}
+                />
+                <span className="relative text-sm font-bold tracking-widest">{isDjPlaying ? 'STOP' : 'PLAY'}</span>
+              </button>
+              <audio ref={audioRef} src="/Yayyyyy!!.MP4" preload="none" onEnded={() => setIsDjPlaying(false)} />
+            </div>
           </div>
         </div>
       </section>
 
       <section id="rsvp-form" className="section-dark relative">
-        <SmokeSVG className="smoke-decoration smoke-right text-white/5" />
+        <div className="section-bg-text">RSVP</div>
+        <SmokeWrapSVG className="absolute right-0 top-0 bottom-0 w-40 text-white/5" flip />
 
-        <div className="site-shell">
-          <div className="section-header">
-            <div className="section-en-title">RSVP</div>
+        <div className="site-shell relative z-10">
+          <div className="section-header section-header--center">
             <div className="section-jp-title font-serif-jp">懇親会参加申込</div>
-            <p className="section-jp-sub">下記フォームよりご回答ください</p>
+            <p className="section-jp-sub mt-2">下記フォームよりご回答ください</p>
           </div>
 
           <RSVPForm />
@@ -893,20 +792,20 @@ export function LandingPage() {
           >
             <img
               src="/名称_未_設定-1.png"
-              alt="麺屋希楽夢 LINE公式アカウント - 営業日、メニュー情報、SNS情報をこちらから登録"
-              className="w-full h-auto border-2 border-[#c41e3a]"
+              alt="麺屋希楽夢 LINE公式アカウント"
+              className="w-full h-auto rounded-lg"
               loading="lazy"
             />
           </a>
         </div>
       </section>
 
-      <footer className="py-20 px-4 border-t border-white/10 bg-[#0a0a0a]">
+      <footer className="py-24 px-4 border-t border-white/5 bg-[#0a0a0a]">
         <div className="site-shell text-center">
-          <div className="text-xs tracking-[0.5em] mb-4 text-[#c41e3a]">CONTACT</div>
-          <h3 className="text-2xl font-black mb-6 tracking-wider font-serif-jp">KIRAMU GOLF COMPETITION 2026</h3>
-          <p className="text-sm mb-6 text-gray-500">ご不明な点がございましたら、お気軽にお問い合わせください。</p>
-          <p className="text-xs text-gray-600">希楽夢杯実行委員会</p>
+          <div className="text-xs tracking-[0.5em] mb-4 text-[#3d7a35]">CONTACT</div>
+          <h3 className="text-2xl font-black mb-8 tracking-wider font-serif-jp">KIRAMU GOLF COMPETITION 2026</h3>
+          <div className="elegant-divider" />
+          <p className="text-sm text-gray-600">希楽夢杯実行委員会</p>
         </div>
       </footer>
     </div>
