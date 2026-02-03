@@ -261,38 +261,61 @@ export function LandingPage() {
   return (
     <div className="min-h-screen bg-yellow-300 animate-page-enter">
 
+      <div className="hero-top">
+        <img
+          src="/title-logo.png"
+          alt="第一回 希楽夢杯"
+          className="hero-logo"
+        />
+        <button
+          type="button"
+          onClick={() => setIsMenuOpen((prev) => !prev)}
+          aria-expanded={isMenuOpen}
+          aria-controls="site-menu"
+          aria-label={isMenuOpen ? 'メニューを閉じる' : 'メニューを開く'}
+          className="hero-menu flex items-center gap-2"
+        >
+          <Menu className="w-4 h-4" />
+          <span className="hidden sm:inline">MENU</span>
+        </button>
+      </div>
+
       {isMenuOpen && (
-        <div className="fixed inset-0 z-50">
+        <div className="fixed inset-0 z-[200]">
           <button
             type="button"
             aria-label="メニューを閉じる"
-            className="absolute inset-0 bg-black/70"
+            className="absolute inset-0 bg-black/90 backdrop-blur-sm"
             onClick={() => setIsMenuOpen(false)}
           />
           <div
             id="site-menu"
-            className="absolute right-0 top-0 h-screen max-h-screen w-full max-w-xs sm:max-w-sm bg-white/95 border-l border-black/20 px-6 py-8 overflow-y-auto overscroll-contain touch-pan-y h-[100dvh] max-h-[100dvh] pb-[calc(env(safe-area-inset-bottom)+2rem)] backdrop-blur"
+            className="absolute right-0 top-0 h-screen w-full max-w-sm bg-[#0a0a0a] border-l border-[rgba(0,255,136,0.2)] px-8 py-8 overflow-y-auto"
             style={{ WebkitOverflowScrolling: 'touch' }}
           >
-            <div className="flex items-center justify-between mb-6">
-              <div className="text-lg uppercase tracking-[0.35em] font-semibold text-black">MENU</div>
+            <div className="flex items-center justify-between mb-10">
+              <div className="text-sm uppercase tracking-[0.4em] font-medium" style={{ color: 'var(--accent)' }}>Menu</div>
               <button
                 type="button"
-                className="rounded-full border border-black/30 px-3 py-2 text-sm font-semibold text-black hover:opacity-80 transition-opacity"
+                className="w-10 h-10 flex items-center justify-center border border-[rgba(0,255,136,0.3)] hover:bg-[rgba(0,255,136,0.1)] transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                <X className="w-4 h-4" />
+                <X className="w-5 h-5" style={{ color: 'var(--accent)' }} />
               </button>
             </div>
-            <nav className="space-y-3">
-              {menuItems.map((item) => (
+            <nav className="space-y-1">
+              {menuItems.map((item, index) => (
                 <button
                   key={item.id}
                   type="button"
                   onClick={() => handleMenuSelect(item.id)}
-                  className="w-full text-left border-b border-black/10 pb-2 text-sm font-semibold text-black tracking-[0.08em] hover:text-black/70 transition-colors"
+                  className="w-full text-left py-3 px-4 text-sm font-medium tracking-wide hover:bg-[rgba(0,255,136,0.05)] border-b border-[rgba(0,255,136,0.08)] transition-colors flex items-center gap-4 group"
+                  style={{ color: 'var(--ink)' }}
                 >
-                  {item.label}
+                  <span className="text-xs" style={{ color: 'var(--accent)', opacity: 0.5 }}>
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <span className="group-hover:translate-x-1 transition-transform">{item.label}</span>
                 </button>
               ))}
             </nav>
@@ -301,37 +324,21 @@ export function LandingPage() {
       )}
 
       <section id="top" className="hero-banner">
-        <div className="site-shell hero-top">
-          <img
-            src="/title-logo.png"
-            alt="第一回 希楽夢杯"
-            className="hero-logo"
-          />
-          <button
-            type="button"
-            onClick={() => setIsMenuOpen((prev) => !prev)}
-            aria-expanded={isMenuOpen}
-            aria-controls="site-menu"
-            aria-label={isMenuOpen ? 'メニューを閉じる' : 'メニューを開く'}
-            className="hero-menu"
-          >
-            MENU
-          </button>
-        </div>
-
         <div className="site-shell hero-grid">
-          <div>
+          <div className="relative z-10">
             <span className="hero-kicker">KIRAMU CUP 2026</span>
-            <h1 className="hero-title">
+            <h1 className="hero-title font-serif-jp">
               希楽夢杯、<br />
-              <span className="hero-title-accent">ゴルフ</span>、<br />
+              <span className="hero-title-accent glow-text">ゴルフ</span>、<br />
               始メル。
             </h1>
             <div className="hero-lead">
-              みんなで楽しくラウンドしながら、新しいゴルフの楽しさを体感する一日。
+              みんなで楽しくラウンドしながら、<br />
+              新しいゴルフの楽しさを体感する一日。
             </div>
             <button onClick={scrollToForm} className="hero-cta">
-              懇親会参加申込はこちら →
+              懇親会参加申込はこちら
+              <ChevronRight className="w-4 h-4" />
             </button>
           </div>
 
@@ -340,10 +347,8 @@ export function LandingPage() {
               <img src="/golf-course-bg.jpg" alt="ゴルフ場" />
             </div>
             <div className="hero-countdown">
-              <div className="lesson-badge">COUNTDOWN</div>
-              <div className="mt-4">
-                <Countdown />
-              </div>
+              <div className="lesson-badge mb-4">COUNTDOWN</div>
+              <Countdown />
             </div>
           </div>
         </div>
@@ -356,14 +361,20 @@ export function LandingPage() {
             </div>
           ))}
         </div>
+
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-float">
+          <div className="w-6 h-10 border border-[rgba(0,255,136,0.3)] rounded-full flex justify-center pt-2">
+            <div className="w-1 h-2 bg-[var(--accent)] rounded-full animate-pulse-slow" />
+          </div>
+        </div>
       </section>
 
-      <section id="event-details" className="section-wrap bg-yellow-300">
+      <section id="event-details" className="section-wrap">
         <div className="site-shell">
           <div className="section-header">
-            <span className="lesson-badge">LESSON 01</span>
-            <span className="section-eyebrow">DETAILS</span>
-            <h2 className="section-title text-black">イベント詳細</h2>
+            <span className="lesson-badge">01</span>
+            <span className="section-eyebrow">Event Details</span>
+            <h2 className="section-title font-serif-jp">イベント詳細</h2>
             <div className="section-line" />
           </div>
 
@@ -371,56 +382,56 @@ export function LandingPage() {
             <div className="motif-grid">
               {motifIcons.map((Icon, index) => (
                 <div key={`motif-${index}`} className="motif-dot">
-                  <Icon className="w-5 h-5 text-black" />
+                  <Icon />
                 </div>
               ))}
             </div>
           </div>
 
           <div className="section-grid section-grid--2 mb-12">
-            <div className="card-surface p-10">
-              <div className="flex items-center justify-center gap-3 mb-8">
-                <Calendar className="w-10 h-10" style={{ color: 'var(--accent)' }} />
-                <h3 className="text-3xl font-black uppercase" style={{ color: 'var(--forest)' }}>開催日時</h3>
+            <div className="card-surface p-8 md:p-10">
+              <div className="flex items-center gap-3 mb-8">
+                <Calendar className="w-8 h-8" style={{ color: 'var(--accent)' }} />
+                <h3 className="text-2xl font-medium font-serif-jp" style={{ color: 'var(--ink)' }}>開催日時</h3>
               </div>
 
-              <div className="text-center mb-6">
-                <div className="text-6xl md:text-7xl font-black text-black mb-3">
+              <div className="text-center mb-8">
+                <div className="text-6xl md:text-7xl font-bold glow-text mb-2" style={{ color: 'var(--accent)' }}>
                   3/3
                 </div>
-                <div className="text-2xl md:text-3xl font-black text-black mb-4">
+                <div className="text-xl font-medium mb-4" style={{ color: 'var(--ink-muted)' }}>
                   2026年
                 </div>
-                <div className="inline-block px-6 py-3 bg-white text-black text-xl font-black border-4 border-black" style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}>
+                <div className="inline-block px-6 py-2 border border-[rgba(0,255,136,0.3)] text-lg font-medium" style={{ color: 'var(--ink)' }}>
                   火曜日
                 </div>
               </div>
 
-              <div className="space-y-4 mt-6">
-                <div className="time-display-container flex flex-col items-center justify-center gap-3 border-4 border-black p-6 animate-fade-in-scale animate-glow" style={{ backgroundColor: 'var(--pine)', boxShadow: '4px 4px 0 0 var(--shadow-color)' }}>
-                  <Clock className="w-10 h-10 text-white animate-clock-rotate" />
-                  <div className="text-5xl md:text-7xl font-black text-white animate-pulse-slow">7:50</div>
-                  <div className="text-2xl md:text-3xl font-black text-white">スタート室集合</div>
+              <div className="space-y-4">
+                <div className="time-display-container flex flex-col items-center justify-center gap-2 border border-[rgba(0,255,136,0.3)] p-6 bg-[rgba(0,255,136,0.05)] animate-glow">
+                  <Clock className="w-8 h-8 animate-clock-rotate" style={{ color: 'var(--accent)' }} />
+                  <div className="text-4xl md:text-5xl font-bold glow-text" style={{ color: 'var(--accent)' }}>7:50</div>
+                  <div className="text-lg font-medium" style={{ color: 'var(--ink)' }}>スタート室集合</div>
                 </div>
-                <div className="flex items-center justify-center gap-3 text-black bg-white border-4 border-black p-4">
-                  <Trophy className="w-6 h-6 text-black" />
-                  <span className="text-base md:text-lg font-bold">08:12〜 嘉納スタート（5組予定）</span>
+                <div className="flex items-center justify-center gap-3 p-4 border border-[rgba(0,255,136,0.15)] bg-[rgba(0,255,136,0.03)]">
+                  <Trophy className="w-5 h-5" style={{ color: 'var(--accent)' }} />
+                  <span className="text-sm font-medium" style={{ color: 'var(--ink-muted)' }}>08:12〜 嘉納スタート（5組予定）</span>
                 </div>
               </div>
             </div>
 
-            <div className="card-surface p-10">
-              <div className="flex items-center justify-center gap-3 mb-8">
-                <MapPin className="w-10 h-10" style={{ color: 'var(--accent)' }} />
-                <h3 className="text-3xl font-black uppercase" style={{ color: 'var(--forest)' }}>ゴルフ会場</h3>
+            <div className="card-surface p-8 md:p-10">
+              <div className="flex items-center gap-3 mb-8">
+                <MapPin className="w-8 h-8" style={{ color: 'var(--accent)' }} />
+                <h3 className="text-2xl font-medium font-serif-jp" style={{ color: 'var(--ink)' }}>ゴルフ会場</h3>
               </div>
 
-              <div className="text-center mb-6">
-                <div className="text-3xl md:text-4xl font-black text-black mb-4">
-                  🏌️‍♂️ 宇治田原カントリー倶楽部
+              <div className="text-center mb-8">
+                <div className="text-2xl md:text-3xl font-medium mb-6 font-serif-jp" style={{ color: 'var(--ink)' }}>
+                  宇治田原カントリー倶楽部
                 </div>
-                <div className="bg-white border-4 border-black p-4 mb-4">
-                  <p className="text-base md:text-lg text-black font-bold leading-relaxed">
+                <div className="p-4 border border-[rgba(0,255,136,0.15)] bg-[rgba(0,255,136,0.03)] mb-6">
+                  <p className="text-sm leading-relaxed" style={{ color: 'var(--ink-muted)' }}>
                     〒610-0211<br />
                     京都府綴喜郡宇治田原町<br className="md:hidden" />奥山田長尾31-2
                   </p>
@@ -429,112 +440,107 @@ export function LandingPage() {
                   href="https://www.google.com/maps/search/?api=1&query=宇治田原カントリー倶楽部"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-white px-6 py-3 border-4 border-black text-lg font-black uppercase hover:translate-x-1 hover:translate-y-1 transition-transform"
-                  style={{ color: 'var(--forest)', boxShadow: '4px 4px 0 0 var(--shadow-color)' }}
+                  className="inline-flex items-center gap-2 px-6 py-3 border border-[var(--accent)] text-sm font-medium tracking-wider hover:bg-[var(--accent)] hover:text-[var(--surface)] transition-all"
+                  style={{ color: 'var(--accent)' }}
                 >
-                  <MapPin className="w-5 h-5" />
+                  <MapPin className="w-4 h-4" />
                   Googleマップで見る
-                  <ExternalLink className="w-5 h-5" />
+                  <ExternalLink className="w-4 h-4" />
                 </a>
               </div>
             </div>
           </div>
 
           <div className="card-soft p-8 md:p-12 mb-8">
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <DollarSign className="w-10 h-10" style={{ color: 'var(--accent)' }} />
-              <h3 className="text-3xl font-black uppercase" style={{ color: 'var(--forest)' }}>参加費用</h3>
+            <div className="flex items-center justify-center gap-3 mb-8">
+              <DollarSign className="w-8 h-8" style={{ color: 'var(--accent)' }} />
+              <h3 className="text-2xl font-medium font-serif-jp" style={{ color: 'var(--ink)' }}>参加費用</h3>
             </div>
-            <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-              <div className="bg-white border-4 border-black p-6" style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}>
-                <div className="text-center">
-                  <p className="text-lg font-bold text-black mb-2">プレー費</p>
-                  <p className="text-4xl md:text-5xl font-black mb-2" style={{ color: 'var(--forest)' }}>¥8,180</p>
-                  <p className="text-sm md:text-base text-black font-bold">昼食・表彰式ワンドリンク付</p>
-                </div>
+            <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+              <div className="p-6 border border-[rgba(0,255,136,0.2)] bg-[rgba(0,255,136,0.03)] text-center">
+                <p className="text-sm font-medium mb-2" style={{ color: 'var(--ink-muted)' }}>プレー費</p>
+                <p className="text-4xl font-bold glow-text mb-2" style={{ color: 'var(--accent)' }}>¥8,180</p>
+                <p className="text-xs" style={{ color: 'var(--ink-muted)' }}>昼食・表彰式ワンドリンク付</p>
               </div>
-              <div className="bg-white border-4 border-black p-6" style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}>
-                <div className="text-center">
-                  <p className="text-lg font-bold text-black mb-2">コンペルフィー</p>
-                  <p className="text-4xl md:text-5xl font-black mb-2" style={{ color: 'var(--forest)' }}>¥2,000</p>
-                  <p className="text-sm md:text-base text-black font-bold">賞品費</p>
-                </div>
+              <div className="p-6 border border-[rgba(0,255,136,0.2)] bg-[rgba(0,255,136,0.03)] text-center">
+                <p className="text-sm font-medium mb-2" style={{ color: 'var(--ink-muted)' }}>コンペルフィー</p>
+                <p className="text-4xl font-bold glow-text mb-2" style={{ color: 'var(--accent)' }}>¥2,000</p>
+                <p className="text-xs" style={{ color: 'var(--ink-muted)' }}>賞品費</p>
               </div>
             </div>
           </div>
 
           <div className="card-soft p-8 md:p-12">
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <Utensils className="w-8 h-8" style={{ color: 'var(--accent)' }} />
-              <Trophy className="w-8 h-8" style={{ color: 'var(--accent)' }} />
+            <div className="flex items-center justify-center gap-3 mb-8">
+              <Utensils className="w-6 h-6" style={{ color: 'var(--accent)' }} />
+              <Trophy className="w-6 h-6" style={{ color: 'var(--accent)' }} />
             </div>
-            <h3 className="text-2xl md:text-3xl font-black text-center mb-8 uppercase" style={{ color: 'var(--forest)' }}>
+            <h3 className="text-2xl font-medium text-center mb-8 font-serif-jp" style={{ color: 'var(--ink)' }}>
               イベント内容
             </h3>
-            <div className="space-y-6 text-black max-w-3xl mx-auto">
-              <div className="bg-white border-4 border-black p-8 md:p-10" style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}>
-                <p className="text-3xl md:text-4xl lg:text-5xl leading-tight font-black text-center" style={{ color: 'var(--forest)' }}>
-                  麺屋希楽夢<p>初のゴルフコンペ開催！</p>
+            <div className="max-w-2xl mx-auto space-y-6 text-center">
+              <div className="p-6 border border-[rgba(0,255,136,0.3)] bg-[rgba(0,255,136,0.05)]">
+                <p className="text-2xl md:text-3xl font-medium font-serif-jp leading-relaxed" style={{ color: 'var(--ink)' }}>
+                  麺屋希楽夢<br />初のゴルフコンペ開催！
                 </p>
               </div>
-              <p className="text-lg md:text-xl leading-relaxed font-bold text-center">
-                ・京都府宇治田原町のラーメン屋<p>【麺屋 希楽夢】主催</p>
+              <p className="text-base leading-relaxed" style={{ color: 'var(--ink-muted)' }}>
+                京都府宇治田原町のラーメン屋<br />【麺屋 希楽夢】主催
               </p>
-              <p className="text-lg md:text-xl leading-relaxed font-bold text-center">
-                ・初心者歓迎／おひとり参加OK
+              <p className="text-base" style={{ color: 'var(--ink-muted)' }}>
+                初心者歓迎／おひとり参加OK
               </p>
-              <p className="text-lg md:text-xl leading-relaxed font-bold text-center">
-                ・みんなで楽しくラウンドしましょう⛳️
+              <p className="text-base" style={{ color: 'var(--ink-muted)' }}>
+                みんなで楽しくラウンドしましょう
               </p>
             </div>
           </div>
 
-          <div id="groupings" className="card-surface p-8 md:p-12 mt-10">
+          <div id="groupings" className="card-surface p-8 md:p-12 mt-12">
             <div className="section-header">
-              <span className="lesson-badge">LESSON 02</span>
-              <span className="section-eyebrow">GROUPINGS</span>
-              <h3 className="section-title text-black">組み分け</h3>
+              <span className="lesson-badge">02</span>
+              <span className="section-eyebrow">Groupings</span>
+              <h3 className="section-title font-serif-jp">組み分け</h3>
               <div className="section-line" />
             </div>
 
-            <div className="flex justify-center mb-8">
-              <div className="inline-flex items-center gap-2 bg-white border border-black/20 px-6 py-3 text-lg md:text-xl font-semibold text-black rounded-full">
+            <div className="flex justify-center mb-10">
+              <div className="inline-flex items-center gap-2 px-6 py-3 border border-[rgba(0,255,136,0.2)] bg-[rgba(0,255,136,0.05)] text-sm font-medium" style={{ color: 'var(--ink)' }}>
                 08:12〜 嘉納スタート
               </div>
             </div>
 
             <div className="section-grid section-grid--2">
               {groupings.map((group) => (
-                <div key={group.label} className="card-surface p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center gap-3">
+                <div key={group.label} className="card-soft p-6">
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="flex items-center gap-4">
                       <div
-                        className="w-12 h-12 rounded-full border border-black/30 flex items-center justify-center text-lg font-semibold text-black bg-yellow-200"
+                        className="w-12 h-12 flex items-center justify-center text-lg font-bold border border-[var(--accent)]"
+                        style={{ color: 'var(--accent)', background: 'rgba(0,255,136,0.1)' }}
                       >
                         {group.label}
                       </div>
-                      <div className="text-xl font-semibold text-black">{group.title}</div>
+                      <div className="text-lg font-medium" style={{ color: 'var(--ink)' }}>{group.title}</div>
                     </div>
-                    <div className="bg-gray-50 border border-black/20 rounded-full px-4 py-1 text-base font-semibold text-black">
+                    <div className="px-3 py-1 border border-[rgba(0,255,136,0.2)] text-sm" style={{ color: 'var(--ink-muted)' }}>
                       {group.count}人
                     </div>
                   </div>
 
-                  <div className="border border-dashed border-black/20 rounded-3xl p-4">
-                    <ul className="grid gap-3 sm:grid-cols-2">
+                  <div className="border border-dashed border-[rgba(0,255,136,0.15)] p-4">
+                    <ul className="grid gap-2 sm:grid-cols-2">
                       {group.members.map((member) => (
                         <li
                           key={member.name}
-                          className="bg-white border border-black/20 rounded-full px-4 py-2 text-center font-semibold"
+                          className="flex items-center gap-2 px-3 py-2 border border-[rgba(0,255,136,0.1)] bg-[rgba(0,255,136,0.02)]"
                         >
-                          <span className="inline-flex items-center gap-2">
-                            <span className="w-4 h-4 rounded-full border border-black/30 border-dotted bg-gray-200" />
-                            <span
-                              className="text-black"
-                              style={member.highlight ? { color: 'var(--forest)' } : undefined}
-                            >
-                              {member.name}
-                        </span>
+                          <span className="w-2 h-2 border border-[rgba(0,255,136,0.3)]" style={{ background: member.highlight ? 'var(--accent)' : 'transparent' }} />
+                          <span
+                            className="text-sm font-medium"
+                            style={{ color: member.highlight ? 'var(--accent)' : 'var(--ink)' }}
+                          >
+                            {member.name}
                           </span>
                         </li>
                       ))}
@@ -545,11 +551,11 @@ export function LandingPage() {
             </div>
           </div>
 
-          <div id="special-awards" className="card-surface p-8 md:p-12 mt-10">
+          <div id="special-awards" className="card-surface p-8 md:p-12 mt-12">
             <div className="section-header">
-              <span className="lesson-badge">LESSON 03</span>
-              <span className="section-eyebrow">AWARDS</span>
-              <h3 className="section-title text-black">特別賞</h3>
+              <span className="lesson-badge">03</span>
+              <span className="section-eyebrow">Awards</span>
+              <h3 className="section-title font-serif-jp">特別賞</h3>
               <div className="section-line" />
             </div>
 
@@ -557,20 +563,15 @@ export function LandingPage() {
               {specialAwards.map((award) => {
                 const Icon = award.icon;
                 return (
-                  <div key={award.title} className="card-surface p-6 text-center">
-                    <div className="mx-auto mb-4 w-16 h-16 rounded-full border border-black/20 flex items-center justify-center bg-yellow-200">
+                  <div key={award.title} className="card-soft p-8 text-center">
+                    <div className="mx-auto mb-6 w-16 h-16 flex items-center justify-center border border-[var(--accent)] bg-[rgba(0,255,136,0.1)]">
                       <Icon className="w-8 h-8" style={{ color: 'var(--accent)' }} />
                     </div>
-                    <div className="text-2xl md:text-3xl font-semibold text-black">{award.title}</div>
-                    <div className="w-10 h-[2px] bg-black/20 mx-auto my-4" />
-                    <p className="text-base md:text-lg font-semibold text-black/70">{award.description}</p>
-                    {award.badge && (
-                      <div className="inline-flex items-center justify-center border border-black/20 px-4 py-2 text-sm md:text-base font-semibold mt-5 bg-white">
-                        {award.badge}
-                      </div>
-                    )}
+                    <div className="text-xl md:text-2xl font-medium mb-4 font-serif-jp" style={{ color: 'var(--ink)' }}>{award.title}</div>
+                    <div className="w-12 h-px mx-auto mb-4" style={{ background: 'var(--accent)' }} />
+                    <p className="text-sm mb-3" style={{ color: 'var(--ink-muted)' }}>{award.description}</p>
                     {award.note && (
-                      <p className="mt-3 text-sm md:text-base font-semibold text-black/60">{award.note}</p>
+                      <p className="text-xs" style={{ color: 'rgba(232,228,217,0.5)' }}>{award.note}</p>
                     )}
                   </div>
                 );
@@ -578,11 +579,11 @@ export function LandingPage() {
             </div>
           </div>
 
-          <div id="local-rules" className="card-surface p-8 md:p-12 mt-10">
+          <div id="local-rules" className="card-surface p-8 md:p-12 mt-12">
             <div className="section-header">
-              <span className="lesson-badge">LESSON 04</span>
-              <span className="section-eyebrow">LOCAL RULES</span>
-              <h3 className="section-title text-black">希楽夢杯ローカルルール</h3>
+              <span className="lesson-badge">04</span>
+              <span className="section-eyebrow">Local Rules</span>
+              <h3 className="section-title font-serif-jp">希楽夢杯ローカルルール</h3>
               <div className="section-line" />
             </div>
 
@@ -590,68 +591,66 @@ export function LandingPage() {
               {localRules.map((rule, index) => (
                 <div
                   key={rule.title}
-                  className="card-surface p-5 md:p-6"
+                  className="card-soft p-5 md:p-6"
                 >
-                  <div className="flex items-center gap-3 mb-3">
-                    <span className="inline-flex items-center justify-center w-9 h-9 rounded-full border border-black/20 bg-yellow-200">
-                      <Check className="w-4 h-4 text-black" />
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="w-8 h-8 flex items-center justify-center border border-[var(--accent)]">
+                      <Check className="w-4 h-4" style={{ color: 'var(--accent)' }} />
                     </span>
-                    <span className="inline-flex items-center justify-center px-3 py-1 border border-black/20 text-xs md:text-sm font-semibold bg-white">
+                    <span className="text-xs font-medium tracking-wider" style={{ color: 'var(--accent)' }}>
                       RULE {String(index + 1).padStart(2, '0')}
                     </span>
                   </div>
-                  <div className="border-l border-black/20 pl-4">
-                    <div className="text-lg md:text-xl font-semibold text-black">{rule.title}</div>
-                    <p className="text-sm md:text-base font-semibold text-black/70 leading-relaxed mt-2">{rule.description}</p>
+                  <div className="pl-11">
+                    <div className="text-base font-medium mb-2" style={{ color: 'var(--ink)' }}>{rule.title}</div>
+                    <p className="text-sm leading-relaxed" style={{ color: 'var(--ink-muted)' }}>{rule.description}</p>
                   </div>
                 </div>
               ))}
             </div>
           </div>
 
-          <div id="award-ceremony" className="card-surface p-8 md:p-12 mt-10">
+          <div id="award-ceremony" className="card-surface p-8 md:p-12 mt-12">
             <div className="section-header">
-              <span className="lesson-badge">LESSON 05</span>
-              <span className="section-eyebrow">CEREMONY</span>
-              <h3 className="section-title text-black">表彰式</h3>
+              <span className="lesson-badge">05</span>
+              <span className="section-eyebrow">Ceremony</span>
+              <h3 className="section-title font-serif-jp">表彰式</h3>
               <div className="section-line" />
             </div>
 
-            <div className="max-w-3xl mx-auto">
-              <div className="card-surface p-8">
-                <div className="text-center">
-                  <div className="text-3xl md:text-4xl font-semibold text-black mb-4">
-                    宇治田原カントリー倶楽部
-                  </div>
-                  <p className="text-lg md:text-xl text-black/70 font-semibold leading-relaxed">
-                    プレー終了後、会場にて表彰式を行います。<br />
-                    賞品をご用意しておりますので、お楽しみに！
-                  </p>
+            <div className="max-w-2xl mx-auto">
+              <div className="card-soft p-8 text-center">
+                <div className="text-2xl md:text-3xl font-medium mb-6 font-serif-jp" style={{ color: 'var(--ink)' }}>
+                  宇治田原カントリー倶楽部
                 </div>
+                <p className="text-base leading-relaxed" style={{ color: 'var(--ink-muted)' }}>
+                  プレー終了後、会場にて表彰式を行います。<br />
+                  賞品をご用意しておりますので、お楽しみに！
+                </p>
               </div>
             </div>
           </div>
 
-          <div id="after-party" className="card-surface p-8 md:p-12 mt-10">
+          <div id="after-party" className="card-surface p-8 md:p-12 mt-12">
             <div className="section-header">
-              <span className="lesson-badge">LESSON 06</span>
-              <span className="section-eyebrow">AFTER PARTY</span>
-              <h3 className="section-title text-black">懇親会</h3>
+              <span className="lesson-badge">06</span>
+              <span className="section-eyebrow">After Party</span>
+              <h3 className="section-title font-serif-jp">懇親会</h3>
               <div className="section-line" />
             </div>
 
             <div className="section-grid section-grid--2">
-              <div className="card-surface p-6 md:col-span-2">
+              <div className="card-soft p-6 md:col-span-2">
                 <div className="text-center">
-                  <div className="text-3xl md:text-4xl font-black text-black mb-4">
-                    🍜 麺屋 希楽夢
+                  <div className="text-2xl md:text-3xl font-medium mb-4 font-serif-jp" style={{ color: 'var(--ink)' }}>
+                    麺屋 希楽夢
                   </div>
-                  <div className="flex items-center justify-center gap-2 text-black mb-4">
-                    <Clock className="w-6 h-6" />
-                    <span className="text-xl md:text-2xl font-black">18:00〜（予定）</span>
+                  <div className="flex items-center justify-center gap-2 mb-6" style={{ color: 'var(--accent)' }}>
+                    <Clock className="w-5 h-5" />
+                    <span className="text-lg font-medium">18:00〜（予定）</span>
                   </div>
-                  <div className="card-soft p-4">
-                    <p className="text-base md:text-lg text-black/70 font-semibold leading-relaxed">
+                  <div className="inline-block p-4 border border-[rgba(0,255,136,0.15)] bg-[rgba(0,255,136,0.03)]">
+                    <p className="text-sm leading-relaxed" style={{ color: 'var(--ink-muted)' }}>
                       〒610-0201<br />
                       京都府綴喜郡宇治田原町南亥子90-1
                     </p>
@@ -664,115 +663,109 @@ export function LandingPage() {
                   href="https://www.google.com/maps/search/?api=1&query=麺屋希楽夢+京都府綴喜郡宇治田原町南亥子90-1"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-white px-6 py-3 border border-black/20 text-sm uppercase tracking-[0.25em] font-semibold text-black hover:text-black/70 transition-colors"
+                  className="inline-flex items-center gap-2 px-6 py-3 border border-[var(--accent)] text-sm font-medium tracking-wider hover:bg-[var(--accent)] hover:text-[var(--surface)] transition-all"
+                  style={{ color: 'var(--accent)' }}
                 >
-                  <MapPin className="w-5 h-5" />
+                  <MapPin className="w-4 h-4" />
                   Googleマップで見る
-                  <ExternalLink className="w-5 h-5" />
+                  <ExternalLink className="w-4 h-4" />
                 </a>
               </div>
 
-              <div className="card-surface p-6">
-                <div className="text-center mb-4">
-                  <p className="text-lg font-bold text-black mb-2">参加費（食事代）</p>
-                  <p className="text-4xl md:text-5xl font-black" style={{ color: 'var(--forest)' }}>¥2,000</p>
-                </div>
+              <div className="card-soft p-6 text-center">
+                <p className="text-sm font-medium mb-2" style={{ color: 'var(--ink-muted)' }}>参加費（食事代）</p>
+                <p className="text-3xl font-bold glow-text" style={{ color: 'var(--accent)' }}>¥2,000</p>
               </div>
 
-              <div className="card-surface p-6">
-                <p className="text-lg text-black/70 font-semibold leading-relaxed text-center">
-                  お食事はお鍋を予定しております🍲<br />
-                  <span className="text-base">※飲み物は各自でご用意をお願いします。</span>
+              <div className="card-soft p-6">
+                <p className="text-sm leading-relaxed text-center" style={{ color: 'var(--ink-muted)' }}>
+                  お食事はお鍋を予定しております<br />
+                  <span className="text-xs">※飲み物は各自でご用意をお願いします。</span>
                 </p>
               </div>
 
-              <div className="card-surface p-6 md:col-span-2">
-                <p className="text-lg text-black/70 font-semibold leading-relaxed text-center">
-                  プレー後は麺屋希楽夢にて<p>懇親会を開催！</p>
-                  <p>ゴルフの余韻を<br />楽しみながら、</p><p>美味しい料理とともに交流を深めましょう。</p>
-                  <p>※参加自由</p>
+              <div className="card-soft p-6 md:col-span-2">
+                <p className="text-base leading-relaxed text-center" style={{ color: 'var(--ink-muted)' }}>
+                  プレー後は麺屋希楽夢にて懇親会を開催！<br />
+                  ゴルフの余韻を楽しみながら、<br />
+                  美味しい料理とともに交流を深めましょう。<br />
+                  <span className="text-sm">※参加自由</span>
                 </p>
               </div>
 
-              <div className="card-surface p-6">
-                <div className="text-center">
-                  <p className="text-xl font-black text-black mb-4">
-                    インスタグラムはこちら！
-                  </p>
-                  <a
-                    href="https://www.instagram.com/menya.kiramu/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-3 bg-white px-6 py-3 border border-black/20 text-sm uppercase tracking-[0.25em] font-semibold hover:opacity-80 transition-opacity"
-                    style={{ color: 'var(--forest)' }}
-                  >
-                    <Instagram className="w-6 h-6" style={{ color: 'var(--accent)' }} />
-                    Instagram
-                    <ExternalLink className="w-5 h-5" style={{ color: 'var(--accent)' }} />
-                  </a>
-                </div>
+              <div className="card-soft p-6 text-center">
+                <p className="text-sm font-medium mb-4" style={{ color: 'var(--ink)' }}>
+                  インスタグラムはこちら！
+                </p>
+                <a
+                  href="https://www.instagram.com/menya.kiramu/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 py-2 border border-[var(--accent)] text-sm font-medium tracking-wider hover:bg-[var(--accent)] hover:text-[var(--surface)] transition-all"
+                  style={{ color: 'var(--accent)' }}
+                >
+                  <Instagram className="w-4 h-4" />
+                  Instagram
+                  <ExternalLink className="w-3 h-3" />
+                </a>
               </div>
 
-              <div className="card-surface p-6">
-                <div className="text-center">
-                  <p className="text-xl font-black text-black mb-4">
-                    公式LINEはこちら！
-                  </p>
-                  <a
-                    href="https://line.me/R/ti/p/@091wotfr"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-3 px-6 py-3 border border-black/20 text-sm uppercase tracking-[0.25em] font-semibold hover:opacity-80 transition-opacity bg-white"
-                    style={{ color: 'var(--forest)' }}
-                  >
-                    <MessageCircle className="w-6 h-6" style={{ color: 'var(--accent)' }} />
-                    LINE
-                    <ExternalLink className="w-5 h-5" style={{ color: 'var(--accent)' }} />
-                  </a>
-                </div>
+              <div className="card-soft p-6 text-center">
+                <p className="text-sm font-medium mb-4" style={{ color: 'var(--ink)' }}>
+                  公式LINEはこちら！
+                </p>
+                <a
+                  href="https://line.me/R/ti/p/@091wotfr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 py-2 border border-[var(--accent)] text-sm font-medium tracking-wider hover:bg-[var(--accent)] hover:text-[var(--surface)] transition-all"
+                  style={{ color: 'var(--accent)' }}
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  LINE
+                  <ExternalLink className="w-3 h-3" />
+                </a>
               </div>
 
-              <div className="card-surface p-6">
-                <div className="text-center">
-                  <p className="text-xl font-black text-black mb-4">
-                    希楽夢HPはこちら！
-                  </p>
-                  <a
-                    href="https://menyakiramu.netlify.app/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-3 px-6 py-3 border border-black/20 text-sm uppercase tracking-[0.25em] font-semibold hover:opacity-80 transition-opacity bg-white"
-                    style={{ color: 'var(--forest)' }}
-                  >
-                    <Globe className="w-6 h-6" style={{ color: 'var(--accent)' }} />
-                    希楽夢HP
-                    <ExternalLink className="w-5 h-5" style={{ color: 'var(--accent)' }} />
-                  </a>
-                </div>
+              <div className="card-soft p-6 text-center md:col-span-2">
+                <p className="text-sm font-medium mb-4" style={{ color: 'var(--ink)' }}>
+                  希楽夢HPはこちら！
+                </p>
+                <a
+                  href="https://menyakiramu.netlify.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 py-2 border border-[var(--accent)] text-sm font-medium tracking-wider hover:bg-[var(--accent)] hover:text-[var(--surface)] transition-all"
+                  style={{ color: 'var(--accent)' }}
+                >
+                  <Globe className="w-4 h-4" />
+                  希楽夢HP
+                  <ExternalLink className="w-3 h-3" />
+                </a>
               </div>
             </div>
           </div>
 
-          <div id="deadline" className="card-surface p-10 md:p-16 mt-10">
+          <div id="deadline" className="card-surface p-10 md:p-16 mt-12">
             <div className="section-header">
-              <span className="lesson-badge">LESSON 07</span>
-              <span className="section-eyebrow">DEADLINE</span>
-              <h3 className="section-title text-black">懇親会回答締め切り</h3>
+              <span className="lesson-badge">07</span>
+              <span className="section-eyebrow">Deadline</span>
+              <h3 className="section-title font-serif-jp">懇親会回答締め切り</h3>
               <div className="section-line" />
             </div>
 
             <div className="text-center">
-              <div className="card-surface inline-block p-8 md:p-12">
-                <div className="text-5xl md:text-7xl font-black mb-4" style={{ color: 'var(--forest)' }}>
+              <div className="inline-block p-8 md:p-12 border border-[var(--accent)] bg-[rgba(0,255,136,0.05)]">
+                <div className="text-4xl md:text-5xl font-bold glow-text mb-4" style={{ color: 'var(--accent)' }}>
                   2026年2月24日
                 </div>
-                <div className="text-2xl md:text-3xl font-black text-black">
+                <div className="text-lg font-medium" style={{ color: 'var(--ink)' }}>
                   までにご回答ください
                 </div>
               </div>
 
-              <div className="mt-8 card-soft p-6 max-w-2xl mx-auto">
-                <p className="text-lg md:text-xl text-black/70 font-semibold leading-relaxed">
+              <div className="mt-8 p-6 max-w-xl mx-auto border border-[rgba(0,255,136,0.15)] bg-[rgba(0,255,136,0.03)]">
+                <p className="text-sm leading-relaxed" style={{ color: 'var(--ink-muted)' }}>
                   期日までにご回答いただけますよう、お願いいたします。締切日を過ぎてもご連絡がない場合は、不参加として扱わせていただきます。
                 </p>
               </div>
@@ -781,27 +774,25 @@ export function LandingPage() {
         </div>
       </section>
 
-      <section id="score-photo" className="section-wrap bg-yellow-300">
+      <section id="score-photo" className="section-wrap">
         <div className="site-shell">
           <div className="section-header">
-            <span className="lesson-badge">LESSON 08</span>
-            <span className="section-eyebrow">SCORE PHOTO</span>
-            <h2 className="section-title text-black">スコアフォト作成</h2>
-            <p className="text-base md:text-lg text-black/70 font-semibold">
-              写真にスコアを重ねて保存できます♪
+            <span className="lesson-badge">08</span>
+            <span className="section-eyebrow">Score Photo</span>
+            <h2 className="section-title font-serif-jp">スコアフォト作成</h2>
+            <p className="text-sm" style={{ color: 'var(--ink-muted)' }}>
+              写真にスコアを重ねて保存できます
             </p>
             <div className="section-line" />
           </div>
 
           <div className="section-grid section-grid--2 items-stretch">
             <div className="card-surface p-6 md:p-8 h-full flex flex-col">
-              <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
-                <span className="inline-flex items-center gap-2 bg-yellow-200 border border-black/20 px-4 py-2 text-xs md:text-sm font-semibold uppercase tracking-[0.2em]">
-                  フォーム入力
-                </span>
-                <span className="text-sm md:text-base font-semibold text-black/60">入力はカンタン</span>
+              <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
+                <span className="lesson-badge">フォーム入力</span>
+                <span className="text-xs" style={{ color: 'var(--ink-muted)' }}>入力はカンタン</span>
               </div>
-              <div className="card-soft p-3">
+              <div className="border border-[rgba(0,255,136,0.15)] p-2 flex-1">
                 <img
                   src="/score-photo-form.png"
                   alt="スコアフォト作成フォーム"
@@ -809,24 +800,21 @@ export function LandingPage() {
                   loading="lazy"
                 />
               </div>
-              <div className="mt-6 grid sm:grid-cols-3 gap-3 text-xs md:text-sm font-semibold text-black">
-                <div className="card-soft px-4 py-3 text-center">パー自動反映</div>
-                <div className="card-soft px-4 py-3 text-center">合計自動計算</div>
-                <div className="card-soft px-4 py-3 text-center">スマホ対応</div>
-                <div className="card-soft px-4 py-3 text-center">スコア途中保存</div>
-                <div className="card-soft px-4 py-3 text-center">好きな画像選択</div>
-                <div className="card-soft px-4 py-3 text-center">大会名入力OK</div>
+              <div className="mt-6 grid sm:grid-cols-3 gap-2 text-xs">
+                {['パー自動反映', '合計自動計算', 'スマホ対応', 'スコア途中保存', '好きな画像選択', '大会名入力OK'].map((feature) => (
+                  <div key={feature} className="px-3 py-2 text-center border border-[rgba(0,255,136,0.1)] bg-[rgba(0,255,136,0.03)]" style={{ color: 'var(--ink-muted)' }}>
+                    {feature}
+                  </div>
+                ))}
               </div>
             </div>
 
             <div className="card-surface p-6 md:p-8 h-full flex flex-col">
-              <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
-                <span className="inline-flex items-center gap-2 bg-yellow-200 border border-black/20 px-4 py-2 text-xs md:text-sm font-semibold uppercase tracking-[0.2em]">
-                  完成イメージ
-                </span>
-                <span className="text-sm md:text-base font-semibold text-black/60">そのまま保存OK</span>
+              <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
+                <span className="lesson-badge">完成イメージ</span>
+                <span className="text-xs" style={{ color: 'var(--ink-muted)' }}>そのまま保存OK</span>
               </div>
-              <div className="rounded-2xl overflow-hidden border border-black/20 bg-black/90 p-3">
+              <div className="border border-[rgba(0,255,136,0.15)] p-2 flex-1 bg-black">
                 <img
                   src="/score-photo-sample.png"
                   alt="スコアフォト完成イメージ"
@@ -837,57 +825,55 @@ export function LandingPage() {
               <div className="mt-6 flex flex-col items-center gap-4">
                 <button
                   onClick={goToScorePhoto}
-                  className="border border-black/30 px-6 md:px-8 py-3 text-xs md:text-sm uppercase tracking-[0.25em] font-semibold text-black hover:text-black/70 transition-colors"
+                  className="px-8 py-3 border border-[var(--accent)] text-sm font-medium tracking-wider hover:bg-[var(--accent)] hover:text-[var(--surface)] transition-all"
+                  style={{ color: 'var(--accent)' }}
                 >
                   スコアフォトを作成する
                 </button>
-                <p className="text-xs md:text-sm text-black/60 font-semibold text-center">
+                <p className="text-xs text-center" style={{ color: 'var(--ink-muted)' }}>
                   写真を選ぶだけでスコア入り画像が完成します
                 </p>
               </div>
             </div>
           </div>
 
-          <div className="flex justify-center mt-24">
-            <div
-              className="w-full max-w-lg card-soft p-3"
+          <div className="flex justify-center mt-16">
+            <button
+              onClick={goToScorePhoto}
+              className="w-full max-w-md px-10 py-4 border border-[var(--accent)] text-sm font-medium tracking-wider hover:bg-[var(--accent)] hover:text-[var(--surface)] transition-all"
+              style={{ color: 'var(--accent)' }}
             >
-              <button
-                onClick={goToScorePhoto}
-                className="w-full border border-black/30 px-6 md:px-10 py-3 text-xs md:text-sm uppercase tracking-[0.25em] font-semibold text-black hover:text-black/70 transition-colors"
-              >
-                スコアフォトを作成する
-              </button>
-            </div>
+              スコアフォトを作成する
+            </button>
           </div>
         </div>
       </section>
 
-      <section id="popular-menu" className="section-wrap bg-yellow-300">
+      <section id="popular-menu" className="section-wrap">
         <div className="site-shell">
           <div className="section-header">
-            <span className="lesson-badge">LESSON 09</span>
-            <span className="section-eyebrow">POPULAR MENU</span>
-            <h2 className="section-title text-black">人気メニュー</h2>
+            <span className="lesson-badge">09</span>
+            <span className="section-eyebrow">Popular Menu</span>
+            <h2 className="section-title font-serif-jp">人気メニュー</h2>
             <div className="section-line" />
           </div>
 
-          <div className="relative card-surface p-6 md:p-10 overflow-hidden">
+          <div className="card-surface p-6 md:p-10">
             <div className="section-grid section-grid--2 items-center">
               <div className="space-y-6">
-                <div className="inline-flex items-center gap-3 bg-yellow-200 border border-black/20 px-4 py-2 text-xs md:text-sm font-semibold uppercase tracking-[0.25em]">
-                  <span className="bg-black/80 text-white px-3 py-1 text-[10px] md:text-xs rounded-full">{featuredMenus[activeSlide].tag}</span>
-                  <span className="tracking-[0.2em] text-black/50">{featuredMenus[activeSlide].subtitle}</span>
+                <div className="inline-flex items-center gap-3">
+                  <span className="px-3 py-1 text-xs font-medium bg-[var(--accent)] text-[var(--surface)]">{featuredMenus[activeSlide].tag}</span>
+                  <span className="text-xs tracking-wider" style={{ color: 'var(--ink-muted)' }}>{featuredMenus[activeSlide].subtitle}</span>
                 </div>
 
                 <div>
-                  <h3 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-black leading-tight mb-2">
+                  <h3 className="text-2xl md:text-3xl font-medium mb-2 font-serif-jp" style={{ color: 'var(--ink)' }}>
                     {featuredMenus[activeSlide].title}
-                    <span className="text-2xl md:text-3xl font-semibold ml-2" style={{ color: 'var(--forest)' }}>
+                    <span className="text-lg md:text-xl ml-2 glow-text" style={{ color: 'var(--accent)' }}>
                       （{featuredMenus[activeSlide].price}）
                     </span>
                   </h3>
-                  <p className="text-base md:text-lg text-black/70 leading-relaxed font-semibold whitespace-pre-line">
+                  <p className="text-sm leading-relaxed whitespace-pre-line" style={{ color: 'var(--ink-muted)' }}>
                     {featuredMenus[activeSlide].description}
                   </p>
                 </div>
@@ -895,43 +881,43 @@ export function LandingPage() {
                 <div className="flex items-center gap-4">
                   <button
                     onClick={prevSlide}
-                    className="flex items-center justify-center w-11 h-11 bg-white border border-black/20 rounded-full hover:opacity-80 transition-opacity"
+                    className="w-10 h-10 flex items-center justify-center border border-[rgba(0,255,136,0.3)] hover:bg-[rgba(0,255,136,0.1)] transition-colors"
                     aria-label="前のメニュー"
                   >
-                    <ChevronLeft className="w-6 h-6 text-black" />
+                    <ChevronLeft className="w-5 h-5" style={{ color: 'var(--accent)' }} />
                   </button>
                   <div className="flex items-center gap-2">
                     {featuredMenus.map((item, index) => (
                       <span
                         key={item.id}
-                        className={`h-3 w-3 rounded-full border border-black/20 transition-all ${index === activeSlide ? 'bg-[#1f3d2b] w-4' : 'bg-white'}`}
+                        className={`h-2 transition-all ${index === activeSlide ? 'w-6 bg-[var(--accent)]' : 'w-2 bg-[rgba(0,255,136,0.3)]'}`}
                         aria-label={`${index + 1}枚目`}
                       />
                     ))}
                   </div>
                   <button
                     onClick={nextSlide}
-                    className="flex items-center justify-center w-11 h-11 bg-white border border-black/20 rounded-full hover:opacity-80 transition-opacity"
+                    className="w-10 h-10 flex items-center justify-center border border-[rgba(0,255,136,0.3)] hover:bg-[rgba(0,255,136,0.1)] transition-colors"
                     aria-label="次のメニュー"
                   >
-                    <ChevronRight className="w-6 h-6 text-black" />
+                    <ChevronRight className="w-5 h-5" style={{ color: 'var(--accent)' }} />
                   </button>
                 </div>
 
-                <p className="text-sm md:text-base text-black/50 font-semibold">
+                <p className="text-xs" style={{ color: 'var(--ink-muted)' }}>
                   {featuredMenus[activeSlide].note}
                 </p>
               </div>
 
               <div className="relative">
-                <div className="absolute -left-6 -top-6 w-24 h-24 bg-yellow-200 border border-black/20 rotate-6" />
-                <div className="relative card-surface p-4">
+                <div className="absolute -left-4 -top-4 w-20 h-20 border border-[rgba(0,255,136,0.2)] -z-10" />
+                <div className="border border-[rgba(0,255,136,0.3)] p-2 bg-black">
                   <img
                     src={featuredMenus[activeSlide].image}
                     alt={featuredMenus[activeSlide].title}
                     className="w-full h-auto object-cover"
                     loading="lazy"
-                  /> 
+                  />
                 </div>
               </div>
             </div>
@@ -939,12 +925,12 @@ export function LandingPage() {
         </div>
       </section>
 
-      <section id="dj-booth" className="section-wrap bg-yellow-300">
+      <section id="dj-booth" className="section-wrap">
         <div className="site-shell">
           <div className="section-header">
-            <span className="lesson-badge">LESSON 10</span>
-            <span className="section-eyebrow">DJ BOOTH</span>
-            <h2 className="section-title text-black">DJブース</h2>
+            <span className="lesson-badge">10</span>
+            <span className="section-eyebrow">DJ Booth</span>
+            <h2 className="section-title font-serif-jp">DJブース</h2>
             <div className="section-line" />
           </div>
         </div>
@@ -952,66 +938,64 @@ export function LandingPage() {
           <AttendeeStats table="after_party_attendees" />
         </div>
         <div className="site-shell">
-          <div
-            className="relative overflow-hidden bg-black text-white border border-black/20 p-6 md:p-10 rounded-none"
-          >
-            <div className="relative grid gap-8 md:grid-cols-[1.2fr_1fr] items-center">
+          <div className="card-surface p-6 md:p-10">
+            <div className="grid gap-8 md:grid-cols-[1.2fr_1fr] items-center">
               <div>
-                <div className="inline-flex items-center gap-2 bg-white text-black px-3 py-2 border border-black/20 font-black uppercase">
-                  <span className="h-2 w-2 rounded-full" style={{ backgroundColor: 'var(--accent)' }} />
-                  KIRAMUブース
+                <div className="inline-flex items-center gap-2 px-4 py-2 border border-[var(--accent)] bg-[rgba(0,255,136,0.1)] mb-4">
+                  <span className="h-2 w-2 rounded-full bg-[var(--accent)] animate-pulse" />
+                  <span className="text-sm font-medium" style={{ color: 'var(--accent)' }}>KIRAMUブース</span>
                 </div>
-                <h3 className="mt-4 text-2xl md:text-3xl font-black uppercase tracking-wide" style={{ color: 'var(--forest)' }}>
+                <h3 className="text-xl md:text-2xl font-medium mb-4 font-serif-jp glow-text" style={{ color: 'var(--accent)' }}>
                   KIRAMU DJ SET
                 </h3>
-                <p className="mt-3 text-sm md:text-base text-white/80 font-bold">
+                <p className="text-sm mb-6" style={{ color: 'var(--ink-muted)' }}>
                   レコードボタンを押すと、KOJIMA-Yayyyy!!!が流れます。
                 </p>
-                <div className="mt-4 flex flex-wrap gap-2 text-xs md:text-sm font-black uppercase text-white/80">
-                  <span className="px-3 py-1 border border-black/20">KOJIMA</span>
-                  <span className="px-3 py-1 border border-black/20">VINYL</span>
-                  <span className="px-3 py-1 border border-black/20">HYPE</span>
+                <div className="flex flex-wrap gap-2 text-xs">
+                  {['KOJIMA', 'VINYL', 'HYPE'].map((tag) => (
+                    <span key={tag} className="px-3 py-1 border border-[rgba(0,255,136,0.2)]" style={{ color: 'var(--ink-muted)' }}>{tag}</span>
+                  ))}
                 </div>
               </div>
               <div className="flex flex-col items-center gap-4">
-                <div className="relative">
-                  <div className="bg-[#141414] border border-black/20 p-5">
-                    <button
-                      type="button"
-                      onClick={toggleDjSound}
-                      aria-pressed={isDjPlaying}
-                      aria-label={isDjPlaying ? 'DJサウンドを停止' : 'DJサウンドを再生'}
-                      className={`relative mx-auto flex items-center justify-center w-28 h-28 md:w-32 md:h-32 rounded-full border-4 border-black bg-[#1f3d2b] transition-transform focus:outline-none ${
-                        isDjPlaying ? 'scale-105' : 'hover:scale-[1.02]'
-                      }`}
-                    >
-                      <span
-                        className={`absolute inset-2 rounded-full border-4 border-black ${isDjPlaying ? 'animate-spin' : ''}`}
-                        style={{ background: 'repeating-radial-gradient(circle, #0b0b0b 0 6px, #1f1f1f 6px 12px)' }}
-                      />
-                      <span className="absolute inset-8 rounded-full bg-white border-4 border-black" />
-                      <span className="relative text-xs md:text-sm font-black text-black tracking-widest">
-                        {isDjPlaying ? 'STOP' : 'PLAY'}
-                      </span>
-                    </button>
-                    <div className="mt-3 text-center text-xs md:text-sm font-bold text-white/70">
-                      {isDjPlaying ? '再生中...' : 'レコードボタンを押してスタート'}
+                <div className="p-6 border border-[rgba(0,255,136,0.2)] bg-[rgba(0,0,0,0.5)]">
+                  <button
+                    type="button"
+                    onClick={toggleDjSound}
+                    aria-pressed={isDjPlaying}
+                    aria-label={isDjPlaying ? 'DJサウンドを停止' : 'DJサウンドを再生'}
+                    className={`relative mx-auto flex items-center justify-center w-28 h-28 md:w-32 md:h-32 rounded-full border-2 border-[var(--accent)] transition-all ${
+                      isDjPlaying ? 'scale-105 shadow-[0_0_30px_rgba(0,255,136,0.4)]' : 'hover:shadow-[0_0_20px_rgba(0,255,136,0.2)]'
+                    }`}
+                    style={{ background: 'linear-gradient(145deg, #0a3d2a, #0a0a0a)' }}
+                  >
+                    <span
+                      className={`absolute inset-3 rounded-full border border-[rgba(0,255,136,0.3)] ${isDjPlaying ? 'animate-spin' : ''}`}
+                      style={{ background: 'repeating-radial-gradient(circle, #0a0a0a 0 4px, #151515 4px 8px)' }}
+                    />
+                    <span className="absolute inset-10 rounded-full bg-[var(--accent)]" style={{ opacity: 0.2 }} />
+                    <span className="relative text-xs font-medium tracking-widest" style={{ color: 'var(--accent)' }}>
+                      {isDjPlaying ? 'STOP' : 'PLAY'}
+                    </span>
+                  </button>
+                  <div className="mt-4 text-center text-xs" style={{ color: 'var(--ink-muted)' }}>
+                    {isDjPlaying ? '再生中...' : 'レコードボタンを押してスタート'}
+                  </div>
+                  <div className="mt-4 flex flex-col items-center gap-2">
+                    <div className="text-[10px] tracking-widest" style={{ color: 'var(--accent)' }}>
+                      BGM LIVE
                     </div>
-                    <div className="mt-4 flex flex-col items-center gap-2">
-                      <div className="text-[10px] md:text-xs font-black uppercase tracking-widest text-white/70">
-                        BGM LIVE
-                      </div>
-                      <div className="flex items-end justify-center gap-2 h-10">
-                        {[0, 1, 2, 3, 4, 5].map((bar) => (
-                          <span
-                            key={`dj-eq-${bar}`}
-                            className={`w-2 md:w-3 h-10 rounded-full border border-black/20 bg-white/60 ${
-                              isDjPlaying ? 'animate-dj-eq' : 'opacity-50'
-                            }`}
-                            style={{ animationDelay: `${bar * 0.12}s` }}
-                          />
-                        ))}
-                      </div>
+                    <div className="flex items-end justify-center gap-1 h-8">
+                      {[0, 1, 2, 3, 4, 5].map((bar) => (
+                        <span
+                          key={`dj-eq-${bar}`}
+                          className={`w-2 h-8 ${isDjPlaying ? 'animate-dj-eq' : 'opacity-30'}`}
+                          style={{
+                            background: 'var(--accent)',
+                            animationDelay: `${bar * 0.12}s`
+                          }}
+                        />
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -1027,13 +1011,13 @@ export function LandingPage() {
         </div>
       </section>
 
-      <section id="rsvp-form" className="section-wrap bg-yellow-300">
+      <section id="rsvp-form" className="section-wrap">
         <div className="site-shell">
           <div className="section-header">
-            <span className="lesson-badge">LESSON 11</span>
+            <span className="lesson-badge">11</span>
             <span className="section-eyebrow">RSVP</span>
-            <h2 className="section-title text-black">懇親会参加申込</h2>
-            <p className="text-base md:text-lg text-black/70 font-semibold">
+            <h2 className="section-title font-serif-jp">懇親会参加申込</h2>
+            <p className="text-sm" style={{ color: 'var(--ink-muted)' }}>
               下記フォームよりご回答ください
             </p>
             <div className="section-line" />
@@ -1045,7 +1029,7 @@ export function LandingPage() {
 
       <MediaUploadSection />
 
-      <section id="line-register" className="section-wrap--tight bg-yellow-300">
+      <section id="line-register" className="section-wrap--tight">
         <div className="site-shell">
           <a
             href="https://line.me/R/ti/p/@091wotfr"
@@ -1056,21 +1040,21 @@ export function LandingPage() {
             <img
               src="/名称_未_設定-1.png"
               alt="麺屋希楽夢 LINE公式アカウント - 営業日、メニュー情報、SNS情報をこちらから登録"
-              className="w-full h-auto border border-black/20 rounded-3xl"
+              className="w-full h-auto border border-[rgba(0,255,136,0.2)]"
               loading="lazy"
             />
           </a>
         </div>
       </section>
 
-      <footer className="bg-yellow-300 text-black py-12 px-4 border-t border-black/10">
-        <div className="site-shell text-left">
-          <div className="section-eyebrow section-eyebrow--small mb-4">CONTACT</div>
-          <h3 className="text-2xl font-semibold mb-4 uppercase tracking-[0.2em]">KIRAMU GOLF COMPETITION 2026</h3>
-          <p className="text-black/70 mb-6 font-semibold">
+      <footer className="py-16 px-4 border-t border-[rgba(0,255,136,0.1)]" style={{ background: 'var(--surface)' }}>
+        <div className="site-shell text-center">
+          <div className="text-xs tracking-[0.5em] mb-4" style={{ color: 'var(--accent)' }}>CONTACT</div>
+          <h3 className="text-xl font-medium mb-6 tracking-wider font-serif-jp" style={{ color: 'var(--ink)' }}>KIRAMU GOLF COMPETITION 2026</h3>
+          <p className="text-sm mb-6" style={{ color: 'var(--ink-muted)' }}>
             ご不明な点がございましたら、お気軽にお問い合わせください。
           </p>
-          <p className="text-sm text-black/70 font-semibold">
+          <p className="text-xs" style={{ color: 'var(--ink-muted)' }}>
             希楽夢杯実行委員会
           </p>
         </div>
