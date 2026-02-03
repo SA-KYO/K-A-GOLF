@@ -136,92 +136,93 @@ export function MediaGallerySection() {
   };
 
   return (
-    <section id="media-gallery" className="section-wrap bg-yellow-300">
+    <section id="media-gallery" className="section-dark">
       <div className="site-shell">
-        <div className="section-header">
-          <span className="lesson-badge">LESSON 13</span>
+        <div className="section-header section-header--center">
           <span className="section-eyebrow">GALLERY</span>
-          <h2 className="section-title text-black">ギャラリー</h2>
-          <p className="text-base md:text-lg text-black/70 font-semibold">
+          <h2 className="section-jp-title font-serif-jp">ギャラリー</h2>
+          <p className="text-base text-gray-400 mt-4">
             みんなの写真・動画がここに集まります
           </p>
-          <div className="section-line" />
         </div>
 
         {loading ? (
-          <div className="text-center text-black font-black">読み込み中...</div>
+          <div className="text-center text-white text-lg">読み込み中...</div>
         ) : error ? (
-          <div className="max-w-2xl mx-auto bg-red-400 border-4 border-black text-black px-4 py-3 font-bold text-center">
+          <div className="max-w-2xl mx-auto bg-red-500/10 border border-red-500/30 text-red-400 px-6 py-4 text-center rounded-lg">
             {error}
           </div>
         ) : (
           <>
-            <div className="flex flex-wrap justify-center gap-4 mb-10" role="tablist" aria-label="ギャラリー切り替え">
+            <div className="flex flex-wrap justify-center gap-4 mb-16" role="tablist" aria-label="ギャラリー切り替え">
               <button
                 type="button"
                 role="tab"
                 aria-selected={activeTab === 'image'}
                 onClick={() => setActiveTab('image')}
-                className={`flex items-center gap-2 px-6 py-3 border-4 border-black font-black uppercase hover:translate-x-1 hover:translate-y-1 transition-transform ${
-                  activeTab === 'image' ? 'bg-yellow-200' : 'bg-white'
+                className={`flex items-center gap-3 px-8 py-4 border transition-all font-semibold tracking-wider ${
+                  activeTab === 'image'
+                    ? 'bg-[#3d7a35] border-[#3d7a35] text-white'
+                    : 'bg-transparent border-white/20 text-gray-400 hover:border-[#3d7a35] hover:text-white'
                 }`}
-                style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}
               >
                 <ImageIcon className="w-5 h-5" />
-                写真
-                <span className="bg-black text-white text-xs px-2 py-1 border-2 border-black">{photoCount}</span>
+                <span>写真</span>
+                <span className="bg-white/20 text-white text-xs px-2.5 py-1 rounded-full">{photoCount}</span>
               </button>
               <button
                 type="button"
                 role="tab"
                 aria-selected={activeTab === 'video'}
                 onClick={() => setActiveTab('video')}
-                className={`flex items-center gap-2 px-6 py-3 border-4 border-black font-black uppercase hover:translate-x-1 hover:translate-y-1 transition-transform ${
-                  activeTab === 'video' ? 'bg-yellow-200' : 'bg-white'
+                className={`flex items-center gap-3 px-8 py-4 border transition-all font-semibold tracking-wider ${
+                  activeTab === 'video'
+                    ? 'bg-[#3d7a35] border-[#3d7a35] text-white'
+                    : 'bg-transparent border-white/20 text-gray-400 hover:border-[#3d7a35] hover:text-white'
                 }`}
-                style={{ boxShadow: '4px 4px 0 0 var(--shadow-color)' }}
               >
                 <Video className="w-5 h-5" />
-                動画
-                <span className="bg-black text-white text-xs px-2 py-1 border-2 border-black">{videoCount}</span>
+                <span>動画</span>
+                <span className="bg-white/20 text-white text-xs px-2.5 py-1 rounded-full">{videoCount}</span>
               </button>
             </div>
 
             {!hasFilteredItems ? (
-              <div className="max-w-2xl mx-auto bg-white border-4 border-black p-8 text-center font-bold text-black" style={{ boxShadow: '6px 6px 0 0 var(--shadow-color)' }}>
-                {activeTab === 'image'
-                  ? '表示できる写真がありません。ぜひ思い出を投稿してください！'
-                  : '表示できる動画がありません。ぜひ思い出を投稿してください！'}
+              <div className="max-w-2xl mx-auto card-elegant p-12 text-center">
+                <p className="text-gray-400 text-lg">
+                  {activeTab === 'image'
+                    ? '表示できる写真がありません。ぜひ思い出を投稿してください！'
+                    : '表示できる動画がありません。ぜひ思い出を投稿してください！'}
+                </p>
               </div>
             ) : (
-              <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredItems.map((item) => {
               const isImage = item.mediaType === 'image';
               const Icon = isImage ? ImageIcon : Video;
               return (
                 <div
                   key={item.id}
-                  className="bg-white border-4 border-black overflow-hidden"
-                  style={{ boxShadow: '6px 6px 0 0 var(--shadow-color)' }}
+                  className="group relative bg-[#151515] border border-white/10 overflow-hidden hover:border-[#3d7a35] transition-all duration-300 hover:shadow-[0_0_30px_rgba(61,122,53,0.3)]"
                 >
-                  <div className="border-b-4 border-black bg-black">
+                  <div className="relative overflow-hidden">
                     {isImage ? (
                       <a
                         href={item.displayUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group block relative"
+                        className="block relative"
                         aria-label="別タブで拡大表示"
                       >
                         <img
                           src={item.displayUrl}
                           alt={item.original_name}
-                          className="w-full h-56 object-cover"
+                          className="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-500"
                           loading="lazy"
                           onError={() => handlePreviewError(item.id)}
                         />
-                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-200" />
-                        <div className="absolute top-3 right-3 flex items-center gap-1 bg-yellow-400 text-black border-2 border-black px-2 py-1 text-xs font-black uppercase">
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        <div className="absolute top-4 right-4 flex items-center gap-2 bg-[#3d7a35] text-white px-3 py-1.5 text-xs font-semibold uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                           <ExternalLink className="w-3 h-3" />
                           拡大
                         </div>
@@ -231,26 +232,32 @@ export function MediaGallerySection() {
                         <img
                           src={item.previewUrl}
                           alt={item.original_name}
-                          className="w-full h-56 object-cover"
+                          className="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-500"
                           loading="lazy"
                           onError={() => handlePreviewError(item.id)}
                         />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border-2 border-white/40">
+                            <Video className="w-8 h-8 text-white" />
+                          </div>
+                        </div>
                       </div>
                     )}
                   </div>
 
-                  <div className="p-4">
-                    <div className="flex items-center gap-2 text-black font-bold mb-2">
+                  <div className="p-6">
+                    <div className="flex items-center gap-2 text-[#3d7a35] font-semibold mb-3 text-xs uppercase tracking-wider">
                       <Icon className="w-4 h-4" />
-                      <span className="text-sm uppercase">{isImage ? 'PHOTO' : 'VIDEO'}</span>
+                      <span>{isImage ? 'PHOTO' : 'VIDEO'}</span>
                     </div>
-                    <div className="text-sm font-bold text-black mb-2">
+                    <div className="text-base font-semibold text-white mb-2">
                       {item.uploader_name ? item.uploader_name : '匿名'}
                     </div>
                     {item.comment && (
-                      <div className="text-sm text-black font-bold mb-3">
+                      <p className="text-sm text-gray-400 mb-4 leading-relaxed line-clamp-2">
                         {item.comment}
-                      </div>
+                      </p>
                     )}
                     {!isImage && (
                       <a
@@ -258,13 +265,12 @@ export function MediaGallerySection() {
                         target="_blank"
                         rel="noopener noreferrer"
                         download={item.original_name}
-                        className="mb-3 inline-flex items-center gap-2 bg-yellow-400 text-black border-2 border-black px-3 py-2 text-xs font-black uppercase hover:translate-x-0.5 hover:translate-y-0.5 transition-transform"
-                        style={{ boxShadow: '3px 3px 0 0 var(--shadow-color)' }}
+                        className="mb-4 inline-flex items-center gap-2 bg-[#3d7a35] text-white px-4 py-2 text-xs font-semibold uppercase hover:bg-[#2d5a27] transition-colors"
                       >
                         ↓ 開いて保存
                       </a>
                     )}
-                    <div className="text-xs text-black font-bold">
+                    <div className="text-xs text-gray-600 border-t border-white/5 pt-3 mt-3">
                       {formatDate(item.created_at)}
                     </div>
                   </div>

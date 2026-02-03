@@ -89,6 +89,13 @@
   .border-accent { border-color: var(--accent-green); }
   .bg-accent { background-color: var(--accent-green); }
 
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
   .site-shell {
     max-width: 1400px;
     margin: 0 auto;
